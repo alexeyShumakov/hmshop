@@ -1,0 +1,40 @@
+version: '2'
+services:
+  redis:
+    image: redis
+
+  db:
+    image: postgres
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+      - /app/vendor/node_modules
+    depends_on:
+      - redis
+
+  webpack:
+    build: .
+    command: ./bin/webpack-watcher
+    volumes:
+      - .:/app
+      - /app/vendor/node_modules
+
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app
+      - /app/vendor/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
