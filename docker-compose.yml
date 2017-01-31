@@ -22,7 +22,7 @@ services:
 
   webpack:
     build: .
-    command: ./bin/webpack-watcher
+    command: ./bin/webpack-watcher --display-error-details
     volumes:
       - .:/app
       - /app/vendor/node_modules

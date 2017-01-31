@@ -19,13 +19,11 @@ module.exports = {
     rules: [
       { test: /\.coffee(.erb)?$/, loader: "coffee-loader" },
       {
-        test: /\.js(.erb)?$/,
+        test: /\.jsx?(.erb)?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: [
-            [ 'latest', { 'es2015': { 'modules': false } } ]
-          ]
+          presets: ['react',  ['latest', { 'es2015': { 'modules': false } }]],
         }
       },
       {
@@ -43,7 +41,7 @@ module.exports = {
   plugins: [],
 
   resolve: {
-    extensions: [ '.js', '.coffee' ],
+    extensions: [ '.js', '.coffee', '.jsx' ],
     modules: [
       path.resolve('../app/javascript'),
       path.resolve('../vendor/node_modules')
