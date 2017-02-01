@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as appActions from '../actions';
+import Header from '../components/Header';
+import Sidebar from '../components/sidebar/Sidebar';
 
 class App extends Component {
   render() {
-    const { isGood } = this.props;
-    const { updateTest } = this.props.appActions;
+    let { store, actions, children } = this.props;
     return(
       <div>
-        <input type="text" onChange={(e)=>{updateTest(e.target.value)}} value={isGood}/>
-        hello is Good: {this.props.isGood} <br/>
-        hello is Bad: {this.props.isBad}
+        <Header/>
+        <div className="row">
+          <Sidebar
+            categories={store.get('categories')}
+            actions={actions}
+          />
+          {children}
+        </div>
       </div>
     )
   }
@@ -19,8 +25,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    isGood: state.get('isGood'),
-    isBad: state.get('isBad')
+    store: state
   }
 }
 
