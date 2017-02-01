@@ -1,14 +1,13 @@
+import Immutable from 'immutable';
 import actionTypes from '../constants';
-const initialState = {
+const initialState = Immutable.fromJS({
   isGood: 'YES!'
-}
+})
 
 export function appReducer(state = initialState, action) {
   switch(action.type) {
     case actionTypes.TEST:
-      return Object.assign({}, state, {
-        isGood: action.text
-      })
+      return state.set('isGood', action.text)
     default: return state
   }
 }

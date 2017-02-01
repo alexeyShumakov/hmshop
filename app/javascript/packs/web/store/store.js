@@ -1,13 +1,23 @@
 import { createStore, applyMiddleware } from 'redux';
 import { appReducer } from '../reducers/reducer';
 import thunk from 'redux-thunk';
+import Immutable, { fromJS } from 'immutable';
 
 let middlewares = [thunk];
 if (process.env.NODE_ENV === `development`) {
   const createLogger = require(`redux-logger`);
-  const logger = createLogger();
+  const stateTransformer = (state) => {
+    if(Immutable.Iterable.isIterable(state)) return state.toJS();
+    else return state;
+  }
+  const logger = createLogger({stateTransformer});
   middlewares.push(logger);
 }
-const store = createStore(appReducer, $sharedVariables, applyMiddleware(...middlewares) )
+
+let shared = (typeof $sharedVariables === 'undefined') ? {} : $sharedVariables;
+let local = (typeof $localVariables === 'undefined') ? {} : $localVariables;
+let initialState = fromJS(shared).merge(fromJS(local));
+
+const store = createStore(appReducer, initialState, applyMiddleware(...middlewares) )
 
 export default store;

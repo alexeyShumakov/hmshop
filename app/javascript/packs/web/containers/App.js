@@ -10,7 +10,8 @@ class App extends Component {
     return(
       <div>
         <input type="text" onChange={(e)=>{updateTest(e.target.value)}} value={isGood}/>
-        hello is Good: {this.props.isGood}
+        hello is Good: {this.props.isGood} <br/>
+        hello is Bad: {this.props.isBad}
       </div>
     )
   }
@@ -18,7 +19,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    isGood: state.isGood
+    isGood: state.get('isGood'),
+    isBad: state.get('isBad')
   }
 }
 
