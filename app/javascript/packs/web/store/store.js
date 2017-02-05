@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { appReducer } from '../reducers/reducer';
+import { appReducer, initialState } from '../reducers/reducer';
 import thunk from 'redux-thunk';
 import Immutable, { fromJS } from 'immutable';
 
@@ -16,8 +16,8 @@ if (process.env.NODE_ENV === `development`) {
 
 let shared = (typeof $sharedVariables === 'undefined') ? {} : $sharedVariables;
 let local = (typeof $localVariables === 'undefined') ? {} : $localVariables;
-let initialState = fromJS(shared).merge(fromJS(local));
+let state = initialState.merge(fromJS(shared)).merge(fromJS(local));
 
-const store = createStore(appReducer, initialState, applyMiddleware(...middlewares) )
+const store = createStore(appReducer, state, applyMiddleware(...middlewares) )
 
 export default store;

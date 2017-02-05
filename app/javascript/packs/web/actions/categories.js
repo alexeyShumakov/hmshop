@@ -1,0 +1,27 @@
+import axios from 'axios';
+import Immutable from 'immutable';
+
+import actionTypes from '../constants';
+import * as productActions from './products';
+
+export function setCategory(category) {
+  return {
+    type: actionTypes.SET_CATEGORY,
+    category
+  }
+}
+
+export function fetchCategory(id) {
+  return dispatch => {
+    return axios.get(`/api/categories/${id}`).then(
+      response => {
+        let data = Immutable.fromJS(response.data);
+        let category = data.get('category').delete('products');
+        let products = data.getIn(['category', 'products']);
+        dispatch(setCategory(category))
+        dispatch(productActions.setProducts(products))
+      }
+    )
+  }
+}
+

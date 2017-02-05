@@ -1,2 +1,4 @@
 const TEST = 'TEST';
-export default { TEST };
+const SET_CATEGORY = 'SET_CATEGORY';
+const SET_PRODUCTS = 'SET_PRODUCTS';
+export default { TEST, SET_CATEGORY, SET_PRODUCTS };

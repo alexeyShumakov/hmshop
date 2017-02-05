@@ -7,7 +7,7 @@ export default props => {
     <div className='sidebar u-p12'>
       <ul className=' sidebar-list'>
         { props.categories.map(category => {
-          return <Category key={category.get('id')} category={category}/>
+          return <Category key={category.get('id')} category={category} fetchCategory={props.actions.fetchCategory}/>
           })
         }
       </ul>

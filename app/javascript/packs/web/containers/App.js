@@ -31,7 +31,7 @@ function mapStateToProps(state) {
 
 function mpaDispatchToProps(dispatch) {
   return {
-    appActions: bindActionCreators(appActions, dispatch)
+    actions: bindActionCreators(appActions, dispatch)
   }
 }
 

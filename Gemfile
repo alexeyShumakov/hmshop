@@ -17,6 +17,7 @@ gem "simple_form"
 gem 'redis', '~> 3.2'
 gem "interactor", "~> 3.0"
 gem 'sidekiq'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'seed-fu', '~> 2.3'
