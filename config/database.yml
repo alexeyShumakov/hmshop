@@ -17,5 +17,4 @@ test:
 production:
   <<: *default
   database: hmshop_production
-  username: hmshop
   password: <%= ENV['DATABASE_PASSWORD'] %>
