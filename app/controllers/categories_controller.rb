@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    WelcomeWorker.perform_async
     category = Category.includes(:products).find(params[:id])
     category_json = ActiveModelSerializers::SerializableResource.new(category, { include: '' }).as_json
     products_json = ActiveModelSerializers::SerializableResource.new(category.products, { include: '' }).as_json
