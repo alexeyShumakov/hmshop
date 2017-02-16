@@ -19,8 +19,9 @@ gem "interactor", "~> 3.0"
 gem 'sidekiq'
 gem 'active_model_serializers', '~> 0.10.0'
 
+gem 'seed-fu', '~> 2.3'
+
 group :development, :test do
-  gem 'seed-fu', '~> 2.3'
   gem 'faker', '~> 1.6.6'
   gem "awesome_print"
   gem "pry-byebug"
