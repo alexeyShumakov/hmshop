@@ -11,7 +11,8 @@ module.exports = merge(config, {
 
   plugins: [
     new webpack.LoaderOptionsPlugin({
-      minimize: true
+      minimize: true,
+      debug: false
     })
   ]
 })
