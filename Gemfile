@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'webpacker', github: 'rails/webpacker'
 gem "simple_form"
+gem 'closure_tree'
 
 gem 'redis', '~> 3.2'
 gem "interactor", "~> 3.0"

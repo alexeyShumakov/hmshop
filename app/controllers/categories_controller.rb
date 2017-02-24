@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  include CategoriesHelper
+  before_action :set_categories
+
   def index
   end
 

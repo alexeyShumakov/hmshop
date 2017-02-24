@@ -9,7 +9,7 @@ export default class Category extends React.Component {
   constructor(props) {
     super(props);
     this.state = { display: 'none' };
-    _.bindAll(this, 'fetchCategory', 'show', 'hide', 'showMenu', 'hideMenu');
+    _.bindAll(this, 'show', 'hide', 'showMenu', 'hideMenu');
     this.show = _.debounce(this.show, 300);
     this.hide = _.debounce(this.hide, 200);
   }
@@ -40,21 +40,27 @@ export default class Category extends React.Component {
     this.hide();
   }
 
-  fetchCategory() {
-    let { fetchCategory, category } = this.props;
-    fetchCategory(category.get('id'));
-  }
 
   render() {
-    let { category } = this.props;
+    let { category, fetchCategory } = this.props;
     let { display } = this.state;
     let style = { display: display };
+    let children = category.get('children').map(child => {
+      let id = child.get('id');
+      return(
+        <li key={child.get('id')}>
+          <Link to={`/categories/${id}`} onClick={() => fetchCategory(id)} >
+            {child.get('title')}
+          </Link>
+        </li>
+      )
+    })
     return(
       <li>
         <Link
           ref={(tTarget) => { this.tTarget = tTarget; }}
           to={`/categories/${category.get('id')}`}
-          onClick={this.fetchCategory}
+          onClick={() => fetchCategory(category.get('id'))}
           onMouseEnter={this.showMenu}
           onMouseLeave={this.hideMenu}
           >
@@ -67,7 +73,7 @@ export default class Category extends React.Component {
             onMouseLeave={this.hideMenu}
             style={style}
           >
-            hello
+            <ul>{children}</ul>
           </div>
         </div>
       </li>
