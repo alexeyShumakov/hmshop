@@ -3,7 +3,7 @@ import actionTypes from '../constants';
 export const initialState = Immutable.fromJS({
   category: {
     id: 1,
-    title: 'title'
+    title: ''
   },
   products: []
 })

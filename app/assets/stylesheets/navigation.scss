@@ -14,8 +14,40 @@
   }
 }
 .nav-sub-categories {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid gray;
+  display: none;
+  top: -5px;
+  left: -5px;
+  width: 200px;
+  background: #fff;
+  border: 1px solid #9b4dca;
+  position: relative;
+  min-height: 200px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  font: bold 1.5em/180px Helvetica, sans-serif;
+  text-shadow: 0 0 1px #000;
+  border-radius: 2px;
+}
+
+.nav-sub-categories:after,
+.nav-sub-categories:before {
+  content: '';
+  display: block;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+}
+
+.nav-sub-categories:after {
+  top: 8px;
+  border-color: transparent #fff transparent transparent;
+  border-width: 5px;
+}
+.nav-sub-categories:before {
+  top: 7px;
+  border-color: transparent #9b4dca transparent transparent;
+  border-width: 6px;
 }
