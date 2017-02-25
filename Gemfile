@@ -22,6 +22,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'seed-fu', '~> 2.3'
 gem 'faker', '~> 1.6.6'
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   gem "awesome_print"
