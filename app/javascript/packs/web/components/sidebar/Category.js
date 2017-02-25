@@ -9,8 +9,8 @@ export default class Category extends React.Component {
   constructor(props) {
     super(props);
     this.state = { display: 'none' };
-    _.bindAll(this, 'show', 'hide', 'showMenu', 'hideMenu');
-    this.show = _.debounce(this.show, 300);
+    _.bindAll(this, 'showImmediately', 'show', 'hide', 'showMenu', 'hideMenu');
+    this.show = _.debounce(this.show, 500);
     this.hide = _.debounce(this.hide, 200);
   }
 
@@ -29,6 +29,8 @@ export default class Category extends React.Component {
   show() { this.setState({display: 'block'}); }
 
   hide() { this.setState({display: 'none'}); }
+
+  showImmediately() { this.setState({display: 'block'}); }
 
   showMenu() {
     this.hide.cancel();
@@ -49,7 +51,10 @@ export default class Category extends React.Component {
       let id = child.get('id');
       return(
         <li key={child.get('id')}>
-          <Link to={`/categories/${id}`} onClick={() => fetchCategory(id)} >
+          <Link
+            to={`/categories/${id}`}
+            onClick={() => fetchCategory(id)}
+          >
             {child.get('title')}
           </Link>
         </li>
@@ -57,23 +62,30 @@ export default class Category extends React.Component {
     })
     return(
       <li>
-        <Link
+        <div
           ref={(tTarget) => { this.tTarget = tTarget; }}
-          to={`/categories/${category.get('id')}`}
-          onClick={() => fetchCategory(category.get('id'))}
+          onClick={this.showImmediately}
           onMouseEnter={this.showMenu}
           onMouseLeave={this.hideMenu}
           >
           <i className="nav__icon fa fa-heart-o fa-lg"></i>
-        </Link>
-        <div className='container' ref={(tElement) => { this.tElement = tElement; }} >
+        </div>
+        <div ref={(tElement) => { this.tElement = tElement; }} >
           <div
             className="nav-sub-categories"
             onMouseEnter={this.showMenu}
             onMouseLeave={this.hideMenu}
             style={style}
           >
-            <ul>{children}</ul>
+            <b className='u-mb6'>
+              <Link
+                to={`/categories/${category.get('id')}`}
+                onClick={() => fetchCategory(category.get('id'))}
+                >
+                {category.get("title")}
+              </Link>
+            </b>
+            <ul> {children} </ul>
           </div>
         </div>
       </li>
