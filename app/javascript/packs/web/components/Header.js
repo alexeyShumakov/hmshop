@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default props => {
   return(
     <div className="row nav u-p12">
-      <Link to='/'>
+      <Link to='/' onClick={() => props.setRootCategoryId(0) }>
         <i className="nav__icon fa fa-rocket fa-lg"></i>
       </Link>
       <div className="nav__right">

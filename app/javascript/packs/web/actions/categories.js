@@ -11,6 +11,13 @@ export function setCategory(category) {
   }
 }
 
+export function setRootCategoryId(id) {
+  return {
+    type: actionTypes.SET_ROOT_CATEGORY_ID,
+    id
+  }
+}
+
 export function fetchCategory(id) {
   return dispatch => {
     return axios.get(`/api/categories/${id}`).then(
@@ -19,6 +26,7 @@ export function fetchCategory(id) {
         let category = data.get('category').delete('products');
         let products = data.getIn(['category', 'products']);
         dispatch(setCategory(category))
+        dispatch(setRootCategoryId(category.get('root_category_id')))
         dispatch(productActions.setProducts(products))
       }
     )

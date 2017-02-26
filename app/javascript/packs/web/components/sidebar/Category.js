@@ -45,9 +45,10 @@ export default class Category extends React.Component {
 
 
   render() {
-    let { category, fetchCategory } = this.props;
+    let { category, fetchCategory, rootCategoryId } = this.props;
     let { display } = this.state;
     let style = { display: display };
+    let selected = category.get('id') === rootCategoryId;
     let children = category.get('children').map(child => {
       let id = child.get('id');
       return(
@@ -68,8 +69,9 @@ export default class Category extends React.Component {
           onClick={this.showImmediately}
           onMouseEnter={this.showMenu}
           onMouseLeave={this.hideMenu}
+          className={selected ? 'nav__icon_selected' : ''}
           >
-          <i className="nav__icon fa fa-heart-o fa-lg"></i>
+            <i className="nav__icon fa fa-heart-o fa-lg"></i>
         </div>
         <div ref={(tElement) => { this.tElement = tElement; }} >
           <div

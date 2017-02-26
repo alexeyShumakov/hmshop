@@ -10,9 +10,10 @@ class App extends Component {
     let { store, actions, children } = this.props;
     return(
       <div>
-        <Header/>
+        <Header setRootCategoryId={actions.setRootCategoryId}/>
         <div className="row">
           <Sidebar
+            rootCategoryId={store.get('root_category_id')}
             categories={store.get('categories')}
             actions={actions}
           />

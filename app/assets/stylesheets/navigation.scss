@@ -11,6 +11,12 @@
   }
 }
 
+.nav__icon_selected {
+  background-color: lighten($light-main-color, 10%);
+  border-radius: 1px;
+  transition: background-color 1s;
+}
+
 .nav__icon {
   padding: 0 3px;
   cursor: pointer;
