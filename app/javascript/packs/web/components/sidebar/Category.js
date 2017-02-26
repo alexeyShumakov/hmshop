@@ -22,7 +22,8 @@ export default class Category extends React.Component {
       element: tElement,
       target: tTarget,
       attachment: 'top left',
-      targetAttachment: 'top right'
+      targetAttachment: 'top left',
+      targetOffset: '-5px 33px'
     })
   }
 
