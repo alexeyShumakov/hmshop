@@ -9,6 +9,7 @@ class CategoryContainer extends Component {
     let { store, actions, children, params } = this.props;
     return(
       <Category
+        modalProduct={store.get('modalProduct')}
         products={store.get('products')}
         category={store.get('category')}
         actions={actions}

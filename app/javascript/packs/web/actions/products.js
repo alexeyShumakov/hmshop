@@ -6,3 +6,10 @@ export function setProducts(products) {
     products
   }
 }
+
+export function setModalProductState(modalProductState) {
+  return {
+    type: actionTypes.SET_MODAL_PRODUCT_STATE,
+    modalProductState
+  }
+}

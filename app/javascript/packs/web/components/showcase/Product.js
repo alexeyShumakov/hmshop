@@ -5,7 +5,7 @@ export default class CartProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hover: false };
-    _.bindAll(this, 'show', 'hide', 'showMenu', 'hideMenu');
+    _.bindAll(this, 'show', 'hide', 'showMenu', 'hideMenu', 'hideImmediately');
     this.show = _.debounce(this.show, 200);
     this.hide = _.debounce(this.hide, 50);
   }
@@ -15,6 +15,9 @@ export default class CartProduct extends React.Component {
   }
 
   hide() {
+    this.setState({hover: false});
+  }
+  hideImmediately() {
     this.setState({hover: false});
   }
 
@@ -39,7 +42,10 @@ export default class CartProduct extends React.Component {
           onMouseEnter={this.showMenu}
           onMouseLeave={this.hideMenu}
         >
-          <div className="cart__top-menu" style={{opacity}} >
+          <div
+            className="cart__top-menu"
+            style={{opacity}}
+            onClick={()=>{this.hideImmediately(); this.props.openModal(true);}} >
             <i className='fa fa-search float-right'></i>
           </div>
           <div className="cart__image">
