@@ -10,6 +10,7 @@ export const initialState = Immutable.fromJS({
   modalProduct: {
     isOpen: false,
     isLoading: false,
+    currentPicture: '/img.png',
     product: {
       pictures: []
     }
@@ -31,6 +32,8 @@ export function appReducer(state = initialState, action) {
       return state.setIn(['modalProduct', 'product'], action.modalProduct )
     case actionTypes.SET_LOADING_MODAL_PRODUCT:
       return state.setIn(['modalProduct', 'isLoading'], action.isLoading)
+    case actionTypes.SET_MODAL_CURRENT_PICTURE:
+      return state.setIn(['modalProduct', 'currentPicture'], action.url)
 
     default: return state
   }

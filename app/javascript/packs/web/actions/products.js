@@ -22,6 +22,13 @@ export function setModalProduct(modalProduct) {
     modalProduct
   }
 }
+
+export function setModalCurrentPicture(url) {
+  return {
+    type: actionTypes.SET_MODAL_CURRENT_PICTURE,
+    url
+  }
+}
 export function fetchProduct(id) {
   return dispatch => {
     dispatch(setLoadingModalProduct(true));
@@ -30,6 +37,7 @@ export function fetchProduct(id) {
         let product = Immutable.fromJS(response.data.product);
         dispatch(setModalProduct(product))
         dispatch(setLoadingModalProduct(false));
+        dispatch(setModalCurrentPicture(product.getIn(['pictures', 0, 'medium_img'])));
       }
     )
   }

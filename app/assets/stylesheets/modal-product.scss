@@ -36,6 +36,16 @@
 .modal-product__big-image {
   max-width: 500px;
 }
+.modal-product__thumb-image {
+  width: 82px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  &:hover {
+    border: 1px solid $light-main-color;
+  }
+}
+
 .modal-product__titlebar {
   height: 20px;
   text-align: right;

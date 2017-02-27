@@ -1,24 +1,37 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Slider from 'react-slick'
+import Lazysizes from 'lazysizes';
 
 export default props => {
-  let { product, openModal, isOpen, isLoading } = props;
+  let { product, setCurrentPicture, openModal, isOpen, isLoading, currentPicture } = props;
+  let bigImage;
   let settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
+    speed: 300,
+    arrow: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    variableVidth: true,
+    infinite: false
   };
+
   let images = product.get('pictures').map((pic) => {
-    return(<div key={pic.get('id')} >
-        <img className='lazyload modal-product__big-image' data-src={pic.get('medium_img')} alt=""/>
+    return(<div key={pic.get('id')} className='modal-product__thumb-image' >
+      <img
+        onClick={
+          ()=> {
+            setCurrentPicture(pic.get('medium_img'));
+            lazySizes.loader.unveil(bigImage);
+          }
+        }
+        className='lazyload'
+        data-src={pic.get('thumb_img')} alt=""/>
       </div>
     )
   })
   return(
     <Modal
-      onRequestClose={() =>openModal(false)}
+      onRequestClose={() => openModal(false)}
       isOpen={isOpen}
       contentLabel='hi'
       className='modal-product'
@@ -33,6 +46,7 @@ export default props => {
       {!isLoading &&
         <div>
           <div className="modal-product__left-side">
+            <img ref={(img) => bigImage = img} data-src={currentPicture} className='lazyload' alt=""/>
             <Slider {...settings}>
               {images}
             </Slider>

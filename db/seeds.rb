@@ -6,9 +6,8 @@ end
 Category.all.each do |c|
   6.times do
     pictures = []
-    2.times do
-      pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product.jpg')))
-    end
+    pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product.jpg')))
+    pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg')))
     product_params = {
       title: Faker::Commerce.product_name,
       category: c,
@@ -19,3 +18,11 @@ Category.all.each do |c|
     product.pictures = pictures
   end
 end
+
+product = Product.first
+pictures = []
+10.times do
+  pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product.jpg')))
+  pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg')))
+end
+product.pictures = pictures

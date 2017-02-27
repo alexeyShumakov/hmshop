@@ -17,7 +17,9 @@ export default props => {
     <div className="showcase row">
       <ProductModal
         openModal={actions.setModalProductState}
+        setCurrentPicture={actions.setModalCurrentPicture}
         product={modalProduct.get('product')}
+        currentPicture={modalProduct.get('currentPicture')}
         isLoading={modalProduct.get('isLoading')}
         isOpen={modalProduct.get('isOpen')} />
       <div className="category column column-100">
