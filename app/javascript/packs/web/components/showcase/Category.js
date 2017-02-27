@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from './Product';
-import ProductModal from './ProductModal';
+import ProductModal from './productModal/ProductModal';
 
 export default props => {
   let { actions, products, modalProduct, category } = props;

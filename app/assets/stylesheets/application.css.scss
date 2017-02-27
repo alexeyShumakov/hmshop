@@ -1,10 +1,10 @@
 @import '../../../vendor/node_modules/normalize.css/normalize';
 @import '../../../vendor/node_modules/milligram-scss/dist/milligram';
 @import '../../../vendor/node_modules/slick-carousel/slick/slick.scss';
+@import "variables";
 @import "slick-theme";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "variables";
 @import "mixins";
 @import "utils";
 @import 'navigation';
