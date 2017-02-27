@@ -9,7 +9,9 @@ export const initialState = Immutable.fromJS({
   products: [],
   modalProduct: {
     isOpen: false,
+    isLoading: false,
     product: {
+      pictures: []
     }
   }
 })
@@ -27,6 +29,9 @@ export function appReducer(state = initialState, action) {
       return state.setIn(['modalProduct', 'isOpen'], action.modalProductState )
     case actionTypes.SET_MODAL_PRODUCT:
       return state.setIn(['modalProduct', 'product'], action.modalProduct )
+    case actionTypes.SET_LOADING_MODAL_PRODUCT:
+      return state.setIn(['modalProduct', 'isLoading'], action.isLoading)
+
     default: return state
   }
 }

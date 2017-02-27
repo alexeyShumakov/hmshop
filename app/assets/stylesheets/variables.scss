@@ -1,2 +1,5 @@
 $main-color: #9b4dca;
 $light-main-color: lighten($main-color, 30%);
+$text-color: #606c76;
+$light-text-color: lighten($text-color, 30%);
+$dark-text-color: darken($text-color, 30%);

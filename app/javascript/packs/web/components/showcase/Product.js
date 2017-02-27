@@ -5,7 +5,7 @@ export default class CartProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hover: false };
-    _.bindAll(this, 'show', 'hide', 'showMenu', 'hideMenu', 'hideImmediately');
+    _.bindAll(this, 'openPreview', 'show', 'hide', 'showMenu', 'hideMenu', 'hideImmediately');
     this.show = _.debounce(this.show, 200);
     this.hide = _.debounce(this.hide, 50);
   }
@@ -31,6 +31,13 @@ export default class CartProduct extends React.Component {
     this.hide();
   }
 
+  openPreview() {
+    let { fetchProduct, openModal, product } = this.props;
+    this.hideImmediately();
+    openModal(true);
+    fetchProduct(product.get('id'));
+  }
+
   render() {
     let { product } = this.props;
     let { hover } = this.state;
@@ -45,12 +52,12 @@ export default class CartProduct extends React.Component {
           <div
             className="cart__top-menu"
             style={{opacity}}
-            onClick={()=>{this.hideImmediately(); this.props.openModal(true);}} >
+            onClick={this.openPreview} >
             <i className='fa fa-search float-right'></i>
           </div>
           <div className="cart__image">
             <a href="#">
-              <img src={product.get('thumb_cover')} alt=""/>
+              <img className='lazyload' data-src={product.get('thumb_cover')} alt={product.get('title')}/>
             </a>
           </div>
           <div className="cart__info">

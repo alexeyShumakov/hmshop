@@ -1,3 +1,6 @@
+import axios from 'axios';
+import Immutable from 'immutable';
+
 import actionTypes from '../constants';
 
 export function setProducts(products) {
@@ -6,6 +9,33 @@ export function setProducts(products) {
     products
   }
 }
+
+export function setLoadingModalProduct(isLoading) {
+  return {
+    type: actionTypes.SET_LOADING_MODAL_PRODUCT,
+    isLoading
+  }
+}
+export function setModalProduct(modalProduct) {
+  return {
+    type: actionTypes.SET_MODAL_PRODUCT,
+    modalProduct
+  }
+}
+export function fetchProduct(id) {
+  return dispatch => {
+    dispatch(setLoadingModalProduct(true));
+    return axios.get(`/api/products/${id}`).then(
+      response => {
+        let product = Immutable.fromJS(response.data.product);
+        dispatch(setModalProduct(product))
+        dispatch(setLoadingModalProduct(false));
+      }
+    )
+  }
+
+}
+
 
 export function setModalProductState(modalProductState) {
   return {
