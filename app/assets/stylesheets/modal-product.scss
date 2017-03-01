@@ -1,3 +1,6 @@
+.modal-product__content {
+  min-height: 405px;
+}
 .modal-product {
     outline: none;
     @include box-shadow();

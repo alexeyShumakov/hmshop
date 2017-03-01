@@ -4,7 +4,16 @@ import ProductModal from './productModal/ProductModal';
 
 export default props => {
   let { actions, products, modalProduct, category } = props;
-  products =  products.map(product => {
+  let product = modalProduct.get('product');
+
+  let prevProduct = products.find((p, i) => {
+    return p.get('id') === (product.get('id') - 1)
+  })
+  let nextProduct = products.find((p, i) => {
+    return p.get('id') === (product.get('id') + 1)
+  })
+
+  let cartProducts =  products.map(product => {
     return(<Product
       key={product.get('id')}
       product={product}
@@ -18,14 +27,18 @@ export default props => {
       <ProductModal
         openModal={actions.setModalProductState}
         setCurrentPicture={actions.setModalCurrentPicture}
-        product={modalProduct.get('product')}
+        product={product}
+        nextProduct={nextProduct}
+        prevProduct={prevProduct}
+        products={products}
+        fetchProduct={actions.fetchProduct}
         currentPicture={modalProduct.get('currentPicture')}
         isLoading={modalProduct.get('isLoading')}
         isOpen={modalProduct.get('isOpen')} />
       <div className="category column column-100">
         <h3>{category.get('title')}</h3>
       </div>
-      { products }
+      { cartProducts }
     </div>
   )
 }
