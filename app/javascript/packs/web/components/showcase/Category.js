@@ -17,6 +17,7 @@ export default props => {
     return(<Product
       key={product.get('id')}
       product={product}
+      createLineItem={actions.createLineItem}
       fetchProduct={actions.fetchProduct}
       openModal={actions.setModalProductState}/>
     )
@@ -26,6 +27,7 @@ export default props => {
     <div className="showcase row">
       <ProductModal
         openModal={actions.setModalProductState}
+        createLineItem={actions.createLineItem}
         setCurrentPicture={actions.setModalCurrentPicture}
         product={product}
         nextProduct={nextProduct}

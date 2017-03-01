@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
     category_json = ActiveModelSerializers::SerializableResource.new(category, { include: '' }).as_json
     products_json = ActiveModelSerializers::SerializableResource.new(category.products, { include: '', fields: [:thumb_cover, :id, :title, :price] }).as_json
     root_category = { root_category_id: category.root.id }
-    @json = products_json.merge(category_json).merge(root_category).to_json
+    cart_json = { cart: { total_count: @cart.total_count } }
+    @json = [category_json, products_json, root_category, cart_json].inject(&:merge).to_json
   end
 end

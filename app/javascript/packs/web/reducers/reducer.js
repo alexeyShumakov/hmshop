@@ -1,6 +1,12 @@
 import Immutable from 'immutable';
 import actionTypes from '../constants';
 export const initialState = Immutable.fromJS({
+  cart: {
+    total_count: 0,
+    line_items: {
+      product: {}
+    }
+  },
   root_category_id: 0,
   category: {
     id: 1,
@@ -34,6 +40,9 @@ export function appReducer(state = initialState, action) {
       return state.setIn(['modalProduct', 'isLoading'], action.isLoading)
     case actionTypes.SET_MODAL_CURRENT_PICTURE:
       return state.setIn(['modalProduct', 'currentPicture'], action.url)
+
+    case actionTypes.SET_CART:
+      return state.set('cart', action.cart)
 
     default: return state
   }

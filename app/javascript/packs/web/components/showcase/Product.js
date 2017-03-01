@@ -39,7 +39,7 @@ export default class CartProduct extends React.Component {
   }
 
   render() {
-    let { product } = this.props;
+    let { product, createLineItem } = this.props;
     let { hover } = this.state;
     let opacity = hover ? 1 : 0;
     return(
@@ -66,7 +66,9 @@ export default class CartProduct extends React.Component {
               <b>{product.get('price')}</b>
               <i className='fa fa-rub'></i>
             </p>
-            <button className={`button ${hover ? 'cart__button_hover' : 'cart__button'}`}>Добавить в корзину</button>
+            <button
+              onClick={()=> createLineItem(product.get('id'))}
+              className={`button ${hover ? 'cart__button_hover' : 'cart__button'}`}>Добавить в корзину</button>
           </div>
         </div>
       </div>

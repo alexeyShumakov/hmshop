@@ -1,0 +1,15 @@
+.basket {
+  display: inline-block;
+}
+.basket__counter {
+  background: #fff;
+  border: 1px solid $light-main-color;
+  min-width: 24px;
+  padding: 2px 4px;
+  position: absolute;
+  text-align: center;
+  font-size: small;
+  right: 2px;
+  top: 2px;
+  border-radius: 50%;
+}
