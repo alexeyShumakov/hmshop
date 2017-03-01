@@ -1,4 +1,5 @@
 .modal-product {
+    outline: none;
     @include box-shadow();
     @include border-radius(2px);
     width: 846px;
@@ -50,6 +51,11 @@
   padding: 0 30px;
 }
 
+.modal-product__big-image-wrapper {
+  max-width: 500px;
+  min-height: 325px;
+}
+
 .modal-product__titlebar {
   height: 20px;
   text-align: right;
@@ -62,4 +68,28 @@
       color: $text-color;
     }
   }
+}
+.modal-product__buttons {
+  padding: 0 70px 0 0;
+  button {
+    width: 100%;
+  }
+}
+
+.modal-product__arrows {
+  position: absolute;
+  font-size: 25px;
+  top: 50%;
+  margin-top: -15px;
+  cursor: pointer;
+
+}
+.modal-product__left-arrow {
+  @extend .modal-product__arrows;
+  left: -100px;
+}
+
+.modal-product__right-arrow {
+  @extend .modal-product__arrows;
+  right: -100px;
 }

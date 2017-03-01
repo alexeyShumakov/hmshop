@@ -66,7 +66,7 @@ export default class CartProduct extends React.Component {
               <b>{product.get('price')}</b>
               <i className='fa fa-rub'></i>
             </p>
-            <button className={`button ${hover ? 'cart__button_hover' : 'cart__button'}`}>Купить</button>
+            <button className={`button ${hover ? 'cart__button_hover' : 'cart__button'}`}>Добавить в корзину</button>
           </div>
         </div>
       </div>
