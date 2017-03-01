@@ -52,7 +52,7 @@ export default props => {
 
       { prevProduct &&
         <div className='modal-product__left-arrow'>
-          <i  onClick={()=> fetchProduct(prevProduct.get('id'))}
+          <i  onClick={()=>{setCurrentPicture(null); fetchProduct(prevProduct.get('id'))}}
               className='fa fa-chevron-left'>
           </i>
         </div>
@@ -60,7 +60,7 @@ export default props => {
 
       { nextProduct &&
         <div className='modal-product__right-arrow'>
-          <i  onClick={()=> fetchProduct(nextProduct.get('id'))}
+          <i  onClick={()=>{setCurrentPicture(null); fetchProduct(nextProduct.get('id'))}}
             className='fa fa-chevron-right'>
           </i>
         </div>
