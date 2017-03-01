@@ -8,8 +8,9 @@
   </head>
 
   <body>
+  <%# shared variables from application helper %>
   <script type="text/javascript" charset="utf-8">
-    var $sharedVariables = <%= @json_categories.html_safe %>
+    var $sharedVariables = <%= @shared_variables.html_safe %>
   </script>
     <div class="container">
       <div id="root"></div>

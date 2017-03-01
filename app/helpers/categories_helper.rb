@@ -1,7 +1,7 @@
 module CategoriesHelper
   def set_categories
     @json_categories = Category.hash_tree(limit_depth: 2).map {|parent, children| category_to_hash(parent,children) }
-    @json_categories = { categories: @json_categories }.to_json
+    @json_categories = { categories: @json_categories }
   end
 
   private
