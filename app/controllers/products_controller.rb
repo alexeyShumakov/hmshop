@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
   include CategoriesHelper
-  before_action :set_categories
+  include CartsHelper
+  before_action :set_categories, :set_cart
 end
