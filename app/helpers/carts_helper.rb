@@ -3,6 +3,9 @@ module CartsHelper
     @cart = Cart.includes(line_items: :product).find cookies[:cart_id]
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
-    cookies[:cart_id] = @cart.id
+    cookies[:cart_id] = {
+      value: @cart.id,
+      expires: 1.year.from_now
+    }
   end
 end
