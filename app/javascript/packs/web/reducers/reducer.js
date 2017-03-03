@@ -1,49 +1,17 @@
 import Immutable from 'immutable';
 import actionTypes from '../constants';
-export const initialState = Immutable.fromJS({
-  cart: {
-    total_count: 0,
-    line_items: {
-      product: {}
-    }
-  },
-  root_category_id: 0,
-  category: {
-    id: 1,
-    title: ''
-  },
-  products: [],
-  modalProduct: {
-    isOpen: false,
-    isLoading: false,
-    currentPicture: '/img.png',
-    product: {
-      pictures: []
-    }
-  }
-})
 
-export function appReducer(state = initialState, action) {
-  switch(action.type) {
-    case actionTypes.SET_CATEGORY:
-      return state.set('category', action.category);
-    case actionTypes.SET_PRODUCTS:
-      return state.set('products', action.products);
-    case actionTypes.SET_ROOT_CATEGORY_ID:
-      return state.set('root_category_id', action.id)
+import cart from './cartReducer';
+import modalProduct from './modalProductReducer';
+import products from './productsReducer';
+import category from './categoryReducer'
 
-    case actionTypes.SET_MODAL_PRODUCT_STATE:
-      return state.setIn(['modalProduct', 'isOpen'], action.modalProductState )
-    case actionTypes.SET_MODAL_PRODUCT:
-      return state.setIn(['modalProduct', 'product'], action.modalProduct )
-    case actionTypes.SET_LOADING_MODAL_PRODUCT:
-      return state.setIn(['modalProduct', 'isLoading'], action.isLoading)
-    case actionTypes.SET_MODAL_CURRENT_PICTURE:
-      return state.setIn(['modalProduct', 'currentPicture'], action.url)
+const reducers = Immutable.Map({ cart, modalProduct, products, category });
+import initialState from '../state/initialState';
 
-    case actionTypes.SET_CART:
-      return state.set('cart', action.cart)
-
-    default: return state
-  }
+export default (state = initialState, action) => {
+  reducers.forEach((reducer, key) => {
+    state = state.set(key, reducer(state.get(key), action))
+  })
+  return state
 }

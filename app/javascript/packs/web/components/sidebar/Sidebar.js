@@ -9,7 +9,7 @@ export default props => {
         { props.categories.map(category => {
             return(
               <Category
-                key={category.get('id')}
+                key={category.get( 'id')}
                 category={category}
                 fetchCategory={props.actions.fetchCategory}
                 rootCategoryId={props.rootCategoryId}

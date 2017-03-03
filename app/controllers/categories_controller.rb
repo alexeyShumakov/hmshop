@@ -9,9 +9,10 @@ class CategoriesController < ApplicationController
 
   def show
     category = Category.includes(products: :pictures).find(params[:id])
-    category_json = ActiveModelSerializers::SerializableResource.new(category, { include: '' }).as_json
+    category_json = {}
+    category_json['category'] = ActiveModelSerializers::SerializableResource.new(category, { include: '' }).as_json
+    category_json['category']['root_category_id'] = category.root.id
     products_json = ActiveModelSerializers::SerializableResource.new(category.products, { include: '', fields: [:thumb_cover, :id, :title, :price] }).as_json
-    root_category = { root_category_id: category.root.id }
-    @json = [category_json, products_json, root_category].inject(&:merge).to_json
+    @json = [category_json, products_json].inject(&:merge).to_json
   end
 end
