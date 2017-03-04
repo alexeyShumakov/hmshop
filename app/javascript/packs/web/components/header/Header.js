@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Basket from './basket/Basket';
 
 export default props => {
   return(
@@ -10,15 +11,8 @@ export default props => {
       <div className="nav__right">
         <i className="nav__icon fa fa-search fa-lg"></i>
         <i className="nav__icon fa fa-bars fa-lg"></i>
-        <div className="basket">
-          <i className="nav__icon fa fa-shopping-cart fa-lg"></i>
-          { props.cart.get('total_count') > 0 &&
-            <span className='basket__counter'>
-              <b>{props.cart.get('total_count')}</b>
-            </span>
-          }
-        </div>
+        <Basket cart={props.cart}/>
       </div>
     </div>
-    )
+  )
 }

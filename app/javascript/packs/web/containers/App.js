@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as appActions from '../actions';
-import Header from '../components/Header';
+import Header from '../components/header/Header';
 import Sidebar from '../components/sidebar/Sidebar';
 
 class App extends Component {

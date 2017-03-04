@@ -21,6 +21,7 @@
 .nav__icon {
   padding: 0 3px;
   cursor: pointer;
+  min-width: 20px;
 }
 .nav__icon:hover {
   color: $main-color;

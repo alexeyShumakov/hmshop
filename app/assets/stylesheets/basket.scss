@@ -13,3 +13,44 @@
   top: 2px;
   border-radius: 50%;
 }
+
+.basket__content-base {
+  width: 100px;
+  height: 400px;
+  @include box-shadow();
+  @include border-radius(2px);
+  background-color: #fff;
+  transition: opacity .1s;
+  z-index: 9;
+}
+
+.basket__content {
+  @extend .basket__content-base;
+  opacity: 0;
+}
+.basket__content_show {
+  @extend .basket__content-base;
+  opacity: 1;
+}
+
+.basket__content-arrow {
+  content: '';
+  display: block;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  border-width: 5px;
+}
+
+.basket__content_show:after {
+  @extend .basket__content-arrow;
+  top: -9px;
+  border-color: transparent transparent #fff transparent;
+}
+.basket__content_show:before {
+  @extend .basket__content-arrow;
+  top: -11px;
+  border-color: transparent transparent $light-main-color transparent;
+}
