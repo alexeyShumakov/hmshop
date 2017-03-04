@@ -40,7 +40,7 @@ export default class CartProduct extends React.Component {
   }
 
   render() {
-    let { product, createLineItem } = this.props;
+    let { product, createLineItem, fetchFullProduct } = this.props;
     let { hover } = this.state;
     let opacity = hover ? 1 : 0;
     return(
@@ -57,7 +57,7 @@ export default class CartProduct extends React.Component {
             <i className='fa fa-search float-right'></i>
           </div>
           <div className="cart__image">
-            <Link to={`/products/${product.get('id')}`}>
+            <Link to={`/products/${product.get('id')}`} onClick={() => fetchFullProduct(product.get('id'))}>
               <img className='lazyload' data-src={product.get('thumb_cover')} alt={product.get('title')}/>
             </Link>
           </div>

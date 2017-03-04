@@ -1,0 +1,24 @@
+.full-product {
+  padding-top: 5px;
+}
+
+.full-product__thumb-image {
+  width: 82px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  &:hover {
+    border: 1px solid $light-main-color;
+  }
+}
+
+.full-product__slider-wrapper {
+  padding: 2px 30px;
+}
+
+.full-product__buttons {
+  padding: 0 70px 0 0;
+  button {
+    width: 80%;
+  }
+}

@@ -5,7 +5,16 @@ import * as appActions from '../actions';
 import Product from '../components/fullProduct/Product';
 
 let ProductContainer = (props) => {
-  return <Product/>
+  let {createLineItem} = props.actions;
+  let setCurrentPicture = props.actions.setFullCurrentPicture;
+  let fetchCategory = props.actions.fetchCategory;
+
+  let product = props.store.getIn(['fullProduct', 'product'])
+  let currentPicture = props.store.getIn(['fullProduct', 'currentPicture'])
+  let isLoading = props.store.getIn(['fullProduct', 'isLoading'])
+
+  return <Product {...{fetchCategory, createLineItem, product, setCurrentPicture, currentPicture, isLoading}}/>
+
 }
 
 function mapStateToProps(state) {

@@ -13,8 +13,15 @@ export default Immutable.fromJS({
     },
     root_category_id: 0
   },
+
   products: [],
-  fullProduct: {},
+  fullProduct: {
+    currentPicture: '/img.png',
+    product: {
+      title: '',
+      pictures: []
+    }
+  },
   modalProduct: {
     isOpen: false,
     isLoading: false,

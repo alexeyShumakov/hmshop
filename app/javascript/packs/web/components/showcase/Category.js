@@ -18,6 +18,7 @@ export default props => {
       key={product.get('id')}
       product={product}
       createLineItem={actions.createLineItem}
+      fetchFullProduct={actions.fetchFullProduct}
       fetchProduct={actions.fetchProduct}
       openModal={actions.setModalProductState}/>
     )
