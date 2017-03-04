@@ -6,7 +6,7 @@ import Lazysizes from 'lazysizes';
 import Carousel from './Carousel';
 
 export default props => {
-  let { product, setCurrentPicture,
+  let { product, setCurrentPicture, createLineItem,
     openModal, isOpen, isLoading, fetchProduct,
     currentPicture, nextProduct, prevProduct } = props;
   return(
@@ -42,7 +42,7 @@ export default props => {
               <h3>{product.get('price')} <i className='fa fa-rub'></i></h3>
               <p>{product.get('description')}</p>
               <div className="modal-product__buttons">
-                <button className='button' >Добавить в корзину</button>
+                <button onClick={() => {createLineItem(product.get('id'))}} className='button' >Добавить в корзину</button>
                 <button className='button button-outline' >Быстрая покупка</button>
               </div>
             </div>

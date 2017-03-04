@@ -9,7 +9,7 @@ const initialState = Immutable.fromJS({
   }
 })
 
-export default function modalProductReducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.SET_MODAL_PRODUCT_STATE:
       return state.set('isOpen', action.modalProductState )

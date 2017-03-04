@@ -7,6 +7,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './web/containers/App';
 import Home from './web/components/Home';
 import Category from './web/containers/Category';
+import Product from './web/containers/Product';
 
 render(
   <Provider store={store}>
@@ -14,6 +15,7 @@ render(
       <Route path='/' component={App}>
         <IndexRoute component={Home}/>
         <Route path='/categories/:id' component={Category}/>
+        <Route path='/products/:id' component={Product}/>
       </Route>
     </Router>
   </Provider>,

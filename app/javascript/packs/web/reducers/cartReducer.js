@@ -8,7 +8,7 @@ const initialState = Immutable.fromJS({
   }
 })
 
-export default function appReducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.SET_CART:
       return action.cart

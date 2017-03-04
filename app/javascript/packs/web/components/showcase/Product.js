@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import { Link } from 'react-router';
 
 export default class CartProduct extends React.Component {
   constructor(props) {
@@ -56,9 +57,9 @@ export default class CartProduct extends React.Component {
             <i className='fa fa-search float-right'></i>
           </div>
           <div className="cart__image">
-            <a href="#">
+            <Link to={`/products/${product.get('id')}`}>
               <img className='lazyload' data-src={product.get('thumb_cover')} alt={product.get('title')}/>
-            </a>
+            </Link>
           </div>
           <div className="cart__info">
             {product.get('title')}

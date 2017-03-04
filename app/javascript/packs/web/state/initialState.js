@@ -14,6 +14,7 @@ export default Immutable.fromJS({
     root_category_id: 0
   },
   products: [],
+  fullProduct: {},
   modalProduct: {
     isOpen: false,
     isLoading: false,
