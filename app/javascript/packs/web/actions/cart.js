@@ -9,6 +9,26 @@ export function setCart(cart) {
     cart
   }
 }
+
+export function cartResetPosition() {
+  return {
+    type: actionTypes.CART_RESET_POSITION
+  }
+}
+
+export function cartDecPosition() {
+  return {
+    type: actionTypes.CART_DEC_POSITION
+  }
+
+}
+
+export function cartIncPosition() {
+  return {
+    type: actionTypes.CART_INC_POSITION
+  }
+
+}
 export function fetchCart() {
   return dispatch => {
     return axios.get('/api/cart').then((response) => {

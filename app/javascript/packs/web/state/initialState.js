@@ -1,9 +1,14 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
   cart: {
-    total_count: 0,
-    line_items: {
-      product: {}
+    currentPosition: 0,
+    cart: {
+      total_count: 0,
+      line_items: [
+        {
+          product: {}
+        }
+      ]
     }
   },
   category: {

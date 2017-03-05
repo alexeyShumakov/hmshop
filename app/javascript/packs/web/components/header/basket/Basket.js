@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Tether from 'tether';
 import _ from 'lodash';
 
+import LineItemList from './LineItemList';
+
 export default class Basket extends React.Component {
 
   constructor(props) {
@@ -13,10 +15,9 @@ export default class Basket extends React.Component {
   }
 
   outSideClick(e) {
-    if(!findDOMNode(this.tTarget).contains(e.target)) {
+    if(!findDOMNode(this).contains(e.target)) {
       this.hide();
     }
-
   }
 
   componentWillMount(){
@@ -26,29 +27,31 @@ export default class Basket extends React.Component {
     document.removeEventListener('click', this.outSideClick, false)
   }
 
-  componentDidMount() {
-    let { tTarget, tElement } = this;
-    tTarget = findDOMNode(tTarget);
-    tElement = findDOMNode(tElement);
-    new Tether({
-      element: tElement,
-      target: tTarget,
-      attachment: 'top right',
-      targetAttachment: 'bottom right',
-      offset: '-5px -18px'
-    })
+  show() {
+    let lineItems = this.props.cart.get('line_items')
+    if(lineItems && lineItems.size > 0) {
+      this.setState({isShow: true});
+    } else {
+      this.props.fetchCart().then(()=>{
+        if(this.props.cart.get('line_items').size > 0)
+          this.setState({isShow: true});
+        }
+      )
+    }
+
   }
 
-  show() { this.setState({isShow: true}); }
-
-  hide() { this.setState({isShow: false}); }
+  hide() {
+    this.setState({isShow: false});
+    this.props.resetPosition();
+  }
 
   render() {
-    let { cart } = this.props;
+    let { cart, incrementPosition, decrementPosition, currentPosition } = this.props;
     let { isShow } = this.state;
     return(
       <div className="basket">
-        <div className='basket__icon' ref={(tTarget) => { this.tTarget = tTarget; }} >
+        <div className='basket__icon' >
           <i onClick={this.show} className="nav__icon fa fa-shopping-cart fa-lg" >
           </i>
           { this.props.cart.get('total_count') > 0 &&
@@ -57,10 +60,25 @@ export default class Basket extends React.Component {
             </span>
           }
         </div>
-        <div
-          className={isShow ? 'basket__content_show' : 'basket__content'}
-          ref={(tElement) => { this.tElement = tElement; }}>
-          cart!
+        <div className={isShow ? 'basket__content_show' : 'basket__content'} >
+          <div className='basket__info'>
+            <span className='basket__info-count'>
+              {cart.get('total_count')} шт.
+            </span>
+
+            <span className='basket__info-price'>
+              {cart.get('total_price')} руб.
+            </span>
+          </div>
+          { cart.get('line_items') &&
+            <LineItemList
+              incrementPosition={incrementPosition}
+              decrementPosition={decrementPosition}
+              currentPosition={currentPosition}
+              lineItems={cart.get('line_items') }
+            />
+          }
+          <button className='button button-clear basket__to-cart'>В корзину</button>
         </div>
       </div>
     )

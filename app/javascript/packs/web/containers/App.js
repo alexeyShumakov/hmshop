@@ -11,11 +11,7 @@ class App extends Component {
     let { store, actions, children } = this.props;
     return(
       <div>
-        <Header
-          setRootCategoryId={actions.setRootCategoryId}
-          cart={store.get('cart')}
-          actions={actions}
-        />
+        <Header actions={actions} store={store} />
         <div className="row">
           <Sidebar
             rootCategoryId={store.getIn(['category', 'root_category_id'])}
