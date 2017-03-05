@@ -1,0 +1,21 @@
+.search {
+  display: inline-block;
+}
+
+.search__form-base {
+  transition: width .3s;
+  display: inline-block;
+}
+.search__form {
+  @extend .search__form-base;
+  opacity: 0;
+}
+
+.search__input {
+  border: 1px solid transparent !important;
+}
+
+.search__form_show {
+  @extend .search__form-base;
+  opacity: 1;
+}

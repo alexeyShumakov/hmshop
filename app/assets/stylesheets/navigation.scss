@@ -11,6 +11,9 @@
   }
 }
 
+.nav__icon_active {
+  color: $main-color;
+}
 .nav__icon_selected {
   background-color: lighten($light-main-color, 10%);
   color: $main-color;
