@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Basket from './basket/Basket';
+import Info from './info/Info';
 
 export default props => {
   let { store, actions } = props;
@@ -11,7 +12,7 @@ export default props => {
       </Link>
       <div className="nav__right">
         <i className="nav__icon fa fa-search fa-lg"></i>
-        <i className="nav__icon fa fa-bars fa-lg"></i>
+        <Info/>
         <Basket
           cart={store.getIn(['cart', 'cart'])}
           currentPosition={store.getIn(['cart', 'currentPosition'])}
