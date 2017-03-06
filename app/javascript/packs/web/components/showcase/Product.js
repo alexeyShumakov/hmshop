@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router';
+import BasketButton from '../BasketButton';
 
 export default class CartProduct extends React.Component {
   constructor(props) {
@@ -67,9 +68,12 @@ export default class CartProduct extends React.Component {
               <b>{product.get('price')}</b>
               <i className='fa fa-rub'></i>
             </p>
-            <button
-              onClick={()=> createLineItem(product.get('id'))}
-              className={`button ${hover ? 'cart__button_hover' : 'cart__button'}`}>Добавить в корзину</button>
+
+            <BasketButton
+              create={createLineItem}
+              productId={product.get('id')}
+              klassName={`button ${hover ? 'cart__button_hover' : 'cart__button'}`}
+            />
           </div>
         </div>
       </div>

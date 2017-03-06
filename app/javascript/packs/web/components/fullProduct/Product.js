@@ -4,6 +4,7 @@ import Slider from 'react-slick'
 import Lazysizes from 'lazysizes';
 import Carousel from './Carousel';
 import {Link} from 'react-router';
+import BasketButton from '../BasketButton';
 
 export default (props, context) => {
   let { product, setCurrentPicture, createLineItem,
@@ -34,7 +35,11 @@ export default (props, context) => {
               <h3>{product.get('price')} <i className='fa fa-rub'></i></h3>
               <p>{product.get('description')}</p>
               <div className="full-product__buttons">
-                <button onClick={() => {createLineItem(product.get('id'))}} className='button' >Добавить в корзину</button>
+                <BasketButton
+                  create={createLineItem}
+                  productId={product.get('id')}
+                  klassName='button'
+                />
                 <button className='button button-outline' >Быстрая покупка</button>
               </div>
             </div>

@@ -4,6 +4,7 @@ import Slider from 'react-slick'
 import Lazysizes from 'lazysizes';
 
 import Carousel from './Carousel';
+import BasketButton from '../../BasketButton';
 
 export default props => {
   let { product, setCurrentPicture, createLineItem,
@@ -42,7 +43,12 @@ export default props => {
               <h3>{product.get('price')} <i className='fa fa-rub'></i></h3>
               <p>{product.get('description')}</p>
               <div className="modal-product__buttons">
-                <button onClick={() => {createLineItem(product.get('id'))}} className='button' >Добавить в корзину</button>
+                <BasketButton
+                  clickCallback={()=> openModal(false)}
+                  create={createLineItem}
+                  productId={product.get('id')}
+                  klassName='button'
+                />
                 <button className='button button-outline' >Быстрая покупка</button>
               </div>
             </div>
