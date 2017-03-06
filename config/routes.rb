@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'info/about'
+
+  get 'info/how_to_order'
+
+  get 'info/delivery'
+
+  get 'info/contacts'
+
+  get 'info/terms'
+
   namespace :api do
     resources :categories
     resources :products

@@ -13,7 +13,7 @@ export default props => {
       </Link>
       <div className="nav__right">
         <Search/>
-        <Info/>
+        <Info setRootCategoryId={actions.setRootCategoryId}/>
         <Basket
           cart={store.getIn(['cart', 'cart'])}
           currentPosition={store.getIn(['cart', 'currentPosition'])}
