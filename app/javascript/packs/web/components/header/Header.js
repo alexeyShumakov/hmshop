@@ -8,7 +8,7 @@ export default props => {
   let { store, actions } = props;
   return(
     <div className="row nav u-p12">
-      <Link to='/'> <i className="nav__icon fa fa-rocket fa-lg"></i> </Link>
+      <a href='/'> <i className="nav__icon fa fa-rocket fa-lg"></i> </a>
       <div className="nav__right">
         <Search/>
         <Info/>

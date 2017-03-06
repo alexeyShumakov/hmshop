@@ -13,6 +13,7 @@
     var $sharedVariables = <%= @shared_variables.html_safe %>
   </script>
     <div class="container">
+      <%= yield :local_variables %>
       <div id="root"></div>
       <%= yield %>
     </div>

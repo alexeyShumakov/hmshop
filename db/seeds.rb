@@ -3,11 +3,16 @@
   3.times { category.children.create(title: Faker::Commerce.department(2, true)) }
 end
 
+['banner_1.jpg', 'banner_2.jpg'].each do |img|
+  Banner.create image: File.open(Rails.root.join('spec', 'support', 'images', img)), url: '/'
+end
+
 Category.all.each do |c|
   6.times do
     pictures = []
-    pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product.jpg')))
-    pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg')))
+    ['product.jpg', 'product_1.jpg'].each do |img|
+      pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', img)))
+    end
     product_params = {
       title: Faker::Commerce.product_name,
       category: c,
@@ -21,8 +26,9 @@ end
 
 product = Product.first
 pictures = []
-10.times do
-  pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product.jpg')))
-  pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg')))
+4.times do
+  ['product.jpg', 'product_1.jpg'].each do |img|
+    pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', img)))
+  end
 end
 product.pictures = pictures

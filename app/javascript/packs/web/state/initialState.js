@@ -1,5 +1,8 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  home: {
+    banners: []
+  },
   cart: {
     currentPosition: 0,
     cart: {

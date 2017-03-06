@@ -5,6 +5,11 @@ class CategoriesController < ApplicationController
   before_action :set_categories, :set_cart, :set_shared_variables
 
   def index
+    @json = {
+      home: {
+        banners: ActiveModelSerializers::SerializableResource.new(Banner.all, { include: '', adapter: :attributes }).as_json
+      }
+    }.to_json
   end
 
   def show

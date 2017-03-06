@@ -1,4 +1,6 @@
-<script type="text/javascript" charset="utf-8">
-  var $localVariables = <%= @json.html_safe %>
-</script>
+<%= content_for :local_variables do %>
+  <script type="text/javascript" charset="utf-8">
+    var $localVariables = <%= @json.html_safe %>
+  </script>
+<% end %>
 <%= javascript_pack_tag 'web' %>

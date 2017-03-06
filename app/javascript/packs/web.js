@@ -5,7 +5,7 @@ import store from './web/store/store';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './web/containers/App';
-import Home from './web/components/Home';
+import Home from './web/containers/Home';
 import Category from './web/containers/Category';
 import Product from './web/containers/Product';
 import Basket from './web/containers/Basket';
