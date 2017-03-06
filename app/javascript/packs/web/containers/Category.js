@@ -24,10 +24,10 @@ function mapStateToProps(state) {
   }
 }
 
-function mpaDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(appActions, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mpaDispatchToProps)(CategoryContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer)

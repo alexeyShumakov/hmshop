@@ -8,6 +8,7 @@ import App from './web/containers/App';
 import Home from './web/components/Home';
 import Category from './web/containers/Category';
 import Product from './web/containers/Product';
+import Basket from './web/containers/Basket';
 
 import About from './web/components/info/About';
 import Contacts from './web/components/info/Contacts';
@@ -23,6 +24,7 @@ render(
         <IndexRoute component={Home}/>
         <Route path='/categories/:id' component={Category}/>
         <Route path='/products/:id' component={Product}/>
+        <Route path='/cart' component={Basket}/>
 
         <Route path='/info/about' component={About}/>
         <Route path='/info/contacts' component={Contacts}/>

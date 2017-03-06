@@ -21,6 +21,7 @@ export default props => {
           incrementPosition={actions.cartIncPosition}
           decrementPosition={actions.cartDecPosition}
           resetPosition={actions.cartResetPosition}
+          setRootCategoryId={actions.setRootCategoryId}
         />
       </div>
     </div>

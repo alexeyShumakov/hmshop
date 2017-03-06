@@ -1,0 +1,6 @@
+.order {
+  @include box-shadow();
+  @include border-radius(2px);
+  padding: 20px;
+  margin: 20px 0;
+}
