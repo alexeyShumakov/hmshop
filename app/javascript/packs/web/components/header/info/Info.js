@@ -35,11 +35,11 @@ export default class Info extends React.Component {
         <i className="nav__icon fa fa-bars fa-lg" onClick={this.show}></i>
         <div className={this.state.isShow ? 'info__content_show' : 'info__content'} >
           <ul className='u-no-list-style info__list'>
-            <li><Link to='/info/about'>О нас</Link></li>
-            <li><Link to='/info/how_to_order'>Как заказать</Link></li>
-            <li><Link to='/info/Delivery'>Доставка</Link></li>
-            <li><Link to='/info/about'>Контакты</Link></li>
-            <li><Link to='/info/terms'>Правила</Link></li>
+            <li><Link to='/info/about' onClick={this.hide}>О нас</Link></li>
+            <li><Link to='/info/how_to_order' onClick={this.hide}>Как заказать</Link></li>
+            <li><Link to='/info/delivery' onClick={this.hide}>Доставка</Link></li>
+            <li><Link to='/info/about' onClick={this.hide}>Контакты</Link></li>
+            <li><Link to='/info/terms' onClick={this.hide}>Правила</Link></li>
             <li><a href="/">Блог</a></li>
           </ul>
         </div>
