@@ -47,7 +47,7 @@ export default class Basket extends React.Component {
   }
 
   render() {
-    let { cart, setRootCategoryId, incrementPosition, decrementPosition, currentPosition, fetchCart } = this.props;
+    let { cart, incrementPosition, decrementPosition, currentPosition, fetchCart } = this.props;
     let { isShow } = this.state;
     return(
       <div className="basket">
@@ -79,7 +79,7 @@ export default class Basket extends React.Component {
             />
           }
           <Link
-            onClick={() => {setRootCategoryId(0); this.hide();}}
+            onClick={this.hide}
             className="button button-clear basket__to-cart"
             to='/cart'
           >В корзину</Link>

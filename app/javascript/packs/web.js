@@ -16,21 +16,26 @@ import Delivery from './web/components/info/Delivery';
 import HowTo from './web/components/info/HowToOrder';
 import Terms from './web/components/info/Terms';
 
+import * as appActions from './web/actions';
+
+const resetCategory = () => {
+  store.dispatch(appActions.setRootCategoryId(0));
+}
 
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path='/' component={App}>
-        <IndexRoute component={Home}/>
+      <Route path='/' component={App} >
+        <IndexRoute component={Home} onEnter={resetCategory} />
         <Route path='/categories/:id' component={Category}/>
         <Route path='/products/:id' component={Product}/>
-        <Route path='/cart' component={Basket}/>
+        <Route path='/cart' component={Basket} onEnter={resetCategory} />
 
-        <Route path='/info/about' component={About}/>
-        <Route path='/info/contacts' component={Contacts}/>
-        <Route path='/info/delivery' component={Delivery}/>
-        <Route path='/info/how_to_order' component={HowTo}/>
-        <Route path='/info/terms' component={Terms}/>
+        <Route path='/info/about' component={About} onEnter={resetCategory}/>
+        <Route path='/info/contacts' component={Contacts} onEnter={resetCategory}/>
+        <Route path='/info/delivery' component={Delivery} onEnter={resetCategory}/>
+        <Route path='/info/how_to_order' component={HowTo} onEnter={resetCategory}/>
+        <Route path='/info/terms' component={Terms} onEnter={resetCategory}/>
       </Route>
     </Router>
   </Provider>,

@@ -8,12 +8,10 @@ export default props => {
   let { store, actions } = props;
   return(
     <div className="row nav u-p12">
-      <Link to='/' onClick={() => actions.setRootCategoryId(0) }>
-        <i className="nav__icon fa fa-rocket fa-lg"></i>
-      </Link>
+      <Link to='/'> <i className="nav__icon fa fa-rocket fa-lg"></i> </Link>
       <div className="nav__right">
         <Search/>
-        <Info setRootCategoryId={actions.setRootCategoryId}/>
+        <Info/>
         <Basket
           cart={store.getIn(['cart', 'cart'])}
           currentPosition={store.getIn(['cart', 'currentPosition'])}
@@ -21,7 +19,6 @@ export default props => {
           incrementPosition={actions.cartIncPosition}
           decrementPosition={actions.cartDecPosition}
           resetPosition={actions.cartResetPosition}
-          setRootCategoryId={actions.setRootCategoryId}
         />
       </div>
     </div>
