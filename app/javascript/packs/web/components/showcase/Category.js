@@ -3,7 +3,7 @@ import Product from './Product';
 import ProductModal from './productModal/ProductModal';
 
 export default props => {
-  let { actions, products, modalProduct, category } = props;
+  let {isLoading, actions, products, modalProduct, category } = props;
   let product = modalProduct.get('product');
 
   let prevProduct = products.find((p, i) => {
@@ -22,10 +22,9 @@ export default props => {
       fetchProduct={actions.fetchProduct}
       openModal={actions.setModalProductState}/>
     )
-
   })
   return(
-    <div className="showcase row">
+    <div className='showcase row'>
       <ProductModal
         openModal={actions.setModalProductState}
         createLineItem={actions.createLineItem}
@@ -38,10 +37,14 @@ export default props => {
         currentPicture={modalProduct.get('currentPicture')}
         isLoading={modalProduct.get('isLoading')}
         isOpen={modalProduct.get('isOpen')} />
-      <div className="category column column-100">
-        <h3>{category.get('title')}</h3>
-      </div>
-      { cartProducts }
+      { !isLoading &&
+        <div className='showcase row'>
+          <div className='category column column-100'>
+            <h3>{category.get('title')}</h3>
+          </div>
+          {cartProducts}
+        </div>
+      }
     </div>
   )
 }

@@ -15,6 +15,7 @@ class CategoryContainer extends Component {
         modalProduct={store.get('modalProduct')}
         products={store.get('products')}
         category={store.getIn(['category', 'category'])}
+        isLoading={store.getIn(['category', 'isLoading'])}
         actions={actions}
       />
     </DocumentTitle>

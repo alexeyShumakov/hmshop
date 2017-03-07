@@ -10,7 +10,14 @@ export default props => {
     <div className="row nav u-p12">
       <a href='/'> <i className="nav__icon fa fa-rocket fa-lg"></i> </a>
       <div className="nav__right">
-        <Search/>
+        <Search
+          keyword={store.getIn(['search', 'keyword'])}
+          setKeyword={actions.setSearchKeyword}
+          products={store.getIn(['search', 'products'])}
+          setProducts={actions.setSearchProducts}
+          search={actions.searchProducts}
+          fetchProduct={actions.fetchFullProduct}
+        />
         <Info/>
         <Basket
           cart={store.getIn(['cart', 'cart'])}

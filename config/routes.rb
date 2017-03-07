@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :categories
-    resources :products
+    resources :products do
+      get 'search', on: :collection
+    end
     resources :line_items
     get 'cart', to: 'carts#show'
   end

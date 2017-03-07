@@ -1,5 +1,9 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  search: {
+    keyword: '',
+    products: []
+  },
   home: {
     banners: []
   },
@@ -19,7 +23,8 @@ export default Immutable.fromJS({
       id: 1,
       title: ''
     },
-    root_category_id: 0
+    root_category_id: 0,
+    isLoading: false
   },
 
   products: [],

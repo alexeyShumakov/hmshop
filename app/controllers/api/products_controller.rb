@@ -3,4 +3,9 @@ class Api::ProductsController < ApplicationController
     @product = Product.includes(:pictures, :category).find(params[:id])
     render json: @product, fields: [:id, :price, :title, :description]
   end
+
+  def search
+    @products = Product.search_by_title(params[:keyword]).limit 10
+    render json: @products, fields: [:id, :title], include: ''
+  end
 end
