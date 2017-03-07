@@ -5,6 +5,7 @@ import Lazysizes from 'lazysizes';
 import Carousel from './Carousel';
 import {Link} from 'react-router';
 import BasketButton from '../BasketButton';
+import Breadcrumbs from '../Breadcrumbs';
 
 export default (props, context) => {
   let { product, setCurrentPicture, createLineItem,
@@ -13,11 +14,7 @@ export default (props, context) => {
     <div className='container full-product'>
       { !isLoading &&
         <div>
-          <Link
-            onClick={()=>{fetchCategory(product.getIn(['category', 'id']))}}
-            to={`/categories/${product.getIn(['category', 'id'])}`}>
-            <i className='fa fa-arrow-left'></i> {product.getIn(['category', 'title'])}
-          </Link>
+          <Breadcrumbs node={product} fetchCategory={fetchCategory}/>
           <div className='row' >
             <div className="column column-60">
               <div className='full-product__big-picture-wrapper'>

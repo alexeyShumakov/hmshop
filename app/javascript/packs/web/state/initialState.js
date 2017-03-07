@@ -21,7 +21,8 @@ export default Immutable.fromJS({
   category: {
     category: {
       id: 1,
-      title: ''
+      title: '',
+      ancestors: []
     },
     root_category_id: 0,
     isLoading: false

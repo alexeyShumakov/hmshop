@@ -1,6 +1,13 @@
 import React from 'react';
 import LineItem from './LineItem';
 import ProductModal from '../showcase/productModal/ProductModal'
+import Breadcrumbs from '../Breadcrumbs';
+import Immutable from 'immutable';
+
+const fakeNode = Immutable.fromJS({
+  ancestors: [],
+  title: 'Оформление заказа'
+})
 
 export default (props) => {
   let { store, actions } = props;
@@ -8,7 +15,7 @@ export default (props) => {
   let lineItems = cart.get('line_items');
   let modalProduct = store.get('modalProduct');
   return(
-    <div className='column'>
+    <div className='container'>
       <ProductModal
         openModal={actions.setModalProductState}
         createLineItem={actions.createLineItem}
@@ -20,7 +27,8 @@ export default (props) => {
         isLoading={modalProduct.get('isLoading')}
         isOpen={modalProduct.get('isOpen')} />
       <div className='full-basket'>
-        <h2>Ваша корзина</h2>
+        <Breadcrumbs node={fakeNode}/>
+        <h3 className='u-page-title'>Ваша корзина</h3>
         <table>
           <thead>
             <tr>

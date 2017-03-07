@@ -1,10 +1,20 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
+import Breadcrumbs from '../Breadcrumbs';
+import Immutable from 'immutable';
+
+const fakeNode = Immutable.fromJS({
+  ancestors: [],
+  title: 'Доставка'
+})
 
 export default (props) => {
   return (
-    <DocumentTitle title="Доставка">
-      <h2>Доставка</h2>
+    <DocumentTitle title="О нас">
+      <div className='container'>
+        <Breadcrumbs node={fakeNode}/>
+        <h3 className='u-page-title'>Доставка</h3>
+      </div>
     </DocumentTitle>
   )
 }

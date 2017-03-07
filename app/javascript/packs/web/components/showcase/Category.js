@@ -1,6 +1,7 @@
 import React from 'react';
 import Product from './Product';
 import ProductModal from './productModal/ProductModal';
+import Breadcrumbs from '../Breadcrumbs';
 
 export default props => {
   let {isLoading, actions, products, modalProduct, category } = props;
@@ -24,27 +25,30 @@ export default props => {
     )
   })
   return(
-    <div className='showcase row'>
-      <ProductModal
-        openModal={actions.setModalProductState}
-        createLineItem={actions.createLineItem}
-        setCurrentPicture={actions.setModalCurrentPicture}
-        product={product}
-        nextProduct={nextProduct}
-        prevProduct={prevProduct}
-        products={products}
-        fetchProduct={actions.fetchProduct}
-        currentPicture={modalProduct.get('currentPicture')}
-        isLoading={modalProduct.get('isLoading')}
-        isOpen={modalProduct.get('isOpen')} />
-      { !isLoading &&
-        <div className='showcase row'>
-          <div className='category column column-100'>
-            <h3>{category.get('title')}</h3>
+    <div className="container">
+      <div className='showcase row'>
+        <ProductModal
+          openModal={actions.setModalProductState}
+          createLineItem={actions.createLineItem}
+          setCurrentPicture={actions.setModalCurrentPicture}
+          product={product}
+          nextProduct={nextProduct}
+          prevProduct={prevProduct}
+          products={products}
+          fetchProduct={actions.fetchProduct}
+          currentPicture={modalProduct.get('currentPicture')}
+          isLoading={modalProduct.get('isLoading')}
+          isOpen={modalProduct.get('isOpen')} />
+        { !isLoading &&
+          <div className='showcase row'>
+            <Breadcrumbs node={category} fetchCategory={actions.fetchCategory} />
+            <div className='category column column-100'>
+              <h3 className='u-page-title'>{category.get('title')}</h3>
+            </div>
+            {cartProducts}
           </div>
-          {cartProducts}
-        </div>
-      }
+        }
+      </div>
     </div>
   )
 }

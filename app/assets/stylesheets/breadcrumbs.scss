@@ -1,0 +1,14 @@
+.breadcrumbs {
+  padding-left: 5px;
+  padding-top: 10px;
+  a, i {
+    &:hover {
+      color: darken($gray, 30%);
+    }
+    color: $gray;
+  }
+}
+
+.breadcrumbs__item {
+  margin-right: 3px;
+}

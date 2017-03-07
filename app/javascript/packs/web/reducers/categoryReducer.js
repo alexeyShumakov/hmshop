@@ -4,6 +4,7 @@ const initialState = Immutable.fromJS({
   isLoading: false,
   root_category_id: 0,
   category: {
+    ancestors: [],
     id: 1,
     title: ''
   }})
