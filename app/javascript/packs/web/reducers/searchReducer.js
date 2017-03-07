@@ -9,7 +9,6 @@ const initialState = Immutable.fromJS({
 export default (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.SET_SEARCH_KEYWORD:
-      console.log(action)
       return state.set('keyword', action.keyword)
     case actionTypes.SET_SEARCH_PRODUCTS:
       return state.set('products', action.products)
