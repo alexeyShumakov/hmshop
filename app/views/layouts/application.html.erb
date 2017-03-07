@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hm Shop</title>
+    <title>
+      <%= content_for(:page_title)? yield(:page_title) : 'HM-shop.ru - интернет-магазин декупажа и декора' %>
+    </title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">

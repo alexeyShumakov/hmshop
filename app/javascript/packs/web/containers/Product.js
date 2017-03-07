@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import DocumentTitle from 'react-document-title';
+
 import * as appActions from '../actions';
 import Product from '../components/fullProduct/Product';
 
@@ -13,8 +15,12 @@ let ProductContainer = (props) => {
   let currentPicture = props.store.getIn(['fullProduct', 'currentPicture'])
   let isLoading = props.store.getIn(['fullProduct', 'isLoading'])
 
-  return <Product {...{fetchCategory, createLineItem, product, setCurrentPicture, currentPicture, isLoading}}/>
-
+  return(
+    <DocumentTitle title={`${product.get('title')} - купить в интернет-магазине HM-shop.ru`}>
+      <Product {...{fetchCategory, createLineItem,
+          product, setCurrentPicture, currentPicture, isLoading}}/>
+    </DocumentTitle>
+  )
 }
 
 function mapStateToProps(state) {

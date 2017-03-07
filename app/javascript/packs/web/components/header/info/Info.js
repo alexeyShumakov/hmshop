@@ -38,7 +38,7 @@ export default class Info extends React.Component {
             <li><Link to='/info/about' onClick={this.hide}>О нас</Link></li>
             <li><Link to='/info/how_to_order' onClick={this.hide}>Как заказать</Link></li>
             <li><Link to='/info/delivery' onClick={this.hide}>Доставка</Link></li>
-            <li><Link to='/info/about' onClick={this.hide}>Контакты</Link></li>
+            <li><Link to='/info/contacts' onClick={this.hide}>Контакты</Link></li>
             <li><Link to='/info/terms' onClick={this.hide}>Правила</Link></li>
             <li><a href="/">Блог</a></li>
           </ul>

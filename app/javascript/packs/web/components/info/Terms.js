@@ -1,5 +1,10 @@
 import React from 'react';
+import DocumentTitle from 'react-document-title';
 
 export default (props) => {
-  return <div>terms</div>
+  return (
+    <DocumentTitle title="Правила">
+      <h2>Правила</h2>
+    </DocumentTitle>
+  )
 }

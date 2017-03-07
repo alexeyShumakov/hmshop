@@ -1,3 +1,4 @@
+<%= content_for(:page_title) {"#{@product.title} - купить в интернет-магазине HM-shop.ru"} %>
 <%= content_for :local_variables do %>
   <script type="text/javascript" charset="utf-8">
     var $localVariables = <%= @json.html_safe %>
