@@ -13,7 +13,7 @@ import Immutable from 'immutable';
 export default (props, context) => {
   let { product, setCurrentPicture, createLineItem,
     isLoading, currentPicture, fetchCategory,
-    actions, modalProduct
+    actions, modalProduct, history
   } = props;
   return(
     <div>
@@ -71,11 +71,14 @@ export default (props, context) => {
               products={product.get('similar')}
             />
           }
-          <div className='history u-my12'>
-            <h3>Вы смотрели</h3>
-            <div className="row">
-            </div>
-          </div>
+          { !history.isEmpty() &&
+            <SimpleProductsList
+              title='Вы смотрели'
+              openModal={actions.setModalProductState}
+              fetchProduct={actions.fetchProduct}
+              products={history}
+            />
+          }
         </div>
       }
     </div>

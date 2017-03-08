@@ -1,6 +1,6 @@
 module ApplicationHelper
   def set_shared_variables
-    cart_json = ActiveModelSerializers::SerializableResource.new(@cart, { include: '' }).as_json
+    cart_json = ActiveModelSerializers::SerializableResource.new(@cart, {include: 'line_items.product' }).as_json
     cart_json = {
       cart: {
         cart: cart_json[:cart],

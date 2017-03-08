@@ -12,6 +12,7 @@ let ProductContainer = (props) => {
   let setCurrentPicture = props.actions.setFullCurrentPicture;
   let fetchCategory = props.actions.fetchCategory;
 
+  let history = props.store.getIn(['history'])
   let product = props.store.getIn(['fullProduct', 'product'])
   let currentPicture = props.store.getIn(['fullProduct', 'currentPicture'])
   let isLoading = props.store.getIn(['fullProduct', 'isLoading'])
@@ -19,7 +20,7 @@ let ProductContainer = (props) => {
 
   return(
     <DocumentTitle title={`${product.get('title')} - купить в интернет-магазине HM-shop.ru`}>
-      <Product {...{fetchCategory, createLineItem, actions, modalProduct,
+      <Product {...{fetchCategory, createLineItem, actions, modalProduct, history,
           product, setCurrentPicture, currentPicture, isLoading}}/>
     </DocumentTitle>
   )

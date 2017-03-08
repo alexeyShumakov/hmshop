@@ -7,7 +7,8 @@ export default (props) => {
     fetchProduct(id);
   }
   return(
-    <div className='column'>
+    <div className='column column-20'>
+
       <div className='product-simple' onClick={handleClick}>
         <img src={img} />
       </div>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import Immutable from 'immutable';
 
 import actionTypes from '../constants';
+import {setHistory} from './history';
 
 export function setFullProduct(product) {
   return {
@@ -29,6 +30,8 @@ export function fetchFullProduct(id) {
     return axios.get(`/api/products/${id}`).then(
       response => {
         let product = Immutable.fromJS(response.data.product);
+        let history = Immutable.fromJS(response.data.history_item);
+        dispatch(setHistory(history));
         dispatch(setFullProduct(product))
         dispatch(setFullCurrentPicture(product.getIn(['pictures', 0, 'medium_img'])));
         dispatch(setLoadingFullProduct(false));

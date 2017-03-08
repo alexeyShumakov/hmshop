@@ -1,6 +1,4 @@
 class CartSerializer < ActiveModel::Serializer
-  attributes :id, :total_count, :total_price
-  has_many :line_items
 
   class LineItemSerializer < ActiveModel::Serializer
     attributes :id, :count, :total_price
@@ -10,4 +8,7 @@ class CartSerializer < ActiveModel::Serializer
       attributes :id, :title, :thumb_cover, :price
     end
   end
+
+  attributes :id, :total_count, :total_price
+  has_many :line_items
 end
