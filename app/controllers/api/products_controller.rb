@@ -1,7 +1,7 @@
 class Api::ProductsController < ApplicationController
   def show
     @product = Product.includes(:pictures, :category).find(params[:id])
-    render json: @product, fields: [:id, :price, :title, :description, :ancestors]
+    render json: @product, fields: [:id, :price, :title, :description, :ancestors, :similar]
   end
 
   def search

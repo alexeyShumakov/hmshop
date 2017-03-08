@@ -1,9 +1,15 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :title, :thumb_cover, :price, :description, :ancestors
+  class SimilarSerializer < ActiveModel::Serializer
+    attributes :id, :title, :thumb_cover
+  end
+
+  class AncestorSerializer < ActiveModel::Serializer
+    attributes :id, :title
+  end
+
+  attributes :id, :title, :thumb_cover, :price, :description
   has_one :category
   has_one :pictures
-
-  def ancestors
-    object.category.self_and_ancestors.reverse.map { |c| {id: c.id, title: c.title} }
-  end
+  has_many :similar, serializer: SimilarSerializer
+  has_many :ancestors, serializer: AncestorSerializer
 end

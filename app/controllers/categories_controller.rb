@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     @category = Category.includes(products: :pictures).find(params[:id])
     @products = Product.includes(:pictures).where(category_id: @category.self_and_descendant_ids)
     category_json = {}
-    category_json['category'] = ActiveModelSerializers::SerializableResource.new(@category, { include: '' }).as_json
+    category_json['category'] = ActiveModelSerializers::SerializableResource.new(@category, { include: [:ancestors] }).as_json
     category_json['category']['root_category_id'] = @category.root.id
     products_json = ActiveModelSerializers::SerializableResource.new(@products, { include: '', fields: [:thumb_cover, :id, :title, :price] }).as_json
     @json = [category_json, products_json].inject(&:merge).to_json

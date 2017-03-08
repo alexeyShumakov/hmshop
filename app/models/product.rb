@@ -11,4 +11,13 @@ class Product < ApplicationRecord
     cover = self.pictures.first
     cover ? cover.image(:thumb) : '/empty'
   end
+
+  def similar
+    category_ids = category.root.self_and_descendant_ids
+    self.class.includes(:pictures).where(category: category_ids).order('random()').limit(4)
+  end
+
+  def ancestors
+    category.self_and_ancestors.reverse
+  end
 end
