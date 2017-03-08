@@ -6,7 +6,7 @@ import Carousel from './Carousel';
 import {Link} from 'react-router';
 import BasketButton from '../BasketButton';
 import Breadcrumbs from '../Breadcrumbs';
-import SimpleProduct from '../simpleProduct/product';
+import SimpleProductsList from '../simpleProduct/List';
 import ProductModal from '../showcase/productModal/ProductModal';
 import Immutable from 'immutable';
 
@@ -63,23 +63,14 @@ export default (props, context) => {
               </div>
             </div>
           </div>
-          <div className='similar u-my12'>
-            <h3>Похожие товары</h3>
-            <div className="row">
-              { product.get('similar').map((obj)=> {
-                return(
-                  <SimpleProduct
-                    openModal={actions.setModalProductState}
-                    fetchProduct={actions.fetchProduct}
-                    key={obj.get('id')}
-                    id={obj.get('id')}
-                    img={obj.get('thumb_cover')}
-                  />
-                  )
-                })
-              }
-            </div>
-          </div>
+          { !product.get('similar').isEmpty() &&
+            <SimpleProductsList
+              title='Похожие товары'
+              openModal={actions.setModalProductState}
+              fetchProduct={actions.fetchProduct}
+              products={product.get('similar')}
+            />
+          }
           <div className='history u-my12'>
             <h3>Вы смотрели</h3>
             <div className="row">
