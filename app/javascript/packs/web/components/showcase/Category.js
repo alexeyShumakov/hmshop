@@ -25,30 +25,35 @@ export default props => {
     )
   })
   return(
-    <div className="container">
-      <div className='showcase row'>
-        <ProductModal
-          openModal={actions.setModalProductState}
-          createLineItem={actions.createLineItem}
-          setCurrentPicture={actions.setModalCurrentPicture}
-          product={product}
-          nextProduct={nextProduct}
-          prevProduct={prevProduct}
-          products={products}
-          fetchProduct={actions.fetchProduct}
-          currentPicture={modalProduct.get('currentPicture')}
-          isLoading={modalProduct.get('isLoading')}
-          isOpen={modalProduct.get('isOpen')} />
-        { !isLoading &&
-          <div className='showcase row'>
-            <Breadcrumbs node={category} fetchCategory={actions.fetchCategory} />
-            <div className='category column column-100'>
-              <h3 className='u-page-title'>{category.get('title')}</h3>
+    <div>
+      <ProductModal
+        openModal={actions.setModalProductState}
+        createLineItem={actions.createLineItem}
+        setCurrentPicture={actions.setModalCurrentPicture}
+        product={product}
+        nextProduct={nextProduct}
+        prevProduct={prevProduct}
+        products={products}
+        fetchProduct={actions.fetchProduct}
+        currentPicture={modalProduct.get('currentPicture')}
+        isLoading={modalProduct.get('isLoading')}
+        isOpen={modalProduct.get('isOpen')} />
+      { !isLoading &&
+          <div className='container'>
+            <div className='row'>
+              <div className="column">
+                <Breadcrumbs node={category} fetchCategory={actions.fetchCategory} />
+              </div>
             </div>
-            {cartProducts}
+
+            <div className='showcase row'>
+              <div className='category column column-100'>
+                <h3 className='u-page-title'>{category.get('title')}</h3>
+              </div>
+              {cartProducts}
+            </div>
           </div>
-        }
-      </div>
+      }
     </div>
   )
 }

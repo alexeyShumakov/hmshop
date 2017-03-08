@@ -14,7 +14,7 @@ class Product < ApplicationRecord
 
   def similar
     category_ids = category.root.self_and_descendant_ids
-    self.class.includes(:pictures).where(category: category_ids).order('random()').limit(4)
+    self.class.includes(:pictures).where(category: category_ids).order('random()').limit(6)
   end
 
   def ancestors

@@ -7,6 +7,7 @@ import * as appActions from '../actions';
 import Product from '../components/fullProduct/Product';
 
 let ProductContainer = (props) => {
+  let {actions} = props;
   let {createLineItem} = props.actions;
   let setCurrentPicture = props.actions.setFullCurrentPicture;
   let fetchCategory = props.actions.fetchCategory;
@@ -14,10 +15,11 @@ let ProductContainer = (props) => {
   let product = props.store.getIn(['fullProduct', 'product'])
   let currentPicture = props.store.getIn(['fullProduct', 'currentPicture'])
   let isLoading = props.store.getIn(['fullProduct', 'isLoading'])
+  let modalProduct = props.store.get('modalProduct')
 
   return(
     <DocumentTitle title={`${product.get('title')} - купить в интернет-магазине HM-shop.ru`}>
-      <Product {...{fetchCategory, createLineItem,
+      <Product {...{fetchCategory, createLineItem, actions, modalProduct,
           product, setCurrentPicture, currentPicture, isLoading}}/>
     </DocumentTitle>
   )

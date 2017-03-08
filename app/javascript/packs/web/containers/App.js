@@ -18,7 +18,9 @@ class App extends Component {
             categories={store.get('categories')}
             actions={actions}
           />
-          {children}
+          <div className="container__wrapper">
+            {children}
+          </div>
         </div>
       </div>
     )

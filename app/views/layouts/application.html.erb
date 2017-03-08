@@ -14,8 +14,8 @@
   <script type="text/javascript" charset="utf-8">
     var $sharedVariables = <%= @shared_variables.html_safe %>
   </script>
+  <%= yield :local_variables %>
     <div class="container">
-      <%= yield :local_variables %>
       <div id="root"></div>
       <%= yield %>
     </div>

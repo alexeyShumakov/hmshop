@@ -5,6 +5,11 @@
   margin: 12px;
 }
 
+.u-my12 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
 .u-m6 {
   margin: 6px;
 }
@@ -38,4 +43,10 @@
   padding-left: 5px;
   padding-top: 0;
 
+}
+.container__wrapper {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
 }

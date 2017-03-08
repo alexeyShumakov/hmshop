@@ -26,58 +26,72 @@ export default (props) => {
         currentPicture={modalProduct.get('currentPicture')}
         isLoading={modalProduct.get('isLoading')}
         isOpen={modalProduct.get('isOpen')} />
-      <div className='full-basket'>
-        <Breadcrumbs node={fakeNode}/>
-        <h3 className='u-page-title'>Ваша корзина</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>№</th>
-              <th>Описание</th>
-              <th>Цена</th>
-              <th>Сумма</th>
-              <th>Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            { lineItems && lineItems.map((item, position)=>{
-              return(
-                <LineItem
-                  openModal={actions.setModalProductState}
-                  fetchProduct={actions.fetchProduct}
-                  key={item.get('id')}
-                  item={item}
-                  destroy={actions.destroyLineItem}
-                  update={actions.updateLineItem}
-                  position={position + 1}
-                />
-              )
-              })
-            }
-          </tbody>
-        </table>
-        <div className='full-basket__footer'>
-          <h4 className='full-basket__total-price'>
-            <span>Итого: </span>
-            <b>{cart.get('total_price')}</b> <i className='fa fa-rub'></i>
-          </h4>
+      <div className="row">
+        <div className="column">
+          <Breadcrumbs node={fakeNode}/>
         </div>
       </div>
-      <div className='order'>
-        <h3>Оформить заказ</h3>
-        <form>
-          <fieldset>
-            <label>Имя</label>
-            <input type="text"/>
-            <label>Email</label>
-            <input type="text"/>
-            <label>Номер телефона</label>
-            <input type="text"/>
-            <label>Адрес доставки</label>
-            <input type="text"/>
-            <input className="button-primary" type="submit" value="Оформить заказа"/>
-          </fieldset>
-        </form>
+
+      <div className="row">
+        <div className='column'>
+          <div className='full-basket'>
+            <h3 className='u-page-title'>Ваша корзина</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th>Описание</th>
+                  <th>Цена</th>
+                  <th>Сумма</th>
+                  <th>Действия</th>
+                </tr>
+              </thead>
+              <tbody>
+                { lineItems && lineItems.map((item, position)=>{
+                  return(
+                    <LineItem
+                      openModal={actions.setModalProductState}
+                      fetchProduct={actions.fetchProduct}
+                      key={item.get('id')}
+                      item={item}
+                      destroy={actions.destroyLineItem}
+                      update={actions.updateLineItem}
+                      position={position + 1}
+                    />
+                  )
+                  })
+                }
+              </tbody>
+            </table>
+            <div className='full-basket__footer'>
+              <h4 className='full-basket__total-price'>
+                <span>Итого: </span>
+                <b>{cart.get('total_price')}</b> <i className='fa fa-rub'></i>
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="column">
+          <div className='order'>
+            <h3>Оформить заказ</h3>
+            <form>
+              <fieldset>
+                <label>Имя</label>
+                <input type="text"/>
+                <label>Email</label>
+                <input type="text"/>
+                <label>Номер телефона</label>
+                <input type="text"/>
+                <label>Адрес доставки</label>
+                <input type="text"/>
+                <input className="button-primary" type="submit" value="Оформить заказа"/>
+              </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   )
