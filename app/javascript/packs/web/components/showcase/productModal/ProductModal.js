@@ -2,12 +2,13 @@ import React from 'react';
 import Modal from 'react-modal';
 import Slider from 'react-slick'
 import Lazysizes from 'lazysizes';
+import {Link} from 'react-router';
 
 import Carousel from './Carousel';
 import BasketButton from '../../BasketButton';
 
 export default props => {
-  let { product, setCurrentPicture, createLineItem,
+  let { product, setCurrentPicture, createLineItem, fetchFullProduct,
     openModal, isOpen, isLoading, fetchProduct,
     currentPicture, nextProduct, prevProduct } = props;
   return(
@@ -49,7 +50,17 @@ export default props => {
                   productId={product.get('id')}
                   klassName='button'
                 />
-                <button className='button button-outline' >Быстрая покупка</button>
+                <Link
+                  to={`/products/${product.get('id')}`}
+                  onClick={()=> {
+                    openModal(false);
+                    fetchFullProduct(product.get('id'))
+                    }
+                  }
+                  className='button button-clear'>
+                    Узнать больше о товаре
+                  <i className="fa fa-chevron-right"></i>
+                </Link>
               </div>
             </div>
           </div>

@@ -23,6 +23,7 @@ export default (props) => {
         product={modalProduct.get('product')}
         products={store.get('products')}
         fetchProduct={actions.fetchProduct}
+        fetchFullProduct={actions.fetchFullProduct}
         currentPicture={modalProduct.get('currentPicture')}
         isLoading={modalProduct.get('isLoading')}
         isOpen={modalProduct.get('isOpen')} />

@@ -21,6 +21,7 @@ export default (props, context) => {
       <ProductModal
         openModal={actions.setModalProductState}
         fetchProduct={actions.fetchProduct}
+        fetchFullProduct={actions.fetchFullProduct}
         createLineItem={actions.createLineItem}
         setCurrentPicture={actions.setModalCurrentPicture}
         product={modalProduct.get('product')}
