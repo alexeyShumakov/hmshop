@@ -10,13 +10,15 @@ export default props => {
   let {isLoading, actions, sortFilter,
     products, modalProduct, category } = props;
   let product = modalProduct.get('product');
+  let id = 0;
 
-  let prevProduct = products.find((p, i) => {
-    return p.get('id') === (product.get('id') - 1)
+  products.find((p, i) => {
+    if(p.get('id') === (product.get('id')))
+      id = i;
   })
-  let nextProduct = products.find((p, i) => {
-    return p.get('id') === (product.get('id') + 1)
-  })
+  let prevProduct = id > 0 ? products.get(id - 1) : null;
+  let nextProduct = products.get(id + 1);
+
 
   let cartProducts =  products.map(product => {
     return(<Product
