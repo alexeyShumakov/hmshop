@@ -13,14 +13,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.includes(products: :pictures).find(params[:id])
-    @products = Product.includes(:pictures).where(category_id: @category.self_and_descendant_ids)
-    @products = ProductFilter.call({products: @products, params: params} ).products
-    filters_json = GenerateFiltersHash.call({params: params}).filters_hash
-    category_json = {}
-    category_json['category'] = ActiveModelSerializers::SerializableResource.new(@category, { include: [:ancestors] }).as_json
-    category_json['category']['root_category_id'] = @category.root.id
-    products_json = ActiveModelSerializers::SerializableResource.new(@products, { include: '', fields: [:thumb_cover, :id, :title, :price] }).as_json
-    @json = [filters_json, category_json, products_json].inject(&:merge).to_json
+    data = GenerateCategory.call({params: params})
+    @category = data.category
+
+    @json = [data.filters_hash, data.category_hash, data.products_hash]
+      .inject(&:merge)
+      .to_json
   end
 end

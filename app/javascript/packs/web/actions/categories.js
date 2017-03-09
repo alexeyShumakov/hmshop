@@ -32,8 +32,8 @@ export function fetchCategory(id, params={}) {
     return axios.get(`/api/categories/${id}`, {params}).then(
       response => {
         let data = Immutable.fromJS(response.data);
-        let category = data.get('category').delete('products');
-        let products = data.getIn(['category', 'products']);
+        let category = data.getIn(['category', 'category']);
+        let products = data.get('products');
         dispatch(setCategory(category))
         dispatch(setRootCategoryId(category.get('root_category_id')))
         dispatch(productActions.setProducts(products))

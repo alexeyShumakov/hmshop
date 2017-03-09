@@ -1,8 +1,15 @@
-class GenerateFiltersHash
+class SetSortParams
   include Interactor
-  SORT = [ 'pricedown', 'priceup', 'popular' ]
+  # haha lol
+  SORT = {
+    'pricedown' => 'price DESC',
+    'priceup'  => 'price ASC',
+    'popular' => 'RANDOM()'
+  }
   def call
-    sort_param = SORT.include?(context.params[:sort]) ? context.params[:sort] : 'priceup'
+    context.order_rule = SORT.fetch(context.params[:sort], 'price ASC')
+    sort_param = SORT.has_key?(context.params[:sort]) ? context.params[:sort] : 'priceup'
+
     context.filters_hash = {
       filters: {
         sortFilter: {
