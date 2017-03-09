@@ -1,10 +1,14 @@
 import React from 'react';
+import {Link} from 'react-router';
+
 import Product from './Product';
 import ProductModal from './productModal/ProductModal';
 import Breadcrumbs from '../Breadcrumbs';
+import SortList from './sort/List';
 
 export default props => {
-  let {isLoading, actions, products, modalProduct, category } = props;
+  let {isLoading, actions, sortFilter,
+    products, modalProduct, category } = props;
   let product = modalProduct.get('product');
 
   let prevProduct = products.find((p, i) => {
@@ -47,10 +51,23 @@ export default props => {
               </div>
             </div>
 
-            <div className='showcase row'>
-              <div className='category column column-100'>
+            <div className='row'>
+              <div className='category column'>
                 <h3 className='u-page-title'>{category.get('title')}</h3>
               </div>
+            </div>
+
+            <div className='row'>
+              <div className="column">
+                <SortList
+                  fetchCategory={actions.fetchCategory}
+                  categoryId={category.get('id')}
+                  sortFilter={sortFilter}
+                />
+              </div>
+            </div>
+
+            <div className='showcase row'>
               {cartProducts}
             </div>
           </div>

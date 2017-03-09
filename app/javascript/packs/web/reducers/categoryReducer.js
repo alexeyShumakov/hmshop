@@ -7,7 +7,8 @@ const initialState = Immutable.fromJS({
     ancestors: [],
     id: 1,
     title: ''
-  }})
+  }
+})
 
 export default (state = initialState, action) => {
   switch(action.type) {

@@ -14,6 +14,7 @@ class CategoryContainer extends Component {
       <Category
         modalProduct={store.get('modalProduct')}
         products={store.get('products')}
+        sortFilter={store.getIn(['filters', 'sortFilter'])}
         category={store.getIn(['category', 'category'])}
         isLoading={store.getIn(['category', 'isLoading'])}
         actions={actions}

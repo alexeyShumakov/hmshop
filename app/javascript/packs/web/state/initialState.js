@@ -1,5 +1,15 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  filters: {
+    sortFilter: {
+      currentValue: 'priceup',
+      items: [
+        { title: 'популярные', value: 'popular' },
+        { title: 'сначала дорогие', value: 'pricedown' },
+        { title: 'сначала дешевые', value: 'priceup' },
+      ]
+    },
+  },
   history: [],
   search: {
     keyword: '',

@@ -8,8 +8,9 @@ import products from './productsReducer';
 import category from './categoryReducer'
 import search from './searchReducer';
 import history from './historyReducer';
+import filters from './filtersReducer';
 
-const reducers = Immutable.Map({ history, search, cart, modalProduct, fullProduct, products, category });
+const reducers = Immutable.Map({filters, history, search, cart, modalProduct, fullProduct, products, category });
 import initialState from '../state/initialState';
 
 export default (state = initialState, action) => {

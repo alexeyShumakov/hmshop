@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 
 import actionTypes from '../constants';
 import * as productActions from './products';
+import {setFilters} from './filters';
 
 export function setCategoryLoading(isLoading) {
   return {
@@ -25,10 +26,10 @@ export function setRootCategoryId(id) {
   }
 }
 
-export function fetchCategory(id) {
+export function fetchCategory(id, params={}) {
   return dispatch => {
     dispatch(setCategoryLoading(true));
-    return axios.get(`/api/categories/${id}`).then(
+    return axios.get(`/api/categories/${id}`, {params}).then(
       response => {
         let data = Immutable.fromJS(response.data);
         let category = data.get('category').delete('products');
@@ -36,6 +37,7 @@ export function fetchCategory(id) {
         dispatch(setCategory(category))
         dispatch(setRootCategoryId(category.get('root_category_id')))
         dispatch(productActions.setProducts(products))
+        dispatch(setFilters(data.get('filters')));
         dispatch(setCategoryLoading(false));
       }
     )
