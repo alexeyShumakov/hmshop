@@ -1,6 +1,6 @@
 import React from 'react';
-
 import Category from './Category';
+import ToTop from './ToTop';
 
 export default props => {
   return(
@@ -18,6 +18,7 @@ export default props => {
           })
         }
       </ul>
+      <ToTop/>
     </div>
   )
 }

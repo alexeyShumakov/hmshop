@@ -1,0 +1,19 @@
+.to-top {
+  position: relative;
+  height: 10px;
+
+  .to-top__icon {
+    display: block;
+    position: fixed;
+    width: inherit;
+    bottom: 100px;
+    padding: 0 3px;
+    cursor: pointer;
+    min-width: 20px;
+    color: $light-main-color;
+    &:hover {
+      color: $main-color;
+
+    }
+  }
+}
