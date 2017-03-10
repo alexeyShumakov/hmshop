@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    params[:category_id] = params[:id]
     data = GenerateCategory.call({params: params})
     @category = data.category
 

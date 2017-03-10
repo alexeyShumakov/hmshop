@@ -35,12 +35,12 @@ export function fetchProduct(id) {
     dispatch(setLoadingModalProduct(true));
     return axios.get(`/api/products/${id}`).then(
       response => {
-        let product = Immutable.fromJS(response.data.product);
-        let history = Immutable.fromJS(response.data.history_item);
+        let product = Immutable.fromJS(response.data.fullProduct);
+        let history = Immutable.fromJS(response.data.history);
         dispatch(setHistory(history));
-        dispatch(setModalProduct(product))
+        dispatch(setModalProduct(product.get('product')))
         dispatch(setLoadingModalProduct(false));
-        dispatch(setModalCurrentPicture(product.getIn(['pictures', 0, 'medium_img'])));
+        dispatch(setModalCurrentPicture(product.get('currentPicture')));
       }
     )
   }

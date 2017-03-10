@@ -29,11 +29,11 @@ export function fetchFullProduct(id) {
     dispatch(setLoadingFullProduct(true));
     return axios.get(`/api/products/${id}`).then(
       response => {
-        let product = Immutable.fromJS(response.data.product);
-        let history = Immutable.fromJS(response.data.history_item);
+        let product = Immutable.fromJS(response.data.fullProduct);
+        let history = Immutable.fromJS(response.data.history);
         dispatch(setHistory(history));
-        dispatch(setFullProduct(product))
-        dispatch(setFullCurrentPicture(product.getIn(['pictures', 0, 'medium_img'])));
+        dispatch(setFullProduct(product.get('product')))
+        dispatch(setFullCurrentPicture(product.get('currentPicture')));
         dispatch(setLoadingFullProduct(false));
       }
     )

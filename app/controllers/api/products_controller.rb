@@ -1,15 +1,11 @@
 class Api::ProductsController < ApplicationController
   include CartsHelper
-  include HistoryHelper
   before_action :set_cart, only: [:show]
 
   def show
-    @product = Product.includes(:pictures, :category).find(params[:id])
-    add_to_history(@cart, @product)
-    history_products = get_history_products(@cart)
-    @json = {}
-    @json[:history_item] = serialize_history_products(history_products).as_json[:history]
-    @json[:product] = ActiveModelSerializers::SerializableResource.new(@product).as_json[:product]
+    params[:product_id] = params[:id]
+    data = GenerateProduct.call({params: params, cart: @cart})
+    @json = [data.product_hash, data.category_hash, data.history_hash].inject(:merge).to_json
     render json: @json
   end
 

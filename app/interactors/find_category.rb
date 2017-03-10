@@ -1,7 +1,7 @@
 class FindCategory
   include Interactor
   def call
-    category = Category.includes(products: :pictures).find(context.params[:id])
+    category = Category.includes(products: :pictures).find(context.params[:category_id])
     context.category = category
     context.category_hash = {
       category: {
