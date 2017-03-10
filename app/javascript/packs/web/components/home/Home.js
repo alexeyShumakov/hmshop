@@ -5,7 +5,9 @@ export default props => {
   return(
     <div className="container">
       <div className="row">
-        <Banners banners={props.store.getIn(['home', 'banners'])}/>
+        <div className="column">
+          <Banners banners={props.store.getIn(['home', 'banners'])}/>
+        </div>
       </div>
     </div>
   )

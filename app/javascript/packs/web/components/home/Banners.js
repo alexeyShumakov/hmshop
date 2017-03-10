@@ -42,7 +42,7 @@ export default class Carousel extends React.Component {
       }
       return(
           <a key={banner.get('id')} href={banner.get('url')} >
-            <div src={banner.get('img')} className='banners__img' style={style} />
+            <div className='banners__img' style={style} />
           </a>
       )
     })
