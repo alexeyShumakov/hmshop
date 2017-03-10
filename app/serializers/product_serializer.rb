@@ -1,6 +1,6 @@
 class ProductSerializer < ActiveModel::Serializer
   class SimilarSerializer < ActiveModel::Serializer
-    attributes :id, :title, :thumb_cover
+    attributes :id, :title, :thumb_cover, :price
   end
 
   class AncestorSerializer < ActiveModel::Serializer

@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   include PgSearch
   belongs_to :category
   has_and_belongs_to_many :pictures, -> { order 'created_at' }
+  has_and_belongs_to_many :collections, -> { order 'created_at' }
   has_many :line_items
   has_many :history_items
 

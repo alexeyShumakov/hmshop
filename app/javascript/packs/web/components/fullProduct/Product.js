@@ -64,12 +64,14 @@ export default (props, context) => {
               </div>
             </div>
           </div>
+          <hr/>
           { !product.get('similar').isEmpty() &&
             <SimpleProductsList
               title='Похожие товары'
               openModal={actions.setModalProductState}
               fetchProduct={actions.fetchProduct}
               products={product.get('similar')}
+              withText={true}
             />
           }
           { !history.isEmpty() &&

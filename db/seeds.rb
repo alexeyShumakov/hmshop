@@ -26,9 +26,21 @@ end
 
 product = Product.first
 pictures = []
-4.times do
+3.times do
   ['product.jpg', 'product_1.jpg'].each do |img|
     pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', img)))
   end
 end
 product.pictures = pictures
+
+4.times do
+  c = Collection.create({
+    title: Faker::Commerce.product_name,
+    description: Faker::Hipster.paragraph,
+    cover: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg'))
+  })
+
+  (1 + Random.rand(4)).times do
+    c.products << Product.all.order('random()').first
+  end
+end

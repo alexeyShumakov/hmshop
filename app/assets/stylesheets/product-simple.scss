@@ -1,3 +1,15 @@
 .product-simple {
   cursor: pointer;
 }
+
+.product-simple__info {
+
+}
+.product-simple__title {
+  text-overflow: clip;
+  overflow: hidden;
+  height: 28px;
+}
+
+.product-simple__price {
+}

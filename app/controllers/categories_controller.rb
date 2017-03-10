@@ -7,7 +7,8 @@ class CategoriesController < ApplicationController
   def index
     @json = {
       home: {
-        banners: ActiveModelSerializers::SerializableResource.new(Banner.all, { include: '', adapter: :attributes }).as_json
+        banners: ActiveModelSerializers::SerializableResource.new(Banner.all, { include: '', adapter: :attributes }).as_json,
+        newest: NewestProducts.call.products_hash[:products]
       }
     }.to_json
   end
