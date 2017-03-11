@@ -1,13 +1,16 @@
 import React from 'react';
 import Immutable from 'immutable';
+
 import Banners from './Banners';
 import SimpleProductsList from '../simpleProduct/List';
 import ProductModal from '../showcase/productModal/ProductModal';
+import CollectionsList from '../collections/carousel/List.js'
 
 export default props => {
   let {store, actions} = props;
   let banners = store.getIn(['home', 'banners']);
   let newest = store.getIn(['home', 'newest']);
+  let collections = store.getIn(['home', 'collections']);
   let modalProduct = store.get('modalProduct');
   return(
     <div className="container">
@@ -33,6 +36,15 @@ export default props => {
               fetchProduct={actions.fetchProduct}
               products={newest}
               withText={true}
+            />
+          }
+          <hr/>
+
+          { !collections.isEmpty() &&
+            <CollectionsList
+              title='Наборы'
+              fetchCollection={actions.fetchCollection}
+              collections={collections}
             />
           }
         </div>

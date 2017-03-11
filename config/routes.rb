@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'info/terms'
 
   namespace :api do
+    resources :collections
     resources :categories
     resources :products do
       get 'search', on: :collection
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
 
   resources :products
   resources :categories
+  resources :collections
   root to: 'categories#index'
 end

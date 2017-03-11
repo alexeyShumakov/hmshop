@@ -1,5 +1,10 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  collections: {
+    isLoading: false,
+    collections: [],
+    collection: {}
+  },
   filters: {
     sortFilter: {
       currentValue: 'priceup',

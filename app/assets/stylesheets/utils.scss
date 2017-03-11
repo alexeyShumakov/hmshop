@@ -35,6 +35,10 @@
   min-width: 0;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .tether-enabled {
   z-index: 5;
 }
