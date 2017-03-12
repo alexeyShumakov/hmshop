@@ -5,7 +5,7 @@ class Api::CollectionsController < ApplicationController
   end
 
   def index
-    @collections = Collections.all.order('created_at desc')
+    @collections = Collection.all.order('created_at desc')
     render json: @collections
   end
 end

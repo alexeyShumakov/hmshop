@@ -15,6 +15,7 @@ class App extends Component {
         <div className="row">
           <Sidebar
             rootCategoryId={store.getIn(['category', 'root_category_id'])}
+            collections={store.get('sidebar_collections')}
             categories={store.get('categories')}
             actions={actions}
           />

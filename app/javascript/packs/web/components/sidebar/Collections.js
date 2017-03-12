@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import Tether from 'tether';
 import _ from 'lodash';
 
-export default class Category extends React.Component {
+export default class Collection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -45,33 +45,32 @@ export default class Category extends React.Component {
 
 
   render() {
-    let { category, fetchCategory, rootCategoryId } = this.props;
+    let { collections, fetchCollection, fetchCollections } = this.props;
     let { display } = this.state;
     let style = { display: display };
-    let selected = category.get('id') === rootCategoryId;
-    let children = category.get('children').map(child => {
-      let id = child.get('id');
+    collections = collections.map(item => {
+      let id = item.get('id');
       return(
-        <li key={child.get('id')}>
+        <li key={item.get('id')}>
           <Link
-            to={`/categories/${id}`}
-            onClick={() => fetchCategory(id)}
+            to={`/collections/${id}`}
+            onClick={() => fetchCollection(id)}
           >
-            {child.get('title')}
+            {item.get('title')}
           </Link>
         </li>
       )
     })
     return(
-      <li>
+      <li className='nav__collections'>
         <div
           ref={(tTarget) => { this.tTarget = tTarget; }}
           onClick={this.showImmediately}
           onMouseEnter={this.showMenu}
           onMouseLeave={this.hideMenu}
-          className={selected ? 'nav__icon_selected' : ''}
+          className='nav__icon'
           >
-            <i className="nav__icon fa fa-heart-o fa-lg"></i>
+            <i className="nav__icon fa fa-cogs fa-lg"></i>
         </div>
         <div ref={(tElement) => { this.tElement = tElement; }} >
           <div
@@ -82,13 +81,13 @@ export default class Category extends React.Component {
           >
             <b className='u-mb6'>
               <Link
-                to={`/categories/${category.get('id')}`}
-                onClick={() => fetchCategory(category.get('id'))}
+                to={`/collections`}
+                onClick={fetchCollections}
                 >
-                {category.get("title")}
+                Наборы
               </Link>
             </b>
-            <ul> {children} </ul>
+            <ul> {collections} </ul>
           </div>
         </div>
       </li>

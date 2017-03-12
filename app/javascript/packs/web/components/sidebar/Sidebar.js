@@ -1,11 +1,12 @@
 import React from 'react';
 import Category from './Category';
 import ToTop from './ToTop';
+import Collections from './Collections';
 
 export default props => {
   return(
     <div className='sidebar u-p12'>
-      <ul className=' sidebar-list'>
+      <ul className='sidebar-list'>
         { props.categories.map(category => {
             return(
               <Category
@@ -17,6 +18,11 @@ export default props => {
             )
           })
         }
+        <Collections
+          collections={props.collections}
+          fetchCollection={props.actions.fetchCollection}
+          fetchCollections={props.actions.fetchCollections}
+        />
       </ul>
       <ToTop/>
     </div>
