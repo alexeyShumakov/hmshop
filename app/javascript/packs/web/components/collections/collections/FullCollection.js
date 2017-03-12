@@ -8,19 +8,15 @@ export default (props) => {
   let id = collection.get('id');
   let products = collection.get('products');
   return(
-    <div className="collection">
+    <div className="collection_full">
       <div className='row'>
         <div className='column column-66'>
-          <Link
-            className='collection__img-wrapper'
-            to={`/collections/${id}`}
-            onClick={()=> {fetchCollection(id)}}
-          >
+          <div className='collection__img-wrapper'>
             <img src={collection.get('cover')} alt=""/>
-          </Link>
+          </div>
         </div>
         <div className='column column-33'>
-          <h4>{collection.get('title')}</h4>
+          <h3>{collection.get('title')}</h3>
           <p>{collection.get('description')}</p>
           <h3>{collection.get('total_price')} <i className='fa fa-rub'></i></h3>
           <div className="collection__buttons">
