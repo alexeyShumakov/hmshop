@@ -23,15 +23,8 @@ export default (props) => {
         </div>
         <div className='column column-33'>
           <h4>{collection.get('title')}</h4>
-          <p>{collection.get('description')}</p>
           <h3>{collection.get('total_price')} <i className='fa fa-rub'></i></h3>
-          <div className="collection__buttons">
-            <BasketButton
-              create={createLineItem}
-              productId={productIds}
-              klassName='button'
-            />
-          </div>
+          <p>{collection.get('description')}</p>
         </div>
       </div>
       <div className="row">
