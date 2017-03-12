@@ -5,7 +5,7 @@ export default (props) => {
   let { collections, fetchCollection, title } = props;
   return(
     <div className='u-my12 collections__list'>
-      <h3>{title}</h3>
+      <h4>{title}</h4>
       <div className="row">
         { collections.map((obj)=> {
           return(
