@@ -2,11 +2,13 @@ import React from 'react';
 import {Link} from 'react-router';
 
 import SimpleProductsList from '../../simpleProduct/List';
+import BasketButton from '../../BasketButton';
 
 export default (props) => {
-  let {collection, fetchCollection, fetchProduct, setModalProductState} = props;
+  let {collection, fetchCollection, fetchProduct, setModalProductState, createLineItem} = props;
   let id = collection.get('id');
   let products = collection.get('products');
+  let productIds = products.map((p) => {return p.get('id')});
   return(
     <div className="collection_full">
       <div className='row'>
@@ -20,7 +22,11 @@ export default (props) => {
           <p>{collection.get('description')}</p>
           <h3>{collection.get('total_price')} <i className='fa fa-rub'></i></h3>
           <div className="collection__buttons">
-            <button className='button button-primary'>Купить набор</button>
+            <BasketButton
+              create={createLineItem}
+              productId={productIds}
+              klassName='button'
+            />
           </div>
         </div>
       </div>

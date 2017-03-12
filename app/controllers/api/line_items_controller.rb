@@ -5,15 +5,12 @@ class Api::LineItemsController < ApplicationController
 
 
   def create
-    product = Product.find(params[:product_id])
-    line_item = @cart.line_items.find_by product: product
-    if line_item
-      line_item.count += 1
-      line_item.save
-    else
-      line_item = LineItem.create cart: @cart, product: product
+    ids = Array(params[:product_id])
+    products = Product.find(ids)
+    products.each do |product|
+      create_line_item(product)
     end
-    render json: {count: line_item.count }
+    render json: {status: :ok }
   end
 
   def update
@@ -34,5 +31,16 @@ class Api::LineItemsController < ApplicationController
 
   def line_item_params
     params.require(:line_item).permit(:count)
+  end
+
+  def create_line_item(product)
+    line_item = @cart.line_items.find_by product: product
+    if line_item
+      line_item.count += 1
+      line_item.save
+    else
+      line_item = LineItem.create cart: @cart, product: product
+    end
+
   end
 end

@@ -7,7 +7,7 @@ import ProductModal from '../showcase/productModal/ProductModal';
 
 export default (props) => {
   let { store, actions } = props;
-  let { fetchCollections, fetchCollection, setCurrentPicture, setModalProductState, fetchProduct } = actions;
+  let { createLineItem, fetchCollections, fetchCollection, setCurrentPicture, setModalProductState, fetchProduct } = actions;
   let collection = store.getIn(['collections', 'collection']);
   let isLoading = store.getIn(['collections', 'isLoading']);
   let modalProduct =  store.get('modalProduct');
@@ -44,7 +44,7 @@ export default (props) => {
             </span>
             <span>{collection.get('title')}</span>
           </div>
-          <FullCollection {...{collection, setModalProductState, fetchProduct,
+          <FullCollection {...{collection, setModalProductState, fetchProduct, createLineItem,
                  setCurrentPicture, currentPicture}} />
         </div>
       }

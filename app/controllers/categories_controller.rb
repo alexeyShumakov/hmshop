@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
 
   def index
     collections = Collection
+      .includes(products: :pictures)
       .all
       .order('created_at DESC')
       .limit(3)
