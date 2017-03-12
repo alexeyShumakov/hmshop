@@ -7,4 +7,8 @@ class Collection < ApplicationRecord
     thumb:  "-quality 60 -strip"
   }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
+
+  def total_price
+    products.to_a.sum(&:price)
+  end
 end

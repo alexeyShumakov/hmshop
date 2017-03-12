@@ -6,7 +6,7 @@ import Collections from '../components/collections/Index';
 
 import * as appActions from '../actions';
 
-let Container = (props) => {
+let CollectionsContainer = (props) => {
   return(
     <DocumentTitle title='Купить наборы в интернет-магазине HM-shop.ru'>
       <Collections {...props}/>
@@ -26,4 +26,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Container)
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionsContainer)

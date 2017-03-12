@@ -5,14 +5,14 @@ class CollectionsController < ApplicationController
   before_action :set_categories, :set_cart, :set_shared_variables
 
   def show
-    @collection = Collection.find(params[:id])
+    @collection = Collection.includes(products: :pictures).find(params[:id])
     @json = {
         collections: ActiveModelSerializers::SerializableResource.new(@collection)
       }.to_json
   end
 
   def index
-    collections = Collection.all.order('created_at DESC')
+    collections = Collection.includes(products: :pictures).all.order('created_at DESC')
 
     @json = {
         collections: ActiveModelSerializers::SerializableResource.new(collections)

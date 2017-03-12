@@ -1,19 +1,22 @@
 .to-top {
   position: relative;
+  width: 33px;
   height: 10px;
 
-  .to-top__icon {
+  .to-top__button {
     display: block;
     position: fixed;
     width: inherit;
     bottom: 100px;
-    padding: 0 3px;
     cursor: pointer;
     min-width: 20px;
-    color: $light-main-color;
-    &:hover {
-      color: $main-color;
+    text-align: center;
 
+    .to-top__icon {
+      color: $light-main-color;
+      &:hover {
+        color: $main-color;
+      }
     }
   }
 }

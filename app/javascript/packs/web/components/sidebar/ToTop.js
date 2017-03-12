@@ -23,13 +23,14 @@ export default class ToTop extends React.Component {
     return(
       <div className='to-top'>
         <Waypoint
+          scrollableAncestor={typeof window !== 'undefined' && window}
           onEnter={()=> {this.setState({show: false})}}
           onLeave={()=> {this.setState({show: true})}}
           onPositionChange={this.setIinitalShow}
         />
         {this.state.show &&
-            <div onClick={this.toTop}>
-              <i className='fa fa-lg fa-chevron-circle-up to-top__icon '></i>
+            <div className='to-top__button'>
+              <i onClick={this.toTop} className='fa fa-lg fa-chevron-circle-up to-top__icon '></i>
             </div>
         }
       </div>

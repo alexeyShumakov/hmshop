@@ -1,0 +1,13 @@
+.collection {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  padding-bottom: 40px;
+  margin-bottom: 10px;
+  .collection__img-wrapper {
+    min-height: 430px;
+  }
+  .collection__buttons {
+    button {
+      width: 80%;
+    }
+  }
+}

@@ -1,10 +1,13 @@
 import React from 'react';
 
 export default (props) => {
-  let collection = props.store.getIn(['collections', 'collection']);
+  const collection = props.store.getIn(['collections', 'collection']);
+  const isLoading = props.store.getIn(['collections', 'isLoading']);
   return(
     <div className='collections'>
-      <div>show collection - {collection.get('title')}</div>
+      { !isLoading &&
+        <div>show collection - {collection.get('title')}</div>
+      }
     </div>
   )
 }
