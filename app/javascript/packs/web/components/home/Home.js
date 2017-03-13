@@ -4,12 +4,14 @@ import Immutable from 'immutable';
 import Banners from './Banners';
 import SimpleProductsList from '../simpleProduct/List';
 import ProductModal from '../showcase/productModal/ProductModal';
-import CollectionsList from '../collections/carousel/List.js'
+import CollectionsList from '../collections/carousel/List';
+import PostsList from '../posts/carousel/List';
 
 export default props => {
   let {store, actions} = props;
   let banners = store.getIn(['home', 'banners']);
   let newest = store.getIn(['home', 'newest']);
+  let posts = store.getIn(['home', 'posts']);
   let collections = store.getIn(['home', 'collections']);
   let modalProduct = store.get('modalProduct');
   return(
@@ -29,6 +31,14 @@ export default props => {
           isOpen={modalProduct.get('isOpen')} />
           <Banners banners={banners}/>
           <hr/>
+          { !collections.isEmpty() &&
+            <CollectionsList
+              title='Наборы'
+              fetchCollection={actions.fetchCollection}
+              collections={collections}
+            />
+          }
+          <hr/>
           { !newest.isEmpty() &&
             <SimpleProductsList
               title='Новинки'
@@ -39,12 +49,11 @@ export default props => {
             />
           }
           <hr/>
-
-          { !collections.isEmpty() &&
-            <CollectionsList
-              title='Наборы'
-              fetchCollection={actions.fetchCollection}
-              collections={collections}
+          { !posts.isEmpty() &&
+            <PostsList
+              title='Блог'
+              fetchPost={actions.fetchPost}
+              posts={posts}
             />
           }
         </div>

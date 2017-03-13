@@ -11,6 +11,8 @@ import Product from './web/containers/Product';
 import Basket from './web/containers/Basket';
 import Collections from './web/containers/IndexCollections';
 import Collection from './web/containers/Collection';
+import Posts from './web/containers/IndexPosts';
+import Post from './web/containers/ShowPost';
 
 import About from './web/components/info/About';
 import Contacts from './web/components/info/Contacts';
@@ -29,6 +31,9 @@ render(
     <Router history={browserHistory}>
       <Route path='/' component={App} >
         <IndexRoute component={Home} onEnter={resetCategory} />
+        <Route path='/posts' component={Posts}/>
+        <Route path='/posts/:id' component={Post}/>
+
         <Route path='/collections' component={Collections}/>
         <Route path='/collections/:id' component={Collection}/>
 

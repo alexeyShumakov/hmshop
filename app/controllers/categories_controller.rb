@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   before_action :set_categories, :set_cart, :set_shared_variables
 
   def index
+    posts = Post.all.order('created_at DESC').limit(3)
     collections = Collection
       .includes(products: :pictures)
       .all
@@ -13,6 +14,7 @@ class CategoriesController < ApplicationController
 
     @json = {
       home: {
+        posts: ActiveModelSerializers::SerializableResource.new(posts).as_json[:posts],
         collections: ActiveModelSerializers::SerializableResource.new(collections).as_json[:collections],
         banners: ActiveModelSerializers::SerializableResource.new(Banner.all, { include: '', adapter: :attributes }).as_json,
         newest: NewestProducts.call.products_hash[:products],

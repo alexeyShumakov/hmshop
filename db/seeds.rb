@@ -1,3 +1,12 @@
+6.times do
+  Post.create({
+    title: Faker::Commerce.product_name,
+    preview: Faker::Hipster.sentence,
+    body: Faker::Hipster.paragraph(5),
+    cover: File.open(Rails.root.join('spec', 'support', 'images', 'banner_2.jpg'))
+  })
+end
+
 4.times do
   category = Category.create title: Faker::Commerce.department(2, true)
   3.times { category.children.create(title: Faker::Commerce.department(2, true)) }

@@ -1,5 +1,4 @@
-class Collection < ApplicationRecord
-  has_and_belongs_to_many :products, -> { order 'created_at' }
+class Post < ApplicationRecord
   has_attached_file :cover, styles: {
     thumb: '350x255>', medium: '1000x650>'
   }, convert_options: {
@@ -8,11 +7,11 @@ class Collection < ApplicationRecord
   }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
 
-  def total_price
-    products.to_a.sum(&:price)
-  end
-
   def thumb_cover
     cover(:thumb)
+  end
+
+  def medium_cover
+    cover(:medium)
   end
 end

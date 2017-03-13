@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'info/terms'
 
   namespace :api do
+    resources :posts
     resources :collections
     resources :categories
     resources :products do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     get 'cart', to: 'carts#show'
   end
 
+  resources :posts
   resources :products
   resources :categories
   resources :collections

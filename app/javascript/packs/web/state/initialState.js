@@ -1,5 +1,10 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  posts: {
+    isLoading: false,
+    posts: [],
+    post: {}
+  },
   sidebar_collections: [],
   collections: {
     isLoading: false,
@@ -22,7 +27,8 @@ export default Immutable.fromJS({
     products: []
   },
   home: {
-    banners: []
+    banners: [],
+    posts: []
   },
   cart: {
     currentPosition: 0,

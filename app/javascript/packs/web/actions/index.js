@@ -7,3 +7,4 @@ export * from './search';
 export * from './history';
 export * from './filters';
 export * from './collections';
+export * from './posts';
