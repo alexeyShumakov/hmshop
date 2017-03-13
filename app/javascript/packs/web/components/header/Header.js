@@ -18,7 +18,9 @@ export default props => {
           search={actions.searchProducts}
           fetchProduct={actions.fetchFullProduct}
         />
-        <Info/>
+        <Info
+          fetchPosts={actions.fetchPosts}
+        />
         <Basket
           cart={store.getIn(['cart', 'cart'])}
           currentPosition={store.getIn(['cart', 'currentPosition'])}
