@@ -42,6 +42,12 @@ export default class Info extends React.Component {
             <li><Link to='/info/terms' onClick={this.hide}>Правила</Link></li>
             <li><a href="/">Блог</a></li>
           </ul>
+          <ul className='u-no-list-style nav__social-list'>
+            <li><i className='fa fa-vk'></i></li>
+            <li><i className='fa fa-facebook'></i></li>
+            <li><i className='fa fa-pinterest'></i></li>
+            <li><i className='fa fa-instagram'></i></li>
+          </ul>
         </div>
       </div>
     )

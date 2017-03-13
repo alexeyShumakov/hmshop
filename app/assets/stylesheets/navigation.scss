@@ -75,3 +75,14 @@
   padding-top: 10px;
   border-top: $light-gray solid 2px;
 }
+
+.nav__social-list {
+  border-top: 1px solid $light-main-color;
+  padding: 5px 0;
+  margin-bottom: 0px;
+  text-align: center;
+  li {
+    display: inline;
+    margin: 0 8px;
+  }
+}
