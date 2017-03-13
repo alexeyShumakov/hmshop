@@ -1,8 +1,10 @@
 import React from 'react';
-import LineItem from './LineItem';
-import ProductModal from '../showcase/productModal/ProductModal'
-import Breadcrumbs from '../Breadcrumbs';
 import Immutable from 'immutable';
+
+import LineItem from './LineItem';
+import OrderForm from './OrderForm';
+import Breadcrumbs from '../Breadcrumbs';
+import ProductModal from '../showcase/productModal/ProductModal'
 
 const fakeNode = Immutable.fromJS({
   ancestors: [],
@@ -76,22 +78,11 @@ export default (props) => {
 
       <div className="row">
         <div className="column">
-          <div className='order'>
-            <h3>Оформить заказ</h3>
-            <form>
-              <fieldset>
-                <label>Имя</label>
-                <input type="text"/>
-                <label>Email</label>
-                <input type="text"/>
-                <label>Номер телефона</label>
-                <input type="text"/>
-                <label>Адрес доставки</label>
-                <input type="text"/>
-                <input className="button-primary" type="submit" value="Оформить заказа"/>
-              </fieldset>
-            </form>
-          </div>
+          <OrderForm
+            order={store.get('order')}
+            setOrder={actions.setOrder}
+            createOrder={actions.createOrder}
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,14 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  order: {
+    isLoading: false,
+    order: {
+      phone: '',
+      email: '',
+      address: '',
+      name: ''
+    }
+  },
   posts: {
     isLoading: false,
     posts: [],

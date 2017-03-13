@@ -8,3 +8,4 @@ export * from './history';
 export * from './filters';
 export * from './collections';
 export * from './posts';
+export * from './order';

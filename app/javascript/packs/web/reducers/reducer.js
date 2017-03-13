@@ -11,10 +11,12 @@ import history from './historyReducer';
 import filters from './filtersReducer';
 import collections from './collectionReducer';
 import posts from './postsReducer';
+import order from './orderReducer';
 
 const reducers = Immutable.Map({
   posts, collections, filters, history, search,
-  cart, modalProduct, fullProduct, products, category
+  cart, modalProduct, fullProduct, products, category,
+  order
 });
 import initialState from '../state/initialState';
 

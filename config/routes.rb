@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'info/terms'
 
   namespace :api do
+    resources :orders
     resources :posts
     resources :collections
     resources :categories
