@@ -1,14 +1,16 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Slider from 'react-slick'
-import Lazysizes from 'lazysizes';
-import Carousel from './Carousel';
 import {Link} from 'react-router';
-import BasketButton from '../BasketButton';
-import Breadcrumbs from '../Breadcrumbs';
-import SimpleProductsList from '../simpleProduct/List';
-import ProductModal from '../showcase/productModal/ProductModal';
 import Immutable from 'immutable';
+
+import Carousel from './Carousel';
+import Lazysizes from 'lazysizes';
+import Breadcrumbs from '../Breadcrumbs';
+import BasketButton from '../BasketButton';
+import SimpleProductsList from '../simpleProduct/List';
+import CollectionCarousel from '../collections/carousel/List';
+import ProductModal from '../showcase/productModal/ProductModal';
 
 export default (props, context) => {
   let { product, setCurrentPicture, createLineItem,
@@ -65,6 +67,15 @@ export default (props, context) => {
             </div>
           </div>
           <hr/>
+          { !product.get('collections').isEmpty() &&
+              <CollectionCarousel
+                title='Состоит в наборах'
+                fetchCollection={actions.fetchCollection}
+                collections={product.get('collections')}
+                klassName='column column-20'
+              />
+
+          }
           { !product.get('similar').isEmpty() &&
             <SimpleProductsList
               title='Похожие товары'

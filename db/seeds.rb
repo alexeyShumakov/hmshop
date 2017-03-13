@@ -33,11 +33,11 @@ pictures = []
 end
 product.pictures = pictures
 
-4.times do
+6.times do
   c = Collection.create({
     title: Faker::Commerce.product_name,
     description: Faker::Hipster.paragraph,
-    cover: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg'))
+    cover: File.open(Rails.root.join('spec', 'support', 'images', 'banner_1.jpg'))
   })
 
   (1 + Random.rand(4)).times do

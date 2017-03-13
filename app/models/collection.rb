@@ -11,4 +11,8 @@ class Collection < ApplicationRecord
   def total_price
     products.to_a.sum(&:price)
   end
+
+  def thumb_cover
+    cover(:thumb)
+  end
 end

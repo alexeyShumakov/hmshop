@@ -40,7 +40,7 @@ export default props => {
             </div>
 
             <div className="modal-product__right-side">
-              <h3>{product.get('title')}</h3>
+              <h4>{product.get('title')}</h4>
               <h3>{product.get('price')} <i className='fa fa-rub'></i></h3>
               <p>{product.get('description')}</p>
               <div className="modal-product__buttons">
