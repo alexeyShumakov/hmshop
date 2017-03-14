@@ -2,6 +2,7 @@ import React from 'react';
 
 export default (props) => {
   let {order, setOrder, createOrder} = props;
+  let errors = order.get('errors');
   order = order.get('order');
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,24 +19,28 @@ export default (props) => {
         <fieldset>
           <label>Имя</label>
           <input
+            className={errors.has('name') ? 'input_invalid' : ''}
             type="text"
             value={order.get('name')}
             onChange={(e)=> {handleChange(e.target.value, 'name')}}
           />
           <label>Email</label>
           <input
+            className={errors.has('email') ? 'input_invalid' : ''}
             type="text"
             value={order.get('email')}
             onChange={(e)=> {handleChange(e.target.value, 'email')}}
           />
           <label>Номер телефона</label>
           <input
+            className={errors.has('phone') ? 'input_invalid' : ''}
             type="text"
             value={order.get('phone')}
             onChange={(e)=> {handleChange(e.target.value, 'phone')}}
           />
           <label>Адрес доставки</label>
           <input
+            className={errors.has('address') ? 'input_invalid' : ''}
             type="text"
             value={order.get('address')}
             onChange={(e)=> {handleChange(e.target.value, 'address')}}

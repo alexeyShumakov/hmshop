@@ -4,5 +4,12 @@ FactoryGirl.define do
     address "MyString"
     phone "MyString"
     name "MyString"
+
+    factory :invalid_order do
+      email ""
+      address ""
+      phone ""
+      name ""
+    end
   end
 end

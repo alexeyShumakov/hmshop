@@ -18,6 +18,13 @@ export function setOrder(order) {
   }
 }
 
+export function setOrderErrors(errors) {
+  return {
+    type: actionTypes.SET_ORDER_ERRORS,
+    errors
+  }
+}
+
 export function createOrder(order) {
   return dispatch => {
     dispatch(setOrderLoading(true));
@@ -25,7 +32,8 @@ export function createOrder(order) {
       response => {
         console.log(response);
       }, error => {
-        console.log(error)
+        let errors = Immutable.fromJS(error.response.data);
+        dispatch(setOrderErrors(errors));
       }
     )
   }

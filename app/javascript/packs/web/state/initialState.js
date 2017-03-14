@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
   order: {
+    errors: {},
     isLoading: false,
     order: {
       phone: '',
