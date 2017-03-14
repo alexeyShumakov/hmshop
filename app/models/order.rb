@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   has_many :line_items
   validates :name, :address, :email, :phone, presence: true
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
   def set_line_items(line_items)
     line_items.each do |item|

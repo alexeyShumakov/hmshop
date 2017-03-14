@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :order do
-    email "MyString"
+    email "MyString@mail.net"
     address "MyString"
     phone "MyString"
     name "MyString"
