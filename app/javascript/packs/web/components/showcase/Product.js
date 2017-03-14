@@ -63,7 +63,7 @@ export default class CartProduct extends React.Component {
             </Link>
           </div>
           <div className="cart__info">
-            {product.get('title')}
+            <div className='cart__title'> {product.get('title')} </div>
             <p className="cart__price">
               <b>{product.get('price')}</b>
               <i className='fa fa-rub'></i>
