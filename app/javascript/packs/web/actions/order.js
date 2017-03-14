@@ -2,6 +2,7 @@ import axios from '../../utils/axios';
 import Immutable from 'immutable';
 
 import actionTypes from '../constants';
+import * as cartActions from './cart';
 
 export function setOrderLoading(isLoading) {
   return {
@@ -18,6 +19,13 @@ export function setOrder(order) {
   }
 }
 
+export function showOrderNotification(show) {
+  return {
+    type: actionTypes.SHOW_ORDER_NOTIFICATION,
+    show
+  }
+}
+
 export function setOrderErrors(errors) {
   return {
     type: actionTypes.SET_ORDER_ERRORS,
@@ -30,10 +38,13 @@ export function createOrder(order) {
     dispatch(setOrderLoading(true));
     return axios.post('/api/orders', {order}).then(
       response => {
-        console.log(response);
+        dispatch(cartActions.fetchCart());
+        dispatch(setOrderLoading(false));
+        dispatch(showOrderNotification(true));
       }, error => {
         let errors = Immutable.fromJS(error.response.data);
         dispatch(setOrderErrors(errors));
+        dispatch(setOrderLoading(false));
       }
     )
   }

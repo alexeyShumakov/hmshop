@@ -36,7 +36,10 @@ export default (props) => {
       </div>
 
       { lineItems.isEmpty() ?
-          <EmptyBasket/> :
+          <EmptyBasket
+            isShow={store.getIn(['order','showNotification'])}
+            show={actions.showOrderNotification}
+          /> :
           <FullBasket
             actions={actions}
             cart={cart}

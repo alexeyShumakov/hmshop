@@ -3,6 +3,7 @@ import React from 'react';
 export default (props) => {
   let {order, setOrder, createOrder} = props;
   let errors = order.get('errors');
+  let isLoading = order.get('isLoading')
   order = order.get('order');
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +46,7 @@ export default (props) => {
             value={order.get('address')}
             onChange={(e)=> {handleChange(e.target.value, 'address')}}
           />
-          <input className="button-primary" type="submit" value="Оформить заказа"/>
+          <input className="button-primary" type="submit" value="Оформить заказа" disabled={isLoading ? 'true' : ''} />
         </fieldset>
       </form>
     </div>

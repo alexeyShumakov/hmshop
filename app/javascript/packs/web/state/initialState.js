@@ -3,6 +3,7 @@ export default Immutable.fromJS({
   order: {
     errors: {},
     isLoading: false,
+    showNotification: false,
     order: {
       phone: '',
       email: '',

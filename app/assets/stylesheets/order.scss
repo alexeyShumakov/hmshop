@@ -4,3 +4,12 @@
   padding: 20px;
   margin: 20px 0;
 }
+.order__notification {
+  @include box-shadow();
+  @include border-radius(2px);
+  padding: 20px;
+  text-align: center;
+  font-size: 150%;
+  cursor: pointer;
+  margin: 50px 0;
+}
