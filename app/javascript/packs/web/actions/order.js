@@ -26,6 +26,16 @@ export function showOrderNotification(show) {
   }
 }
 
+export function resetOrder() {
+  let order = Immutable.fromJS({
+    name: '',
+    email: '',
+    address: '',
+    phone: ''
+  })
+  return setOrder(order);
+}
+
 export function setOrderErrors(errors) {
   return {
     type: actionTypes.SET_ORDER_ERRORS,
@@ -40,6 +50,8 @@ export function createOrder(order) {
       response => {
         dispatch(cartActions.fetchCart());
         dispatch(setOrderLoading(false));
+        dispatch(resetOrder());
+        dispatch(setOrderErrors(Immutable.Map({})));
         dispatch(showOrderNotification(true));
       }, error => {
         let errors = Immutable.fromJS(error.response.data);
