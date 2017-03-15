@@ -25,6 +25,8 @@ gem 'faker', '~> 1.6.6'
 gem "paperclip", "~> 5.0.0"
 gem 'pg_search', '~> 2.0'
 
+gem 'devise'
+
 group :development, :test do
   gem "awesome_print"
   gem "pry-byebug"

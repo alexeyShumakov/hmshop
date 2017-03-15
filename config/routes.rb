@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  get 'cart', to: 'cart#index'
+  devise_for :admins
 
+  get 'cart', to: 'cart#index'
   get 'info/about'
   get 'info/how_to_order'
   get 'info/delivery'
   get 'info/contacts'
   get 'info/terms'
+
+  namespace :administrate do
+    root to: 'products#index'
+    resources :products
+  end
 
   namespace :api do
     resources :orders

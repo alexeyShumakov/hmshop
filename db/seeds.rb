@@ -1,3 +1,4 @@
+Admin.create(email: 'admin@shop.com', password: 'password')
 6.times do
   Post.create({
     title: Faker::Commerce.product_name,

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= content_for(:page_title)? yield(:page_title) : 'Административная панель' %>
+    </title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'administrate', media: 'all' %>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  </head>
+
+  <body>
+  <%= yield :local_variables %>
+    <div class="container">
+      <div id="root"></div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

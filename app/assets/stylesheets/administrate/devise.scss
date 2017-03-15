@@ -1,0 +1,10 @@
+.devise__wrapper {
+  @include box-shadow();
+  @include border-radius(2px);
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.devise__title {
+  text-align: center;
+}

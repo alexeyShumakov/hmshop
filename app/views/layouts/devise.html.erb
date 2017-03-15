@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= content_for(:page_title)? yield(:page_title) : 'Вход' %>
+    </title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'administrate', media: 'all' %>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  </head>
+
+  <body>
+  <%= yield :local_variables %>
+    <div class="container">
+      <div class="row">
+        <div class="column column-50 column-offset-25">
+          <% flash.each do |key, value| %>
+            <div class="alert">
+              <ul class='u-no-list-style'>
+                <li>
+                  <%= value %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+          <div class="devise__wrapper">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

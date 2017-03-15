@@ -1,0 +1,9 @@
+.alert {
+  @include box-shadow();
+  @include border-radius(2px);
+  margin: 10px 0;
+  padding: 10px;
+  ul {
+    margin-bottom: 0;
+  }
+}
