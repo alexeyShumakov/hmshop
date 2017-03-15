@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :administrate do
     root to: 'products#index'
     resources :products
+    resources :banners
   end
 
   namespace :api do

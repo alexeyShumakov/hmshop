@@ -1,0 +1,4 @@
+const SET_BANNER = 'SET_BANNER';
+const SET_BANNERS = 'SET_BANNERS';
+
+export default {SET_BANNER, SET_BANNERS}

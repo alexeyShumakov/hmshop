@@ -1,0 +1,15 @@
+.nav {
+  font-size: 120%;
+  border-bottom: 1px solid $light-gray;
+  padding-right: 20px;
+}
+.nav__item {
+  cursor:pointer;
+  padding: 10px;
+  &:hover {
+    background-color: $light-gray;
+  }
+}
+.nav__exit {
+
+}

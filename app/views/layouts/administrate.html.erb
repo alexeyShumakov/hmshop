@@ -10,12 +10,13 @@
   </head>
 
   <body>
-  <script type="text/javascript" charset="utf-8">
-    var $sharedVariables = {products: {hello: 'hello world!'}}
-  </script>
-  <%= yield :local_variables %>
-    <div class="container">
-      <div id="root"></div>
+    <script type="text/javascript" charset="utf-8">
+      var $sharedVariables = {products: {hello: 'hello world!'}}
+    </script>
+
+    <%= yield :local_variables %>
+
+    <div id="root" class="container administrate__container">
       <%= yield %>
     </div>
   </body>

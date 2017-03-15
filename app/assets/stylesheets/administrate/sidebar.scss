@@ -1,0 +1,22 @@
+.sidebar {
+  width: 250px;
+  background-color: #363636;
+  flex: 1 1 auto;
+  margin-left: 0;
+  max-width: 100%;
+  padding-left: 12px;
+
+  .sidebar__title {
+    padding: 10px 0;
+    font-size: 120%;
+    text-align: center;
+  }
+  a {
+    padding: 13px 15px 12px;
+    margin-bottom: 6px;
+    color: #cacaca;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
