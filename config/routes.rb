@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     root to: 'products#index'
     resources :products
     resources :banners
+
+    namespace :api do
+      resources :banners
+    end
   end
 
   namespace :api do

@@ -1,0 +1,12 @@
+.control-buttons {
+  padding: 10px;
+}
+.control-icon {
+  color: $text-color;
+  cursor: pointer;
+  opacity: .7;
+  margin: 0 5px;
+  &:hover {
+    opacity: 1;
+  }
+}

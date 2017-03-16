@@ -9,13 +9,25 @@ import * as appActions from './administrate/actions';
 import App from './administrate/containers/App'
 import BannerIndex from './administrate/containers/banners/index';
 import BannerShow from './administrate/containers/banners/show';
+import BannerNew from './administrate/containers/banners/new';
+import BannerEdit from './administrate/containers/banners/edit';
 
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/administrate' component={App} >
-        <Route path='/administrate/banners' component={BannerIndex}/>
-        <Route path='/administrate/banners/:id' component={BannerShow}/>
+        <Route path='/administrate/banners'
+          onEnter={()=> {store.dispatch(appActions.fetchBanners())}}
+          component={BannerIndex}/>
+        <Route path='/administrate/banners/new'
+          component={BannerNew}
+        />
+        <Route path='/administrate/banners/:id'
+          onEnter={(router)=> {store.dispatch(appActions.fetchBanner(router.params.id))}}
+          component={BannerShow}/>
+        <Route path='/administrate/banners/:id/edit'
+          onEnter={(router)=> {store.dispatch(appActions.fetchBanner(router.params.id))}}
+          component={BannerEdit}/>
       </Route>
     </Router>
   </Provider>,

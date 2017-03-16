@@ -3,7 +3,7 @@ import Banner from './banner';
 import {Link} from 'react-router';
 
 export default (props) => {
-  const { banner } = props;
+  const { banner, destroy } = props;
   return(
     <tr>
       <td>
@@ -14,8 +14,10 @@ export default (props) => {
       <td>{banner.get('url')}</td>
       <td><img src={banner.get('img')} alt="" className='u-table-img'/></td>
       <td>
-        <i className="fa fa-pencil fa-lg"></i>
-        <i className="fa fa-remove fa-lg"></i>
+        <Link to={`/administrate/banners/${banner.get('id')}/edit`}>
+          <i className="control-icon fa fa-pencil fa-lg"></i>
+        </Link>
+        <i onClick={destroy} className="control-icon fa fa-remove fa-lg"></i>
       </td>
     </tr>
   )

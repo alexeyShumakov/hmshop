@@ -5,12 +5,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as appActions from '../../actions';
 
-import EditBanner from '../../components/banners/edit/edit';
+import NewBanner from '../../components/banners/new/new';
 
 const component = (props) => {
   return(
-    <DocumentTitle title='Редактировать Баннер - Административная панель'>
-      <EditBanner {...props}/>
+    <DocumentTitle title='Создать Баннер - Административная панель'>
+      <NewBanner {...props}/>
     </DocumentTitle>
   )
 }

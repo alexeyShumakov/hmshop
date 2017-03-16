@@ -18,6 +18,7 @@ Bundler.require(*Rails.groups)
 
 module Empty
   class Application < Rails::Application
+    config.i18n.fallbacks =[:ru, :en]
     config.i18n.default_locale = :ru
   end
 end
