@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
 
   def index
     posts = Post.all.order('created_at DESC').limit(3)
+    banners = Banner.all.order('created_at DESC')
     collections = Collection
       .includes(products: :pictures)
       .all
@@ -16,7 +17,7 @@ class CategoriesController < ApplicationController
       home: {
         posts: ActiveModelSerializers::SerializableResource.new(posts).as_json[:posts],
         collections: ActiveModelSerializers::SerializableResource.new(collections).as_json[:collections],
-        banners: ActiveModelSerializers::SerializableResource.new(Banner.all, { include: '', adapter: :attributes }).as_json,
+        banners: ActiveModelSerializers::SerializableResource.new(banners, { include: '', adapter: :attributes }).as_json,
         newest: NewestProducts.call.products_hash[:products],
       }
     }.to_json
