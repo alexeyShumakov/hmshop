@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import store from '../store/store';
 import actionTypes from '../constants';
+import {showNotification} from './notifications';
 
 function isFromServer() {
   return store.getState().getIn(['banners','fromServer']);
@@ -64,6 +65,7 @@ export function updateBanner(banner) {
     dispatch(setBannersLoading(true));
     return axios.put(`/administrate/api/banners/${id}`, formData).then((response)=>{
       dispatch(setBannersLoading(false));
+      dispatch(showNotification('Баннер успешно обновлен.'));
       browserHistory.push(`/administrate/banners/${id}`);
     }, error => {
       const errors = Immutable.fromJS(error.response.data)
@@ -82,6 +84,7 @@ export function createBanner(banner) {
     dispatch(setBannersLoading(true));
     return axios.post(`/administrate/api/banners`, formData).then((response)=>{
       browserHistory.push('/administrate/banners');
+      dispatch(showNotification('Баннер успешно создан.'));
       dispatch(setBannersLoading(false));
     }, error => {
       const errors = Immutable.fromJS(error.response.data)
@@ -95,6 +98,7 @@ export function destroyBanner(id) {
     dispatch(setBannersLoading(true));
     return axios.delete(`/administrate/api/banners/${id}`).then((response)=>{
       browserHistory.push('/administrate/banners');
+      dispatch(showNotification('Баннер успешно удален.'));
       dispatch(setBannersLoading(false));
     })
   }

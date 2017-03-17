@@ -5,7 +5,9 @@ import initialState from '../state/initialState';
 
 import products from './productsReducer';
 import banners from './bannersReucer';
-const reducers = Immutable.Map({ products, banners });
+import notifications from './notificationsReducer';
+
+const reducers = Immutable.Map({ products, banners, notifications });
 
 export default (state = initialState, action) => {
   reducers.forEach((reducer, key) => {

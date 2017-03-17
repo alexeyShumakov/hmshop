@@ -18,7 +18,10 @@ const App = (props) => {
 
               <div className="row">
                 <div className="column u-px0">
-                  <Nav/>
+                  <Nav
+                    notification={store.getIn(['notifications'])}
+                    hideNotification={actions.hideNotification}
+                  />
                 </div>
               </div>
 
