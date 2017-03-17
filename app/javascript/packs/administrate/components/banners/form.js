@@ -18,7 +18,7 @@ export default (props) => {
         {errors.has('image') &&
           <span className='input-error'>{errors.get('image').first()}</span>
         }
-        <label>Изображение</label>
+        <label>Изображение(1080x450)</label>
         <input type="file"
           onChange={(e)=> update(e.target.files[0], 'image')}
         />
