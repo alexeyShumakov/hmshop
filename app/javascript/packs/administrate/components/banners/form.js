@@ -1,14 +1,13 @@
 import React from 'react';
 
 export default (props) => {
-  const { banner, setBanner, createBanner, errors } = props;
+  const { banner, setBanner, action, errors, title } = props;
   const update = (value, field) => {
     const newBanner = banner.set(field, value);
     setBanner(newBanner);
   }
-
   return(
-    <form onSubmit={(e)=> {e.preventDefault(); createBanner(banner)}}>
+    <form onSubmit={action}>
       <fieldset>
         <label>Ссылка</label>
         <input
@@ -27,7 +26,7 @@ export default (props) => {
           <span className='input-error'>{errors.get('image').first()}</span>
         }
         <hr/>
-        <input className="button-primary" type="submit" value="Создать"/>
+        <input className="button-primary" type="submit" value={title}/>
       </fieldset>
     </form>
   )

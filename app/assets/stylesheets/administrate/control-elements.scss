@@ -1,5 +1,8 @@
 .control-buttons {
   padding: 10px;
+  .button {
+    margin-right: 5px;
+  }
 }
 .control-icon {
   color: $text-color;

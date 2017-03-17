@@ -7,10 +7,12 @@ export default (props) => {
   const errors = props.store.getIn(['banners', 'errors']);
   const setBanner = props.actions.setBanner;
   const createBanner = props.actions.createBanner;
+  const action = (e)=> {e.preventDefault(); createBanner(banner)};
+  const title = 'Создать';
   return(
     <div>
       <h3>Создать баннер</h3>
-      <Form {...{banner, setBanner, createBanner, errors}}/>
+      <Form {...{banner, setBanner, action, errors, title}}/>
     </div>
   )
 }

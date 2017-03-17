@@ -1,16 +1,16 @@
 class Administrate::Api::BannersController < Administrate::BannersController
+  before_action :find_banner, only: [:show, :destroy, :update]
+
   def index
     @banners = Banner.all
     render json: @banners
   end
 
   def show
-    @banner = Banner.find params[:id]
     render json: @banner
   end
 
   def destroy
-    @banner = Banner.find params[:id]
     @banner.destroy
     render json: {status: :ok}, status: 204
   end
@@ -22,12 +22,21 @@ class Administrate::Api::BannersController < Administrate::BannersController
     else
       render json: @banner.errors, status: :unprocessable_entity
     end
-  rescue Paperclip::AdapterRegistry::NoHandlerError
-    render json: {image: 'empty'}, status: :unprocessable_entity
+  end
+
+  def update
+    if @banner.update(banner_params)
+      render json: @banner
+    else
+      render json: @banner.errors, status: :unprocessable_entity
+    end
   end
 
   private
 
+  def find_banner
+    @banner = Banner.find params[:id]
+  end
   def banner_params
     params.require(:banner).permit(:url, :image)
   end

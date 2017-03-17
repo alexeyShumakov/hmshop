@@ -10,10 +10,18 @@ function isFromServer() {
   return store.getState().getIn(['banners','fromServer']);
 }
 
+const emptyBanner = Immutable.Map({ url: ''});
+
 export function setBanner(banner) {
   return {
     type: actionTypes.SET_BANNER,
     banner
+  }
+}
+export function resetBannerData() {
+  return dispatch => {
+    dispatch(setBanner(emptyBanner));
+    dispatch(setBannerErrors(Immutable.Map({})));
   }
 }
 
@@ -42,6 +50,25 @@ export function setBanners(banners) {
   return {
     type: actionTypes.SET_BANNERS,
     banners
+  }
+}
+
+export function updateBanner(banner) {
+  const id = banner.get('id');
+  let formData = new FormData();
+  formData.append('banner[url]', banner.get('url'))
+  if(!_.isEqual(banner.get('image'), undefined))
+    formData.append('banner[image]', banner.get('image'))
+
+  return dispatch => {
+    dispatch(setBannersLoading(true));
+    return axios.put(`/administrate/api/banners/${id}`, formData).then((response)=>{
+      dispatch(setBannersLoading(false));
+      browserHistory.push(`/administrate/banners/${id}`);
+    }, error => {
+      const errors = Immutable.fromJS(error.response.data)
+      dispatch(setBannerErrors(errors));
+    })
   }
 }
 

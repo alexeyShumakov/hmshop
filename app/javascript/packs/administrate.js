@@ -20,13 +20,16 @@ render(
           onEnter={()=> {store.dispatch(appActions.fetchBanners())}}
           component={BannerIndex}/>
         <Route path='/administrate/banners/new'
+          onLeave={() =>{store.dispatch(appActions.resetBannerData())}}
           component={BannerNew}
         />
         <Route path='/administrate/banners/:id'
           onEnter={(router)=> {store.dispatch(appActions.fetchBanner(router.params.id))}}
+          onLeave={() =>{store.dispatch(appActions.resetBannerData())}}
           component={BannerShow}/>
         <Route path='/administrate/banners/:id/edit'
           onEnter={(router)=> {store.dispatch(appActions.fetchBanner(router.params.id))}}
+          onLeave={() =>{store.dispatch(appActions.resetBannerData())}}
           component={BannerEdit}/>
       </Route>
     </Router>
