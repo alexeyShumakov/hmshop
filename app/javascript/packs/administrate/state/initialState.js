@@ -5,6 +5,13 @@ export default Immutable.fromJS({
     text: ''
   },
   products: {
+    isLoading: false,
+    fromServer: false,
+    errors: {},
+    products: [],
+    product: {
+      title: ''
+    }
   },
   banners: {
     isLoading: false,

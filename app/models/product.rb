@@ -1,10 +1,11 @@
 class Product < ApplicationRecord
   include PgSearch
+  before_destroy :resolve_line_items
   belongs_to :category
   has_and_belongs_to_many :pictures, -> { order 'created_at' }
   has_and_belongs_to_many :collections, -> { order 'created_at' }
   has_many :line_items
-  has_many :history_items
+  has_many :history_items, dependent: :destroy
 
   pg_search_scope :search_by_title, against: :title,
                   using: { tsearch: { prefix: true } }
@@ -26,5 +27,18 @@ class Product < ApplicationRecord
 
   def ancestors
     category.self_and_ancestors.reverse
+  end
+
+  private
+
+  def resolve_line_items
+    line_items.each do |item|
+      if item.order.blank?
+        item.destroy
+      else
+        item.product = nil
+        item.save
+      end
+    end
   end
 end

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
     namespace :api do
       resources :banners
+      resources :products
     end
   end
 

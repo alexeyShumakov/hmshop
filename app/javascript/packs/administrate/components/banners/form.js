@@ -15,8 +15,8 @@ export default (props) => {
           type="text"
           onChange={(e)=> update(e.target.value, 'url')}
           value={banner.get('url')}/>
-        {errors.has('image') &&
-          <span className='input-error'>{errors.get('image').first()}</span>
+        {errors.has('url') &&
+          <span className='input-error'>{errors.get('url').first()}</span>
         }
         <label>Изображение(1080x450)</label>
         <input type="file"

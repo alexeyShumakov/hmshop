@@ -14,9 +14,9 @@ export default (props) => {
 
       <ul className='u-no-list-style'>
         <li>
-          <a href="/administrate/products">
+          <Link to="/administrate/products">
             <i className="fa fa-circle-o"></i> Продукты
-          </a>
+          </Link>
         </li>
         <li>
           <a href="/administrate/categories">

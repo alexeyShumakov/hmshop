@@ -1,5 +1,4 @@
 import React from 'react';
-import Banner from './banner';
 import {Link} from 'react-router';
 
 export default (props) => {

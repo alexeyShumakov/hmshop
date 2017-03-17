@@ -8,7 +8,11 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   class CollectionSerializer < ActiveModel::Serializer
-  attributes :id, :title, :thumb_cover, :total_price
+    attributes :id, :title, :thumb_cover, :total_price
+  end
+
+  class CategorySerializer < ActiveModel::Serializer
+    attributes :id, :title
   end
 
   attributes :id, :title, :thumb_cover, :price, :description

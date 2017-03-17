@@ -1,3 +1,4 @@
 import banners from './banners';
+import products from './products';
 import notifications from './notifications';
-export default Object.assign({}, banners, notifications)
+export default Object.assign({}, products, banners, notifications)
