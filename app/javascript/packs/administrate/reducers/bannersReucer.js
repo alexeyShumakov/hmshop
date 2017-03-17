@@ -20,6 +20,8 @@ export default (state = initialState, action) => {
       return state.set('banner', action.banner)
     case actionTypes.SET_BANNERS_LOADING:
       return state.set('isLoading', action.isLoading)
+    case actionTypes.SET_BANNER_ERRORS:
+      return state.set('errors', action.errors)
     default: return state
   }
 }

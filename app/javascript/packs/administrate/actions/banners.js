@@ -17,6 +17,13 @@ export function setBanner(banner) {
   }
 }
 
+export function setBannerErrors(errors) {
+  return {
+    type: actionTypes.SET_BANNER_ERRORS,
+    errors
+  }
+}
+
 export function setBannersLoading(isLoading) {
   return {
     type: actionTypes.SET_BANNERS_LOADING,
@@ -49,6 +56,9 @@ export function createBanner(banner) {
     return axios.post(`/administrate/api/banners`, formData).then((response)=>{
       browserHistory.push('/administrate/banners');
       dispatch(setBannersLoading(false));
+    }, error => {
+      const errors = Immutable.fromJS(error.response.data)
+      dispatch(setBannerErrors(errors));
     })
   }
 }
