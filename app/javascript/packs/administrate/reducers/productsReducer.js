@@ -8,7 +8,8 @@ const initialState = Immutable.fromJS({
   product: {
     title: '',
     price: 0,
-    description: ''
+    description: '',
+    pictures: []
   }
 });
 

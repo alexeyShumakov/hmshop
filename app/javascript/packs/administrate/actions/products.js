@@ -11,7 +11,7 @@ function isFromServer() {
   return store.getState().getIn(['products','fromServer']);
 }
 
-const emptyProduct = Immutable.Map({ price: 0, title: '', description: ''});
+const emptyProduct = Immutable.Map({ price: 0, title: '', description: '', pictures: []});
 
 export function setProduct(product) {
   return {
@@ -94,9 +94,9 @@ export function createProduct(product) {
   return dispatch => {
     dispatch(setProductsLoading(true));
     return axios.post(`/administrate/api/products`, formData).then((response)=>{
-      browserHistory.push('/administrate/products');
       dispatch(showNotification('Продукт успешно создан.'));
       dispatch(setProductsLoading(false));
+      browserHistory.push(`/administrate/products`);
     }, error => {
       const errors = Immutable.fromJS(error.response.data)
       dispatch(setProductErrors(errors));
