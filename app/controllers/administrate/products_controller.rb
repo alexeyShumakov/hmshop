@@ -24,7 +24,7 @@ class Administrate::ProductsController < Administrate::BaseController
   end
 
   def new
-    product_params = { title: '', price: 0, description: 0 }
+    product_params = { title: '', price: 0, description: '' }
     @json = {
       products: {
         fromServer: true,

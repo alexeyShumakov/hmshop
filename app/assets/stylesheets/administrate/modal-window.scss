@@ -1,0 +1,38 @@
+.modal-window__content {
+  min-height: 450px;
+}
+.modal-window {
+    outline: none;
+    @include box-shadow();
+    @include border-radius(2px);
+    width: 846px;
+    position: absolute;
+    left: 50%;
+    margin-left: -423px;
+    background: #fff;
+    top: 25%;
+    padding: 0 10px 10px 10px;
+}
+.modal-window__overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+  background-color: rgba(255,255,255,0.7);
+}
+
+.modal-window__titlebar {
+  height: 20px;
+  text-align: right;
+  font-weight: normal;
+
+  i {
+    color: $text-color;
+    cursor: pointer;
+    &:hover {
+      color: $text-color;
+    }
+  }
+}

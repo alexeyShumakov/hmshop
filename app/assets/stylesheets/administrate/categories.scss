@@ -1,0 +1,6 @@
+.select-category__title {
+  cursor: pointer;
+  &:hover {
+    color: $main-color;
+  }
+}

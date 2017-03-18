@@ -1,4 +1,4 @@
-class Administrate::Api::ProductsController < Administrate::ProductsController
+class Administrate::Api::ProductsController < Administrate::BaseController
   before_action :find_product, only: [:show, :destroy, :update]
 
   def index
@@ -38,6 +38,6 @@ class Administrate::Api::ProductsController < Administrate::ProductsController
     @product = Product.includes(:pictures, :category).find params[:id]
   end
   def product_params
-    params.require(:product).permit(:title)
+    params.require(:product).permit(:title, :price, :description, :category_id)
   end
 end

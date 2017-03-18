@@ -1,4 +1,4 @@
-class Administrate::Api::BannersController < Administrate::BannersController
+class Administrate::Api::BannersController < Administrate::BaseController
   before_action :find_banner, only: [:show, :destroy, :update]
 
   def index

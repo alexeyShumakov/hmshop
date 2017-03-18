@@ -5,14 +5,15 @@ import Form from '../form';
 export default (props) => {
   const product = props.store.getIn(['products', 'product']);
   const errors = props.store.getIn(['products', 'errors']);
-  const setProduct = props.actions.setProduct;
-  const createProduct = props.actions.createProduct;
-  const action = (e)=> {e.preventDefault(); createProduct(product)};
+  const isOpenModal = props.store.getIn(['modal', 'isOpen']);
+  const categories = props.store.getIn(['categories', 'categories']);
+  const { openModal, createProduct, setProduct, fetchCategories } = props.actions;
   const title = 'Создать';
+  const action = (e)=> {e.preventDefault(); createProduct(product)};
   return(
     <div>
       <h3>Создать продукт</h3>
-      <Form {...{product, setProduct, action, errors, title}}/>
+      <Form {...{isOpenModal, openModal, product, setProduct, action, errors, title, categories, fetchCategories}}/>
     </div>
   )
 }

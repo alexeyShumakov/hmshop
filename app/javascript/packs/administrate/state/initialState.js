@@ -1,5 +1,8 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  modal: {
+    isOpen: false
+  },
   notifications: {
     isShow: false,
     text: ''
@@ -20,6 +23,15 @@ export default Immutable.fromJS({
     banners: [],
     banner: {
       link: ''
+    }
+  },
+  categories: {
+    isLoading: false,
+    fromServer: false,
+    errors: {},
+    categories: [],
+    category: {
+      title: ''
     }
   }
 });

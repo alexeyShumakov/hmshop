@@ -58,6 +58,9 @@ export function updateProduct(product) {
   const id = product.get('id');
   let formData = new FormData();
   formData.append('product[title]', product.get('title'))
+  formData.append('product[price]', product.get('price'))
+  formData.append('product[description]', product.get('description'))
+  formData.append('product[category_id]', product.getIn(['category','id']));
 
   return dispatch => {
     dispatch(setProductsLoading(true));
@@ -76,6 +79,9 @@ export function createProduct(product) {
   const id = product.get('id');
   let formData = new FormData();
   formData.append('product[title]', product.get('title'))
+  formData.append('product[price]', product.get('price'))
+  formData.append('product[description]', product.get('description'))
+  formData.append('product[category_id]', product.getIn(['category','id']));
 
   return dispatch => {
     dispatch(setProductsLoading(true));

@@ -6,7 +6,9 @@ import Form from '../form';
 export default (props) => {
   const product = props.store.getIn(['products', 'product']);
   const errors = props.store.getIn(['products', 'errors']);
-  const { createProduct, destroyProduct, updateProduct, setProduct } = props.actions;
+  const isOpenModal = props.store.getIn(['modal', 'isOpen']);
+  const categories = props.store.getIn(['categories', 'categories']);
+  const { openModal, createProduct, destroyProduct, updateProduct, setProduct, fetchCategories } = props.actions;
   const title = 'Изменить';
   const destroy = () => {
     destroyProduct(product.get('id')).then(()=> {
@@ -30,7 +32,7 @@ export default (props) => {
       </div>
       <h3>Редактировать продукт #{product.get('id')}</h3>
       <div className="clearfix"></div>
-      <Form {...{product, setProduct, action, errors, title}}/>
+      <Form {...{isOpenModal, openModal, product, setProduct, action, errors, title, categories, fetchCategories}}/>
     </div>
   )
 }
