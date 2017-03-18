@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :banners
       resources :products
       resources :categories
+      resources :pictures
     end
   end
 

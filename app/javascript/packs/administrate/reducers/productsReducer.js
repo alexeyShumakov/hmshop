@@ -6,7 +6,9 @@ const initialState = Immutable.fromJS({
   errors: {},
   products: [],
   product: {
-    title: ''
+    title: '',
+    price: 0,
+    description: ''
   }
 });
 

@@ -17,6 +17,7 @@ class Administrate::Api::ProductsController < Administrate::BaseController
 
   def create
     @product = Product.new(product_params)
+    @product.pictures = Picture.where(id: params[:picture_ids])
     if @product.save
       render json: @product
     else
@@ -25,6 +26,8 @@ class Administrate::Api::ProductsController < Administrate::BaseController
   end
 
   def update
+    pictures = Picture.where(id: params[:picture_ids])
+    @product.pictures = pictures if pictures.present?
     if @product.update(product_params)
       render json: @product
     else

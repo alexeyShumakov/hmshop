@@ -1,5 +1,8 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  pictures: {
+    isLoading: false
+  },
   modal: {
     isOpen: false
   },
@@ -13,7 +16,9 @@ export default Immutable.fromJS({
     errors: {},
     products: [],
     product: {
-      title: ''
+      title: '',
+      price: 0,
+      description: ''
     }
   },
   banners: {
