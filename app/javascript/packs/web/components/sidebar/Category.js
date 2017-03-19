@@ -3,6 +3,7 @@ import ReactDOM, { findDOMNode } from 'react-dom';
 import { Link } from 'react-router';
 import Tether from 'tether';
 import _ from 'lodash';
+import Immutable from 'immutable';
 
 export default class Category extends React.Component {
 
@@ -49,7 +50,8 @@ export default class Category extends React.Component {
     let { display } = this.state;
     let style = { display: display };
     let selected = category.get('id') === rootCategoryId;
-    let children = category.get('children').map(child => {
+    let children = category.get('children') || Immutable.List([]);
+    children = children.map(child => {
       let id = child.get('id');
       return(
         <li key={child.get('id')}>
