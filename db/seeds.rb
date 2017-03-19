@@ -27,21 +27,12 @@ Category.all.each do |c|
       title: Faker::Commerce.product_name,
       category: c,
       description: Faker::Hipster.paragraph,
-      price: Faker::Commerce.price
+      price: Faker::Commerce.price,
+      pictures: pictures
     }
     product = Product.create(product_params)
-    product.pictures = pictures
   end
 end
-
-product = Product.first
-pictures = []
-3.times do
-  ['product.jpg', 'product_1.jpg'].each do |img|
-    pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', img)))
-  end
-end
-product.pictures = pictures
 
 6.times do
   c = Collection.create({
