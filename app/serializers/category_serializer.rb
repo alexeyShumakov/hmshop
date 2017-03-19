@@ -5,6 +5,8 @@ class CategorySerializer < ActiveModel::Serializer
 
   attributes :id, :title, :root_category_id
 
+  has_one :parent, serializer: AncestorSerializer
+
   has_many :ancestors, serializer: AncestorSerializer do
     object.ancestors.reverse
   end

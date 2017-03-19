@@ -17,6 +17,11 @@ import ProductShow from './administrate/containers/products/show';
 import ProductEdit from './administrate/containers/products/edit';
 import ProductNew from './administrate/containers/products/new';
 
+import CategoryIndex  from './administrate/containers/categories/index';
+import CategoryShow from './administrate/containers/categories/show';
+import CategoryEdit from './administrate/containers/categories/edit';
+import CategoryNew from './administrate/containers/categories/new';
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -40,7 +45,7 @@ render(
           onEnter={()=> {store.dispatch(appActions.fetchProducts())}}
           path='/administrate/products' component={ProductIndex}/>
         <Route path='/administrate/products/new'
-          onLeave={() =>{store.dispatch(appActions.resetBannerData())}}
+          onLeave={() =>{store.dispatch(appActions.resetProductsData())}}
           component={ProductNew}/>
         <Route path='/administrate/products/:id'
           onEnter={(router)=> {store.dispatch(appActions.fetchProduct(router.params.id))}}
@@ -50,6 +55,21 @@ render(
           onEnter={(router)=> {store.dispatch(appActions.fetchProduct(router.params.id))}}
           onLeave={() =>{store.dispatch(appActions.resetProductsData())}}
           component={ProductEdit}/>
+
+        <Route path='/administrate/categories/new'
+          onLeave={() =>{store.dispatch(appActions.resetCategoriesData())}}
+          component={CategoryNew}/>
+        <Route
+          onEnter={()=> {store.dispatch(appActions.fetchCategories())}}
+          path='/administrate/categories' component={CategoryIndex}/>
+        <Route path='/administrate/categories/:id'
+          onEnter={(router)=> {store.dispatch(appActions.fetchCategory(router.params.id))}}
+          onLeave={() =>{store.dispatch(appActions.resetCategoriesData())}}
+          component={CategoryShow}/>
+        <Route path='/administrate/categories/:id/edit'
+          onEnter={(router)=> {store.dispatch(appActions.fetchCategory(router.params.id))}}
+          onLeave={() =>{store.dispatch(appActions.resetCategoriesData())}}
+          component={CategoryEdit}/>
       </Route>
     </Router>
   </Provider>,

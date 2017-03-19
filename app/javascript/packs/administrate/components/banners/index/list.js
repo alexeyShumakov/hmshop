@@ -13,7 +13,7 @@ export default (props) => {
           Новый Баннер
         </Link>
       </div>
-      <h2>Баннеры</h2>
+      <h3>Баннеры</h3>
       <div className="clearfix"></div>
       <table>
         <thead>

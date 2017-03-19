@@ -6,7 +6,8 @@ const initialState = Immutable.fromJS({
   errors: {},
   categories: [],
   category: {
-    title: ''
+    title: '',
+    parent: null
   }
 });
 

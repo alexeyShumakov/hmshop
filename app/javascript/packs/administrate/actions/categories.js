@@ -5,12 +5,13 @@ import _ from 'lodash';
 
 import store from '../store/store';
 import actionTypes from '../constants';
+import {showNotification} from './notifications';
 
 function isFromServer() {
   return store.getState().getIn(['categories','fromServer']);
 }
 
-const emptyCategory = Immutable.Map({ url: ''});
+const emptyCategory = Immutable.fromJS({ title: '', parent: null});
 
 export function setCategory(category) {
   return {
@@ -18,7 +19,7 @@ export function setCategory(category) {
     category
   }
 }
-export function resetCategoryData() {
+export function resetCategoriesData() {
   return dispatch => {
     dispatch(setCategory(emptyCategory));
     dispatch(setCategoryErrors(Immutable.Map({})));
@@ -57,6 +58,7 @@ export function updateCategory(category) {
   const id = category.get('id');
   let formData = new FormData();
   formData.append('category[title]', category.get('title'))
+  formData.append('category[parent_id]', category.getIn(['parent', 'id']))
 
   return dispatch => {
     dispatch(setCategoriesLoading(true));
@@ -74,6 +76,7 @@ export function updateCategory(category) {
 export function createCategory(category) {
   let formData = new FormData();
   formData.append('category[title]', category.get('title'))
+  formData.append('category[parent_id]', category.getIn(['parent', 'id']))
 
   return dispatch => {
     dispatch(setCategoriesLoading(true));

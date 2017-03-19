@@ -28,6 +28,9 @@ export default (props) => {
           <i
             onClick={open}
             className="fa fa-pencil control-icon"></i>
+          <i
+            onClick={()=> action(null)}
+            className="fa fa-remove control-icon"></i>
           </div>
       }
     </div>
