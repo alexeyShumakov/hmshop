@@ -29,9 +29,9 @@ export default (props) => {
           </a>
         </li>
         <li>
-          <a href="/administrate/collections">
+          <Link to="/administrate/collections">
             <i className="fa fa-circle-o"></i> Наборы
-          </a>
+          </Link>
         </li>
         <li>
           <Link to="/administrate/banners">

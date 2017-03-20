@@ -23,10 +23,16 @@ import CategoryShow from './administrate/containers/categories/show';
 import CategoryEdit from './administrate/containers/categories/edit';
 import CategoryNew from './administrate/containers/categories/new';
 
+import CollectionIndex from './administrate/containers/collections/index';
+import CollectionShow from './administrate/containers/collections/show';
+import CollectionEdit from './administrate/containers/collections/edit';
+import CollectionNew from './administrate/containers/collections/new';
+
 const actions = bindActionCreators(appActions, store.dispatch);
 const fetchBanner  =  (router) => {actions.fetchBanner(router.params.id)};
 const fetchProduct =  (router) => {actions.fetchProduct(router.params.id)};
 const fetchCategory = (router) => {actions.fetchCategory(router.params.id)};
+const fetchCollection= (router) => {actions.fetchCollection(router.params.id)};
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -45,6 +51,11 @@ render(
         <Route path='/administrate/categories' component={CategoryIndex} onEnter={actions.fetchCategories}/>
         <Route path='/administrate/categories/:id' component={CategoryShow} onEnter={fetchCategory} onLeave={actions.resetCategoriesData}/>
         <Route path='/administrate/categories/:id/edit' component={CategoryEdit} onEnter={fetchCategory} onLeave={actions.resetCategoriesData}/>
+
+        <Route path='/administrate/collections/new' component={CollectionNew} onLeave={actions.resetCollectionsData}/>
+        <Route path='/administrate/collections' component={CollectionIndex} onEnter={actions.fetchCollections}/>
+        <Route path='/administrate/collections/:id' component={CollectionShow} onEnter={fetchCollection} onLeave={actions.resetCollectionsData}/>
+        <Route path='/administrate/collections/:id/edit' component={CollectionEdit} onEnter={fetchCollection} onLeave={actions.resetCollectionsData}/>
       </Route>
     </Router>
   </Provider>,

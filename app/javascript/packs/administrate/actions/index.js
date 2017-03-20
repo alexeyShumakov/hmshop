@@ -4,3 +4,4 @@ export * from './products';
 export * from './modal';
 export * from './categories';
 export * from './pictures';
+export * from './collections';

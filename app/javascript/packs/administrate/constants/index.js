@@ -4,4 +4,5 @@ import notifications from './notifications';
 import modal from './modal'
 import categories from './categories';
 import pictures from './pictures';
-export default Object.assign({}, pictures, categories, modal, products, banners, notifications)
+import collections from './collections';
+export default Object.assign({}, collections, pictures, categories, modal, products, banners, notifications)

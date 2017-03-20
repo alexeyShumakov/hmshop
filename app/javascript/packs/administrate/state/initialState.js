@@ -31,6 +31,17 @@ export default Immutable.fromJS({
       link: ''
     }
   },
+  collections: {
+    isLoading: false,
+    fromServer: false,
+    errors: {},
+    collections: [],
+    collection: {
+      title: '',
+      description: '',
+      products: []
+    }
+  },
   categories: {
     isLoading: false,
     fromServer: false,

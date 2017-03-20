@@ -8,6 +8,7 @@ class Collection < ApplicationRecord
   }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
 
+  validates :title, :description, :cover, :products, presence: true
   def total_price
     products.to_a.sum(&:price)
   end

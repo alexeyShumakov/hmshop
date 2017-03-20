@@ -13,12 +13,14 @@ Rails.application.routes.draw do
     resources :products
     resources :banners
     resources :categories
+    resources :collections
 
     namespace :api do
       resources :banners
       resources :products
       resources :categories
       resources :pictures
+      resources :collections
     end
   end
 
