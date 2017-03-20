@@ -14,12 +14,14 @@ Rails.application.routes.draw do
     resources :banners
     resources :categories
     resources :collections
+    resources :orders
 
     namespace :api do
       resources :banners
       resources :categories
       resources :pictures
       resources :collections
+      resources :orders
       resources :products do
         get 'search', on: :collection
       end

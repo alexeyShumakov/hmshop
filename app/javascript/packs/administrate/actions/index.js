@@ -6,3 +6,4 @@ export * from './categories';
 export * from './pictures';
 export * from './collections';
 export * from './searchProducts';
+export * from './orders';

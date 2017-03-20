@@ -1,5 +1,19 @@
 import Immutable from 'immutable';
 export default Immutable.fromJS({
+  orders: {
+    isLoading: false,
+    fromServer: false,
+    errors: {},
+    orders: [],
+    order: {
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      total_price: 0,
+      line_items: []
+    }
+  },
   pictures: {
     isLoading: false
   },

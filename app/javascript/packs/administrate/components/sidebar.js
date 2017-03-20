@@ -24,9 +24,9 @@ export default (props) => {
           </Link>
         </li>
         <li>
-          <a href="/administrate/orders">
+          <Link to="/administrate/orders">
             <i className="fa fa-circle-o"></i> Заказы
-          </a>
+          </Link>
         </li>
         <li>
           <Link to="/administrate/collections">
