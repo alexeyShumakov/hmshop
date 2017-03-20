@@ -29,7 +29,7 @@ export default (props) => {
         <input type="file"
           onChange={(e)=> update(e.target.files[0], 'cover')}
         />
-        {errors.has('image') &&
+        {errors.has('cover') &&
           <span className='input-error'>{errors.get('cover').first()}</span>
         }
         <hr/>

@@ -11,7 +11,7 @@ function isFromServer() {
   return store.getState().getIn(['collections','fromServer']);
 }
 
-const emptyCollection = Immutable.Map({ title: '', description: '', products: {}});
+const emptyCollection = Immutable.Map({ title: '', description: '', products: []});
 
 export function setCollection(collection) {
   return {
@@ -19,7 +19,7 @@ export function setCollection(collection) {
     collection
   }
 }
-export function resetCollectionData() {
+export function resetCollectionsData() {
   return dispatch => {
     dispatch(setCollection(emptyCollection));
     dispatch(setCollectionErrors(Immutable.Map({})));

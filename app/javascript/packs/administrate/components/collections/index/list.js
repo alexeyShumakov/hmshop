@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import Collection from './collection';
 export default (props) => {
   const collections = props.store.getIn(['collections', 'collections'])
-  const {destroycollection, fetchcollections} = props.actions;
+  const {destroyCollection, fetchCollections} = props.actions;
   return(
     <div>
       <div className='control-buttons float-right'>
@@ -27,7 +27,7 @@ export default (props) => {
         <tbody>
           { !collections.isEmpty() && collections.map((collection)=>{
             const key = collection.get('id');
-            let destroy = () => destroycollection(key).then(() => fetchcollections());
+            let destroy = () => destroyCollection(key).then(() => fetchCollections());
             return <Collection {...{key, collection, destroy}} />
             })
           }
