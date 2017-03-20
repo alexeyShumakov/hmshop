@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { bindActionCreators } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
@@ -22,54 +23,28 @@ import CategoryShow from './administrate/containers/categories/show';
 import CategoryEdit from './administrate/containers/categories/edit';
 import CategoryNew from './administrate/containers/categories/new';
 
+const actions = bindActionCreators(appActions, store.dispatch);
+const fetchBanner  =  (router) => {actions.fetchBanner(router.params.id)};
+const fetchProduct =  (router) => {actions.fetchProduct(router.params.id)};
+const fetchCategory = (router) => {actions.fetchCategory(router.params.id)};
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/administrate' component={App} >
-        <Route path='/administrate/banners'
-          onEnter={()=> {store.dispatch(appActions.fetchBanners())}}
-          component={BannerIndex}/>
-        <Route path='/administrate/banners/new'
-          onLeave={() =>{store.dispatch(appActions.resetBannerData())}}
-          component={BannerNew}/>
-        <Route path='/administrate/banners/:id'
-          onEnter={(router)=> {store.dispatch(appActions.fetchBanner(router.params.id))}}
-          onLeave={() =>{store.dispatch(appActions.resetBannerData())}}
-          component={BannerShow}/>
-        <Route path='/administrate/banners/:id/edit'
-          onEnter={(router)=> {store.dispatch(appActions.fetchBanner(router.params.id))}}
-          onLeave={() =>{store.dispatch(appActions.resetBannerData())}}
-          component={BannerEdit}/>
+        <Route path='/administrate/banners' component={BannerIndex} onEnter={actions.fetchBanners}/>
+        <Route path='/administrate/banners/new' component={BannerNew} onLeave={actions.resetBannerData}/>
+        <Route path='/administrate/banners/:id' component={BannerShow} onEnter={fetchBanner} onLeave={actions.resetBannerData}/>
+        <Route path='/administrate/banners/:id/edit' component={BannerEdit} onEnter={fetchBanner} onLeave={actions.resetBannerData}/>
 
-        <Route
-          onEnter={()=> {store.dispatch(appActions.fetchProducts())}}
-          path='/administrate/products' component={ProductIndex}/>
-        <Route path='/administrate/products/new'
-          onLeave={() =>{store.dispatch(appActions.resetProductsData())}}
-          component={ProductNew}/>
-        <Route path='/administrate/products/:id'
-          onEnter={(router)=> {store.dispatch(appActions.fetchProduct(router.params.id))}}
-          onLeave={() =>{store.dispatch(appActions.resetProductsData())}}
-          component={ProductShow}/>
-        <Route path='/administrate/products/:id/edit'
-          onEnter={(router)=> {store.dispatch(appActions.fetchProduct(router.params.id))}}
-          onLeave={() =>{store.dispatch(appActions.resetProductsData())}}
-          component={ProductEdit}/>
+        <Route path='/administrate/products' component={ProductIndex} onEnter={actions.fetchProducts}/>
+        <Route path='/administrate/products/new' component={ProductNew} onLeave={actions.resetProductsData}/>
+        <Route path='/administrate/products/:id' component={ProductShow} onEnter={fetchProduct} onLeave={actions.resetProductsData}/>
+        <Route path='/administrate/products/:id/edit' component={ProductEdit} onEnter={fetchProduct} onLeave={actions.resetProductsData}/>
 
-        <Route path='/administrate/categories/new'
-          onLeave={() =>{store.dispatch(appActions.resetCategoriesData())}}
-          component={CategoryNew}/>
-        <Route
-          onEnter={()=> {store.dispatch(appActions.fetchCategories())}}
-          path='/administrate/categories' component={CategoryIndex}/>
-        <Route path='/administrate/categories/:id'
-          onEnter={(router)=> {store.dispatch(appActions.fetchCategory(router.params.id))}}
-          onLeave={() =>{store.dispatch(appActions.resetCategoriesData())}}
-          component={CategoryShow}/>
-        <Route path='/administrate/categories/:id/edit'
-          onEnter={(router)=> {store.dispatch(appActions.fetchCategory(router.params.id))}}
-          onLeave={() =>{store.dispatch(appActions.resetCategoriesData())}}
-          component={CategoryEdit}/>
+        <Route path='/administrate/categories/new' component={CategoryNew} onLeave={actions.resetCategoriesData}/>
+        <Route path='/administrate/categories' component={CategoryIndex} onEnter={actions.fetchCategories}/>
+        <Route path='/administrate/categories/:id' component={CategoryShow} onEnter={fetchCategory} onLeave={actions.resetCategoriesData}/>
+        <Route path='/administrate/categories/:id/edit' component={CategoryEdit} onEnter={fetchCategory} onLeave={actions.resetCategoriesData}/>
       </Route>
     </Router>
   </Provider>,
