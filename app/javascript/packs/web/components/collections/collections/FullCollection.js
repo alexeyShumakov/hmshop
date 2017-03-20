@@ -9,12 +9,13 @@ export default (props) => {
   let id = collection.get('id');
   let products = collection.get('products');
   let productIds = products.map((p) => {return p.get('id')});
+
   return(
     <div className="collection_full">
       <div className='row'>
         <div className='column column-66'>
           <div className='collection__img-wrapper'>
-            <img src={collection.get('cover')} alt=""/>
+            <img src={collection.get('cover_medium')} alt=""/>
           </div>
         </div>
         <div className='column column-33'>

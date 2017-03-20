@@ -45,11 +45,7 @@ export default Immutable.fromJS({
     currentPosition: 0,
     cart: {
       total_count: 0,
-      line_items: [
-        {
-          product: {}
-        }
-      ]
+      line_items: []
     }
   },
   category: {

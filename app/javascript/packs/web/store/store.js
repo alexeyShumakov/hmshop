@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === `development`) {
 
 let shared = (typeof $sharedVariables === 'undefined') ? {} : $sharedVariables;
 let local = (typeof $localVariables === 'undefined') ? {} : $localVariables;
-let state = initialState.merge(fromJS(shared)).merge(fromJS(local));
+let state = initialState.mergeDeep(fromJS(shared)).mergeDeep(fromJS(local));
 
 const store = createStore(appReducer, state, applyMiddleware(...middlewares) )
 

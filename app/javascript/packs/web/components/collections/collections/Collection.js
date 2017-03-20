@@ -18,7 +18,7 @@ export default (props) => {
             to={`/collections/${id}`}
             onClick={()=> {fetchCollection(id)}}
           >
-            <img src={collection.get('cover')} alt=""/>
+            <img src={collection.get('cover_medium')} alt=""/>
           </Link>
         </div>
         <div className='column column-33'>
