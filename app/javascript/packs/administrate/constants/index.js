@@ -5,4 +5,5 @@ import modal from './modal'
 import categories from './categories';
 import pictures from './pictures';
 import collections from './collections';
-export default Object.assign({}, collections, pictures, categories, modal, products, banners, notifications)
+import searchProducts from './searchProduct';
+export default Object.assign({}, searchProducts, collections, pictures, categories, modal, products, banners, notifications)

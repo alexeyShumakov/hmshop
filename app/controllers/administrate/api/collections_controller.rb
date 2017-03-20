@@ -39,6 +39,9 @@ class Administrate::Api::CollectionsController < Administrate::BaseController
   end
 
   def collection_params
-    params.require(:collection).permit(:title, :description, :cover)
+    products = Product.where id: params[:product_ids]
+    params.require(:collection)
+      .permit(:title, :description, :cover)
+      .merge({products: products})
   end
 end

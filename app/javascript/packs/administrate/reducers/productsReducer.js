@@ -4,6 +4,10 @@ const initialState = Immutable.fromJS({
   isLoading: false,
   fromServer: false,
   errors: {},
+  search: {
+    keyword: '',
+    products: []
+  },
   products: [],
   product: {
     title: '',
@@ -15,6 +19,10 @@ const initialState = Immutable.fromJS({
 
 export default (state = initialState, action) => {
   switch(action.type) {
+    case actionTypes.SET_SEARCH_KEYWORD:
+      return state.setIn(['search', 'keyword'], action.keyword)
+    case actionTypes.SET_SEARCH_PRODUCTS:
+      return state.setIn(['search', 'products'], action.products)
     case actionTypes.SET_PRODUCTS_FROM_SERVER:
       return state.set('fromServer', action.fromServer)
     case actionTypes.SET_PRODUCTS:

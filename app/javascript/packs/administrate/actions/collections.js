@@ -56,11 +56,15 @@ export function setCollections(collections) {
 
 export function updateCollection(collection) {
   const id = collection.get('id');
+  const products = collection.get('products');
   let formData = new FormData();
   formData.append('collection[title]', collection.get('title'))
   formData.append('collection[description]', collection.get('description'))
   if(!_.isEqual(collection.get('cover'), undefined))
     formData.append('collection[cover]', collection.get('cover'))
+  products && products.forEach((product)=> {
+    formData.append('product_ids[]', product.get('id'))
+  })
 
   return dispatch => {
     dispatch(setCollectionsLoading(true));
@@ -77,11 +81,15 @@ export function updateCollection(collection) {
 
 export function createCollection(collection) {
   const id = collection.get('id');
+  const products = collection.get('products');
   let formData = new FormData();
   formData.append('collection[title]', collection.get('title'))
   formData.append('collection[description]', collection.get('description'))
   if(!_.isEqual(collection.get('cover'), undefined))
     formData.append('collection[cover]', collection.get('cover'))
+  products && products.forEach((product)=> {
+    formData.append('product_ids[]', product.get('id'))
+  })
 
   return dispatch => {
     dispatch(setCollectionsLoading(true));

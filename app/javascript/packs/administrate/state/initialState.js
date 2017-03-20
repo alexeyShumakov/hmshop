@@ -15,6 +15,10 @@ export default Immutable.fromJS({
     fromServer: false,
     errors: {},
     products: [],
+    search: {
+      keyword: '',
+      products: []
+    },
     product: {
       title: '',
       price: 0,

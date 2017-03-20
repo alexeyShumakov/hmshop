@@ -6,7 +6,9 @@ import Form from '../form';
 export default (props) => {
   const collection = props.store.getIn(['collections', 'collection']);
   const errors = props.store.getIn(['collections', 'errors']);
-  const { createCollection, destroyCollection, updateCollection, setCollection } = props.actions;
+  const searchProductsData = props.store.getIn(['products', 'search']);
+  const { createCollection, destroyCollection, updateCollection, setCollection,
+    searchProducts, setSearchKeyword} = props.actions;
   const title = 'Изменить';
   const destroy = () => {
     destroyCollection(collection.get('id')).then(()=> {
@@ -28,9 +30,11 @@ export default (props) => {
           Удалить
         </button>
       </div>
-      <h3>Редактировать баннер #{collection.get('id')}</h3>
+      <h3>Редактировать Набор #{collection.get('id')}</h3>
       <div className="clearfix"></div>
-      <Form {...{collection, setCollection, action, errors, title}}/>
+      <Form {...{collection, setCollection, action, errors, title,
+        setSearchKeyword, searchProductsData, searchProducts
+      }}/>
     </div>
   )
 }

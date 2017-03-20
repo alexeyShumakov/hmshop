@@ -6,6 +6,12 @@ class Administrate::Api::ProductsController < Administrate::BaseController
     render json: @products, include: '', fields: [:id, :title, :price, :thumb_cover]
   end
 
+
+  def search
+    @products = Product.includes(:pictures).search_by_title(params[:keyword]).limit 10
+    render json: @products, fields: [:id, :title, :thumb_cover], include: ''
+  end
+
   def show
     render json: @product, include: [:pictures, :category ]
   end

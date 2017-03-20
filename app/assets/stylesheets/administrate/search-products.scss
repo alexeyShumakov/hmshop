@@ -1,0 +1,24 @@
+.search-products {
+  position: relative;
+}
+
+.search-products__products {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 100%;
+  background-color: #fff;
+  z-index: 2;
+}
+.search-products__product {
+  line-height: 30px;
+  cursor: pointer;
+  height: 40px;
+  padding: 5px;
+  img {
+    max-height: 30px;
+  }
+  &:hover {
+    background-color: $light-gray;
+  }
+}
