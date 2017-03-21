@@ -14,6 +14,17 @@ export default Immutable.fromJS({
       line_items: []
     }
   },
+  posts: {
+    fromServer: false,
+    isLoading: false,
+    errors: {},
+    posts: [],
+    post: {
+      title: '',
+      preview: '',
+      body: ''
+    }
+  },
   pictures: {
     isLoading: false
   },

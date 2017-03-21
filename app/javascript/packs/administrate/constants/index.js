@@ -6,6 +6,7 @@ import categories from './categories';
 import pictures from './pictures';
 import collections from './collections';
 import searchProducts from './searchProduct';
-import orders from './orders'
-export default Object.assign({}, orders, searchProducts, collections,
+import orders from './orders';
+import posts from './posts';
+export default Object.assign({}, posts, orders, searchProducts, collections,
   pictures, categories, modal, products, banners, notifications)

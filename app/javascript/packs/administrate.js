@@ -32,12 +32,18 @@ import OrderIndex from './administrate/containers/orders/index';
 import OrderShow from './administrate/containers/orders/show';
 import OrderEdit from './administrate/containers/orders/edit';
 
+import PostIndex from './administrate/containers/posts/index';
+import PostShow from './administrate/containers/posts/show';
+import PostNew from './administrate/containers/posts/new';
+import PostEdit from './administrate/containers/posts/edit';
+
 const actions = bindActionCreators(appActions, store.dispatch);
 const fetchBanner    = (router) => {actions.fetchBanner(router.params.id)};
 const fetchProduct   = (router) => {actions.fetchProduct(router.params.id)};
 const fetchCategory  = (router) => {actions.fetchCategory(router.params.id)};
 const fetchCollection= (router) => {actions.fetchCollection(router.params.id)};
 const fetchOrder     = (router) => {actions.fetchOrder(router.params.id)};
+const fetchPost      = (router) => {actions.fetchPost(router.params.id)};
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -65,6 +71,11 @@ render(
         <Route path='/administrate/orders' component={OrderIndex} onEnter={actions.fetchOrders}/>
         <Route path='/administrate/orders/:id' component={OrderShow} onEnter={fetchOrder} onLeave={actions.resetOrdersData}/>
         <Route path='/administrate/orders/:id/edit' component={OrderEdit} onEnter={fetchOrder} onLeave={actions.resetOrdersData}/>
+
+        <Route path='/administrate/posts' component={PostIndex} onEnter={actions.fetchPosts}/>
+        <Route path='/administrate/posts/new' component={PostNew} onLeave={actions.resetPostData}/>
+        <Route path='/administrate/posts/:id' component={PostShow} onEnter={fetchPost} onLeave={actions.resetPostData}/>
+        <Route path='/administrate/posts/:id/edit' component={PostEdit} onEnter={fetchPost} onLeave={actions.resetPostData}/>
       </Route>
     </Router>
   </Provider>,

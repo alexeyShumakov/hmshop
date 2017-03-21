@@ -8,3 +8,4 @@ export * from './collections';
 export * from './searchProducts';
 export * from './orders';
 export * from './lineItems';
+export * from './posts';

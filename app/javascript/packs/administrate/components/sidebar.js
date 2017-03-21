@@ -39,9 +39,9 @@ export default (props) => {
           </Link>
         </li>
         <li>
-          <a href="/administrate/posts">
+          <Link to="/administrate/posts">
             <i className="fa fa-circle-o"></i> Посты
-          </a>
+          </Link>
         </li>
       </ul>
 

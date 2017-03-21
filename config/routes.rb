@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :collections
     resources :orders
+    resources :posts
 
     namespace :api do
       resources :banners
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
       resources :collections
       resources :orders
       resources :line_items
+      resources :posts
       resources :products do
         get 'search', on: :collection
       end
