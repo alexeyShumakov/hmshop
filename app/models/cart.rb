@@ -1,6 +1,6 @@
 class Cart < ApplicationRecord
-  has_many :line_items, -> { order 'created_at DESC' }
-  has_many :history_items, -> { order 'updated_at DESC' }
+  has_many :line_items, -> { order 'created_at DESC' }, dependent: :destroy
+  has_many :history_items, -> { order 'updated_at DESC' }, dependent: :destroy
 
   def total_count
     line_items.sum :count

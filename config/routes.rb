@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :pictures
       resources :collections
       resources :orders
+      resources :line_items
       resources :products do
         get 'search', on: :collection
       end

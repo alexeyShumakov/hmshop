@@ -4,7 +4,7 @@ class OrderSerializer < ActiveModel::Serializer
       attributes :id, :title, :thumb_cover, :price
     end
 
-    attributes :id, :count, :total_price, :price
+    attributes :id, :count, :total_price, :price, :product_id, :order_id
     has_one :product
 
     def total_price

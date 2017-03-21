@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  has_many :line_items, dependent: :destroy
+  has_many :line_items, -> { order 'created_at DESC' }, dependent: :destroy
   validates :name, :address, :email, :phone, presence: true
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
