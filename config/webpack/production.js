@@ -1,34 +1,23 @@
 // Note: You must restart bin/webpack-watcher for changes to take effect
 
-var path    = require('path')
-var webpack = require('webpack')
-var merge   = require('webpack-merge')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const CompressionPlugin = require('compression-webpack-plugin')
 
-var config = require('./shared.js')
+const sharedConfig = require('./shared.js')
 
-module.exports = merge(config, {
-  output: { filename: "[name]-[hash].js" },
+module.exports = merge(sharedConfig.config, {
+  output: { filename: '[name]-[chunkhash].js' },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
     new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
+      minimize: true
     }),
-    new webpack.optimize.UglifyJsPlugin({
-        beautify: false,
-        mangle: {
-            screw_ie8: true,
-            keep_fnames: true
-        },
-        compress: {
-            screw_ie8: true
-        },
-        comments: false
+    new webpack.optimize.UglifyJsPlugin(),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$/
     })
   ]
 })
