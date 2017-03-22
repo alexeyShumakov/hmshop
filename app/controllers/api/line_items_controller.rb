@@ -39,7 +39,7 @@ class Api::LineItemsController < ApplicationController
       line_item.count += 1
       line_item.save
     else
-      line_item = LineItem.create cart: @cart, product: product
+      line_item = LineItem.create! cart: @cart, product: product
     end
 
   end

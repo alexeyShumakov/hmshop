@@ -6,7 +6,7 @@ import Immutable, { fromJS } from 'immutable';
 
 let middlewares = [thunk];
 if (process.env.NODE_ENV === `development`) {
-  const createLogger = require(`redux-logger`);
+  const createLogger = require(`redux-logger`).default;
   const stateTransformer = (state) => {
     if(Immutable.Iterable.isIterable(state)) return state.toJS();
     else return state;

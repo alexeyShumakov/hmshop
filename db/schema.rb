@@ -93,10 +93,10 @@ ActiveRecord::Schema.define(version: 20170315060209) do
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
-    t.decimal  "price",      precision: 14, scale: 2
-    t.integer  "count",                               default: 1, null: false
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.decimal  "price",      precision: 14, scale: 2, default: "0.0"
+    t.integer  "count",                               default: 1,     null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.integer  "order_id"
     t.index ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
     t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
