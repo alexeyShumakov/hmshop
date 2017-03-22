@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20170315060209) do
     t.string   "title"
     t.text     "preview"
     t.text     "body"
+    t.text     "raw_body"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"

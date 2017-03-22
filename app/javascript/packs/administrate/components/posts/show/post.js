@@ -1,7 +1,16 @@
 import React from 'react';
 import {Link, browserHistory} from 'react-router';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, convertFromRaw } from 'draft-js';
 export default (props) => {
   const post = props.store.getIn(['posts', 'post']);
+  let isLoading = props.store.getIn(['posts', 'isLoading']);
+  let editorState;
+  if (!isLoading) {
+    const raw = post.get('raw_body');
+    const contentState = convertFromRaw(JSON.parse(raw));
+    editorState = EditorState.createWithContent(contentState);
+  }
 
   const destroy = () => {
     props.actions.destroyPost(post.get('id')).then(()=> {
@@ -31,7 +40,9 @@ export default (props) => {
         <dt>изображение</dt>
         <dt><img src={post.get('thumb_cover')} alt=""/></dt>
         <dt>Новость</dt>
-        <dd>{post.get('body')}</dd>
+        <dd>
+          <Editor editorState={editorState} readOnly={true} toolbarHidden={true}/>
+         </dd>
       </dl>
     </div>
   )

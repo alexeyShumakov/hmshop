@@ -1,12 +1,4 @@
 Admin.create(email: 'admin@shop.com', password: 'password')
-6.times do
-  Post.create({
-    title: Faker::Commerce.product_name,
-    preview: Faker::Hipster.sentence,
-    body: Faker::Hipster.paragraph(5),
-    cover: File.open(Rails.root.join('spec', 'support', 'images', 'banner_2.jpg'))
-  })
-end
 
 4.times do
   category = Category.create title: Faker::Commerce.department(2, true)
@@ -35,13 +27,13 @@ Category.all.each do |c|
 end
 
 6.times do
+  products = []
+  (1 + Random.rand(4)).times { products << Product.all.order('random()').first }
   c = Collection.create({
     title: Faker::Commerce.product_name,
+    products: products,
     description: Faker::Hipster.paragraph,
     cover: File.open(Rails.root.join('spec', 'support', 'images', 'banner_1.jpg'))
   })
 
-  (1 + Random.rand(4)).times do
-    c.products << Product.all.order('random()').first
-  end
 end

@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :preview
       t.text :body
+      t.text :raw_body
       t.attachment :cover
 
       t.timestamps

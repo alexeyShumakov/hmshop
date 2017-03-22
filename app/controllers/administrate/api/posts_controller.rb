@@ -39,6 +39,6 @@ class Administrate::Api::PostsController < Administrate::BaseController
   end
 
   def post_params
-    params.require(:post).permit(:title, :cover, :preview, :body)
+    params.require(:post).permit(:title, :cover, :preview, :body, :raw_body)
   end
 end

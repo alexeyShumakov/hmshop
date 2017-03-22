@@ -6,7 +6,7 @@ class Post < ApplicationRecord
     thumb:  "-quality 60 -strip"
   }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
-  validates :title, :preview, :cover, :body, presence: true
+  validates :title, :preview, :cover, presence: true
 
   def thumb_cover
     cover(:thumb)

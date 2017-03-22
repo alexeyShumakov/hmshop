@@ -54,17 +54,18 @@ export function setPosts(posts) {
   }
 }
 
-export function updatePost(post) {
+export function updatePost(post, isLoading=true) {
   const id = post.get('id');
   let formData = new FormData();
   formData.append('post[title]', post.get('title'))
   formData.append('post[preview]', post.get('preview'))
   formData.append('post[body]', post.get('body'))
+  formData.append('post[raw_body]', post.get('raw_body'))
   if(!_.isEqual(post.get('cover'), undefined))
     formData.append('post[cover]', post.get('cover'))
 
   return dispatch => {
-    dispatch(setPostsLoading(true));
+    dispatch(setPostsLoading(isLoading));
     return axios.put(`/administrate/api/posts/${id}`, formData).then((response)=>{
       dispatch(setPostsLoading(false));
       dispatch(showNotification('Новость успешно обновленa.'));
@@ -72,6 +73,7 @@ export function updatePost(post) {
     }, error => {
       const errors = Immutable.fromJS(error.response.data)
       dispatch(setPostErrors(errors));
+      dispatch(setPostsLoading(false));
     })
   }
 }
@@ -81,6 +83,7 @@ export function createPost(post) {
   formData.append('post[title]', post.get('title'))
   formData.append('post[preview]', post.get('preview'))
   formData.append('post[body]', post.get('body'))
+  formData.append('post[raw_body]', post.get('raw_body'))
   if(!_.isEqual(post.get('cover'), undefined))
     formData.append('post[cover]', post.get('cover'))
 

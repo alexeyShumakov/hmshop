@@ -1,11 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, convertFromRaw } from 'draft-js';
 import Lazysizes from 'lazysizes';
 
 export default (props) => {
   let {fetchPost, fetchPosts} = props.actions;
   let isLoading = props.store.getIn(['posts', 'isLoading']);
   let post = props.store.getIn(['posts', 'post']);
+  let editorState;
+  if (!isLoading) {
+    const raw = post.get('raw_body');
+    const contentState = convertFromRaw(JSON.parse(raw));
+    editorState = EditorState.createWithContent(contentState);
+  }
   return(
     <div>
       { !isLoading &&
@@ -30,9 +38,10 @@ export default (props) => {
             </div>
           </div>
 
+          <hr/>
           <div className="row">
             <div className="column column-100 u-my12">
-              {post.get('body')}
+              <Editor editorState={editorState} readOnly={true} toolbarHidden={true}/>
             </div>
           </div>
         </div>
