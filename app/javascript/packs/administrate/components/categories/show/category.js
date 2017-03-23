@@ -30,6 +30,8 @@ export default (props) => {
         <dd>{category.get('title')}</dd>
         <dt>Родительская категрия</dt>
         <dd>{category.getIn(['parent', 'title'])}</dd>
+        <dt>Иконка</dt>
+        <dd><img src={category.get('medium_icon')} alt=""/></dd>
       </dl>
     </div>
   )

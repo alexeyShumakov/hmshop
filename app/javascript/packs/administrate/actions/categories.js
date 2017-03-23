@@ -59,6 +59,8 @@ export function updateCategory(category) {
   let formData = new FormData();
   formData.append('category[title]', category.get('title'))
   formData.append('category[parent_id]', category.getIn(['parent', 'id']))
+  if(!_.isEqual(category.get('icon'), undefined))
+    formData.append('category[icon]', category.get('icon'))
 
   return dispatch => {
     dispatch(setCategoriesLoading(true));
@@ -77,6 +79,8 @@ export function createCategory(category) {
   let formData = new FormData();
   formData.append('category[title]', category.get('title'))
   formData.append('category[parent_id]', category.getIn(['parent', 'id']))
+  if(!_.isEqual(category.get('icon'), undefined))
+    formData.append('category[icon]', category.get('icon'))
 
   return dispatch => {
     dispatch(setCategoriesLoading(true));

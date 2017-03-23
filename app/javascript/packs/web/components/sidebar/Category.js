@@ -67,13 +67,13 @@ export default class Category extends React.Component {
     return(
       <li>
         <div
+          style={{backgroundImage: `url(${category.get('thumb_icon')})`}}
           ref={(tTarget) => { this.tTarget = tTarget; }}
           onClick={this.showImmediately}
           onMouseEnter={this.showMenu}
           onMouseLeave={this.hideMenu}
-          className={selected ? 'nav__icon_selected' : ''}
+          className={selected ? 'nav__icon nav__icon_selected' : 'nav__icon '}
           >
-            <i className="nav__icon fa fa-heart-o fa-lg"></i>
         </div>
         <div ref={(tElement) => { this.tElement = tElement; }} >
           <div

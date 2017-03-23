@@ -1,7 +1,10 @@
 Admin.create(email: 'admin@shop.com', password: 'password')
 
 4.times do
-  category = Category.create title: Faker::Commerce.department(2, true)
+  category = Category.create({
+    title: Faker::Commerce.department(2, true),
+    icon: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg'))
+  })
   3.times { category.children.create(title: Faker::Commerce.department(2, true)) }
 end
 

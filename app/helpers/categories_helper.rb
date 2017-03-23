@@ -10,6 +10,7 @@ module CategoriesHelper
     hash = {}
     hash[:id] = parent.id
     hash[:title] = parent.title
+    hash[:thumb_icon] = parent.thumb_icon
     hash[:children] = children.map {|p,c| category_to_hash(p,c)} if children.present?
     hash
   end

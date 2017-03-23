@@ -70,7 +70,7 @@ export default class Collection extends React.Component {
           onMouseLeave={this.hideMenu}
           className='nav__icon'
           >
-            <i className="nav__icon fa fa-cogs fa-lg"></i>
+            <i className="fa fa-cogs fa-lg"></i>
         </div>
         <div ref={(tElement) => { this.tElement = tElement; }} >
           <div

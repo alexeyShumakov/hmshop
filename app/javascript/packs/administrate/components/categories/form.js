@@ -20,6 +20,13 @@ export default (props) => {
           object={category}
           field='title'
         />
+        <label>Иконка(квадратное изобр.)</label>
+        <input type="file"
+          onChange={(e)=> update(e.target.files[0], 'icon')}
+        />
+        {errors.has('icon') &&
+          <span className='input-error'>{errors.get('icon').first()}</span>
+        }
         <CategoryInput
           title='Родительская Категория'
           category={category.get('parent')}
