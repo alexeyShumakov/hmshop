@@ -5,9 +5,10 @@ import Product from './Product';
 import ProductModal from './productModal/ProductModal';
 import Breadcrumbs from '../Breadcrumbs';
 import SortList from './sort/List';
+import InfinityUpload from './infinityUpload';
 
 export default props => {
-  let {isLoading, actions, sortFilter,
+  let {isLoading, actions, sortFilter, pageFilter, filterParams,
     products, modalProduct, category } = props;
   let product = modalProduct.get('product');
   let id = 0;
@@ -18,7 +19,6 @@ export default props => {
   })
   let prevProduct = id > 0 ? products.get(id - 1) : null;
   let nextProduct = products.get(id + 1);
-
 
   let cartProducts =  products.map(product => {
     return(<Product
@@ -72,6 +72,11 @@ export default props => {
             <div className='showcase row'>
               {cartProducts}
             </div>
+            <InfinityUpload
+              filterParams={filterParams}
+              upload={actions.infinityUploadCategory}
+              categoryId={category.get('id')}
+            />
           </div>
       }
     </div>

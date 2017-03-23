@@ -11,6 +11,13 @@ export function setProducts(products) {
   }
 }
 
+export function pushProducts(products) {
+  return {
+    type: actionTypes.PUSH_PRODUCTS,
+    products
+  }
+}
+
 export function setLoadingModalProduct(isLoading) {
   return {
     type: actionTypes.SET_LOADING_MODAL_PRODUCT,

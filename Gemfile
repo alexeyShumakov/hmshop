@@ -26,6 +26,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'pg_search', '~> 2.0'
 
 gem 'devise'
+gem 'kaminari'
 
 group :development, :test do
   gem "awesome_print"
@@ -40,6 +41,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

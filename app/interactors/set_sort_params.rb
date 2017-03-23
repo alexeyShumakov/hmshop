@@ -9,9 +9,13 @@ class SetSortParams
   def call
     context.order_rule = SORT.fetch(context.params[:sort], 'price ASC')
     sort_param = SORT.has_key?(context.params[:sort]) ? context.params[:sort] : 'priceup'
+    page = context.params[:page] || 1
 
     context.filters_hash = {
       filters: {
+        pageFilter: {
+          page: page
+        },
         sortFilter: {
           currentValue: sort_param,
           items: [

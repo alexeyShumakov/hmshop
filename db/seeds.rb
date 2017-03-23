@@ -10,7 +10,7 @@ end
 end
 
 Category.all.each do |c|
-  6.times do
+  12.times do
     pictures = []
     ['product.jpg', 'product_1.jpg'].each do |img|
       pictures << Picture.create(image: File.open(Rails.root.join('spec', 'support', 'images', img)))
