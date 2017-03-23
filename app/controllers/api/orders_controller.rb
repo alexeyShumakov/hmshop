@@ -5,6 +5,7 @@ class Api::OrdersController < ApplicationController
     return render json: {stauts: 'empty cart'}, status: :unprocessable_entity if @cart.line_items.empty?
     @order = Order.new(order_params)
     if @order.save
+      NewOrderEmailWorker.perform_async(@order.id)
       @order.set_line_items(@cart.line_items)
       render json: {status: :good}
     else
