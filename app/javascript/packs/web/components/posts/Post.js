@@ -7,7 +7,7 @@ export default (props) => {
     <div className='row post-preview'>
       <div className='column column-33'>
         <Link
-          to={`/posts/${props.post.get('id')}`}
+          to={`/posts/${props.post.get('slug')}`}
           onClick={()=> props.fetchPost(props.post.get('id'))}
         >
           <img className='lazyload' data-src={props.post.get('thumb_cover')} alt=""/>
@@ -15,7 +15,7 @@ export default (props) => {
       </div>
       <div className='column column-66'>
         <Link
-          to={`/posts/${props.post.get('id')}`}
+          to={`/posts/${props.post.get('slug')}`}
           onClick={()=> props.fetchPost(props.post.get('id'))}
         >
           <h4> {props.post.get('title')} </h4>

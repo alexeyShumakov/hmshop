@@ -27,6 +27,8 @@ gem 'pg_search', '~> 2.0'
 
 gem 'devise'
 gem 'kaminari'
+gem 'russian', '~> 0.6.0'
+gem 'friendly_id'
 
 group :development, :test do
   gem "awesome_print"

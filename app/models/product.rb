@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
+  extend FriendlyId
   include PgSearch
+  friendly_id :title, use: :slugged
   before_destroy :resolve_line_items
   belongs_to :category
   has_and_belongs_to_many :pictures, -> { order 'created_at' }
@@ -7,7 +9,7 @@ class Product < ApplicationRecord
   has_many :line_items
   has_many :history_items, dependent: :destroy
 
-  validates :title, :description, :price, :category, :pictures, presence: true
+  validates :title, :slug, :description, :price, :category, :pictures, presence: true
   validates :price, numericality: true
 
   pg_search_scope :search_by_title, against: :title,

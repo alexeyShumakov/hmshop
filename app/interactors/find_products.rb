@@ -10,7 +10,7 @@ class FindProducts
 
     context.products = products
     context.products_hash = ActiveModelSerializers::SerializableResource
-      .new(products, { include: '', fields: [:thumb_cover, :id, :title, :price] })
+      .new(products, { include: '', fields: [:thumb_cover, :id, :slug, :title, :price] })
       .as_json
   end
 end

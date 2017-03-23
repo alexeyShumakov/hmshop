@@ -8,7 +8,7 @@ class NewestProducts
 
     context.products = products
     context.products_hash = ActiveModelSerializers::SerializableResource
-      .new(products, { include: '', fields: [:thumb_cover, :id, :title, :price] })
+      .new(products, { include: '', fields: [:thumb_cover, :slug, :id, :title, :price] })
       .as_json
   end
 end

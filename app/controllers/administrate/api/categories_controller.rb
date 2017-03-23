@@ -40,10 +40,8 @@ class Administrate::Api::CategoriesController < Administrate::BaseController
   end
 
   def category_params
-    {
-      title: params[:category][:title],
-      icon: params[:category][:icon],
-      parent: Category.find_by(id: params[:category][:parent_id])
-    }
+    tmp = params.require(:category).permit(:title, :icon)
+    tmp[:parent] = Category.find_by id: params[:category][:parent_id]
+    tmp
   end
 end

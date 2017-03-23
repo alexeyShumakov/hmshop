@@ -8,14 +8,13 @@ export default (props) => {
   let {createLineItem, collection, fetchCollection, fetchProduct, setModalProductState} = props;
   let id = collection.get('id');
   let products = collection.get('products');
-  let productIds = products.map((p) => {return p.get('id')});
   return(
     <div className="collection">
       <div className='row'>
         <div className='column column-66'>
           <Link
             className='collection__img-wrapper'
-            to={`/collections/${id}`}
+            to={`/collections/${collection.get('slug')}`}
             onClick={()=> {fetchCollection(id)}}
           >
             <img src={collection.get('cover_medium')} alt=""/>

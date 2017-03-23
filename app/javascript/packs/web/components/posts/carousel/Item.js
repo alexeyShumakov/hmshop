@@ -10,7 +10,7 @@ export default (props) => {
         <div className='simle-post__body'>
           <Link
             key={id}
-            to={`/posts/${id}`}
+            to={`/posts/${post.get('slug')}`}
             onClick={()=> fetchPost(id)}
           >
             <img src={post.get('thumb_cover')}/>

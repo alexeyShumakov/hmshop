@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 
 export default (props) => {
-  let { item, fetchCategory, categoryId, currentValue } = props;
+  let { item, fetchCategory, categoryId, currentValue, slug } = props;
   let sort  = item.get('value');
   let title = item.get('title');
   let handleClick = () => {
@@ -14,7 +14,7 @@ export default (props) => {
           <b>{title}</b> :
           <Link
             onClick={handleClick}
-            to={ {pathname: `/categories/${categoryId}`, query: {sort} }}
+            to={ {pathname: `/categories/${slug}`, query: {sort} }}
           >{title}
           </Link>
       }

@@ -24,7 +24,7 @@ export default (props) => {
           return(
             <Ancestor
               fetch={()=> props.fetchCategory(id)}
-              key={id} id={id}
+              key={id} id={a.get('slug')}
               title={a.get('title')} />
           )
         })

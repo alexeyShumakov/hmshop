@@ -2,7 +2,9 @@ class CreateProducts < ActiveRecord::Migration[5.0]
   def change
     create_table :products do |t|
       t.references :category, foreign_key: true
-      t.string :title
+      t.string :title, null: false
+      t.string :slug, null: false
+      t.index :slug, unique: true
       t.text :description
       t.decimal :price, precision: 14, scale: 2
 

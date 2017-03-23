@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   def show
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     render json: @post
   end
 

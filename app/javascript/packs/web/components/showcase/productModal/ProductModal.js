@@ -51,7 +51,7 @@ export default props => {
                   klassName='button'
                 />
                 <Link
-                  to={`/products/${product.get('id')}`}
+                  to={`/products/${product.get('slug')}`}
                   onClick={()=> {
                     openModal(false);
                     fetchFullProduct(product.get('id'))

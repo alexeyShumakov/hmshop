@@ -53,7 +53,7 @@ export default class Collection extends React.Component {
       return(
         <li key={item.get('id')}>
           <Link
-            to={`/collections/${id}`}
+            to={`/collections/${item.get('slug')}`}
             onClick={() => fetchCollection(id)}
           >
             {item.get('title')}

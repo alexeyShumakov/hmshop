@@ -1,4 +1,6 @@
 class Category < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   has_many :products, dependent: :destroy
   has_closure_tree order: 'sort_order'
   has_attached_file :icon, styles: {
@@ -8,7 +10,7 @@ class Category < ApplicationRecord
     thumb:  "-quality 60 -strip" }
   validates_attachment_content_type :icon, content_type: /\Aimage\/.*\z/
 
-  validates :title, presence: true
+  validates :title, :slug, presence: true
   def thumb_icon
     icon(:thumb)
   end

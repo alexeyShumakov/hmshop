@@ -3,7 +3,7 @@ class CategorySerializer < ActiveModel::Serializer
     attributes :id, :title
   end
 
-  attributes :id, :title, :root_category_id, :thumb_icon, :medium_icon
+  attributes :id, :title, :root_category_id, :thumb_icon, :medium_icon, :slug
 
   has_one :parent, serializer: AncestorSerializer
 

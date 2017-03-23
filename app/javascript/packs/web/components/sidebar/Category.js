@@ -52,12 +52,12 @@ export default class Category extends React.Component {
     let selected = category.get('id') === rootCategoryId;
     let children = category.get('children') || Immutable.List([]);
     children = children.map(child => {
-      let id = child.get('id');
+      let slug = child.get('slug');
       return(
         <li key={child.get('id')}>
           <Link
-            to={`/categories/${id}`}
-            onClick={() => fetchCategory(id)}
+            to={`/categories/${slug}`}
+            onClick={() => fetchCategory(slug)}
           >
             {child.get('title')}
           </Link>
@@ -84,7 +84,7 @@ export default class Category extends React.Component {
           >
             <b className='u-mb6'>
               <Link
-                to={`/categories/${category.get('id')}`}
+                to={`/categories/${category.get('slug')}`}
                 onClick={() => fetchCategory(category.get('id'))}
                 >
                 {category.get("title")}

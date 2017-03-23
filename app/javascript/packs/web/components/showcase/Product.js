@@ -58,7 +58,7 @@ export default class CartProduct extends React.Component {
             <i className='fa fa-search float-right'></i>
           </div>
           <div className="cart__image">
-            <Link to={`/products/${product.get('id')}`} onClick={() => fetchFullProduct(product.get('id'))}>
+            <Link to={`/products/${product.get('slug')}`} onClick={() => fetchFullProduct(product.get('id'))}>
               <img className='lazyload' data-src={product.get('thumb_cover')} alt={product.get('title')}/>
             </Link>
           </div>

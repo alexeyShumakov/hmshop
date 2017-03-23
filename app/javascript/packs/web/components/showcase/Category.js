@@ -64,6 +64,7 @@ export default props => {
                 <SortList
                   fetchCategory={actions.fetchCategory}
                   categoryId={category.get('id')}
+                  slug={category.get('slug')}
                   sortFilter={sortFilter}
                 />
               </div>

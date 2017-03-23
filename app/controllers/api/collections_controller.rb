@@ -1,6 +1,6 @@
 class Api::CollectionsController < ApplicationController
   def show
-    @collection = Collection.includes(products: :pictures).find params[:id]
+    @collection = Collection.friendly.includes(products: :pictures).find params[:id]
     render json: @collection
   end
 

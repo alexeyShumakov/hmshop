@@ -48,7 +48,8 @@ ActiveRecord::Schema.define(version: 20170315060209) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",             null: false
+    t.string   "slug",              null: false
     t.string   "icon_file_name"
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170315060209) do
     t.datetime "updated_at",        null: false
     t.integer  "parent_id"
     t.integer  "sort_order"
+    t.index ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
   end
 
   create_table "category_hierarchies", id: false, force: :cascade do |t|
@@ -68,7 +70,8 @@ ActiveRecord::Schema.define(version: 20170315060209) do
   end
 
   create_table "collections", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",              null: false
+    t.string   "slug",               null: false
     t.string   "description"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
@@ -76,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170315060209) do
     t.datetime "cover_updated_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["slug"], name: "index_collections_on_slug", unique: true, using: :btree
   end
 
   create_table "collections_products", id: false, force: :cascade do |t|
@@ -133,7 +137,8 @@ ActiveRecord::Schema.define(version: 20170315060209) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",              null: false
+    t.string   "slug",               null: false
     t.text     "preview"
     t.text     "body"
     t.text     "raw_body"
@@ -143,16 +148,19 @@ ActiveRecord::Schema.define(version: 20170315060209) do
     t.datetime "cover_updated_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   end
 
   create_table "products", force: :cascade do |t|
     t.integer  "category_id"
-    t.string   "title"
+    t.string   "title",                                null: false
+    t.string   "slug",                                 null: false
     t.text     "description"
     t.decimal  "price",       precision: 14, scale: 2
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
 
   add_foreign_key "history_items", "carts"

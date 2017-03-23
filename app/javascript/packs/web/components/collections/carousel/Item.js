@@ -9,7 +9,7 @@ export default (props) => {
       <div className={klassName}>
         <Link
           key={id}
-          to={`/collections/${id}`}
+          to={`/collections/${collection.get('slug')}`}
           onClick={()=> fetchCollection(id)}
         >
           <img src={collection.get('thumb_cover')}/>

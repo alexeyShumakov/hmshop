@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :set_categories, :set_cart, :set_shared_variables
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @json = {
       posts: ActiveModelSerializers::SerializableResource.new(@post)
       }.to_json

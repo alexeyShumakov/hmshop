@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
   before_action :set_categories, :set_cart, :set_shared_variables
 
   def show
-    @collection = Collection.includes(products: :pictures).find(params[:id])
+    @collection = Collection.friendly.includes(products: :pictures).find(params[:id])
     @json = {
         collections: ActiveModelSerializers::SerializableResource.new(@collection)
       }.to_json
