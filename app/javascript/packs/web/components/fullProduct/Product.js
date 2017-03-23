@@ -62,7 +62,6 @@ export default (props, context) => {
                   productId={product.get('id')}
                   klassName='button'
                 />
-                <button className='button button-outline' >Быстрая покупка</button>
               </div>
             </div>
           </div>
