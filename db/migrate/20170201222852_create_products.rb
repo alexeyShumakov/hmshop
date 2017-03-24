@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :title, null: false
       t.string :slug, null: false
       t.index :slug, unique: true
+      t.integer :line_items_count, default: 0
       t.text :description
       t.decimal :price, precision: 14, scale: 2
 

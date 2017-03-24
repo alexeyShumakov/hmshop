@@ -1,5 +1,5 @@
 class LineItem < ApplicationRecord
-  belongs_to :product
+  belongs_to :product, counter_cache: true
   belongs_to :cart
   belongs_to :order
 

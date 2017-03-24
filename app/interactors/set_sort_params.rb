@@ -1,10 +1,9 @@
 class SetSortParams
   include Interactor
-  # haha lol
   SORT = {
     'pricedown' => 'price DESC',
     'priceup'  => 'price ASC',
-    'popular' => 'RANDOM()'
+    'popular' => 'line_items_count DESC, created_at DESC'
   }
   def call
     context.order_rule = SORT.fetch(context.params[:sort], 'price ASC')
