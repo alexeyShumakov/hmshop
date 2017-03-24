@@ -30,6 +30,6 @@ class Administrate::Api::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:name, :address, :phone, :email)
+    params.require(:order).permit(:name, :address, :phone, :email, :delivery_price)
   end
 end

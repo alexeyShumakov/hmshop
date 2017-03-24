@@ -29,6 +29,8 @@ export default (props) => {
           <dl>
             <dt>Сумма покупки</dt>
             <dd>{order.get('total_price')} <i className="fa fa-rub"></i></dd>
+            <dt>Цена доставки</dt>
+            <dd>{order.get('delivery_price')} <i className="fa fa-rub"></i></dd>
             <dt>id</dt>
             <dd>{order.get('id')}</dd>
             <dt>Имя</dt>

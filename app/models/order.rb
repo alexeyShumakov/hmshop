@@ -12,7 +12,10 @@ class Order < ApplicationRecord
     end
   end
 
-  def total_price
+  def products_price
     line_items.to_a.sum(&:order_total_price)
+  end
+  def total_price
+    delivery_price + line_items.to_a.sum(&:order_total_price)
   end
 end

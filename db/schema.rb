@@ -116,8 +116,9 @@ ActiveRecord::Schema.define(version: 20170315060209) do
     t.string   "address"
     t.string   "phone"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "delivery_price", precision: 14, scale: 2, default: "0.0"
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -153,13 +154,13 @@ ActiveRecord::Schema.define(version: 20170315060209) do
 
   create_table "products", force: :cascade do |t|
     t.integer  "category_id"
-    t.string   "title",                                                 null: false
-    t.string   "slug",                                                  null: false
+    t.string   "title",                                                     null: false
+    t.string   "slug",                                                      null: false
     t.integer  "line_items_count",                          default: 0
     t.text     "description"
-    t.decimal  "price",            precision: 14, scale: 2
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.decimal  "price",            precision: 14, scale: 2, default: "0.0"
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end

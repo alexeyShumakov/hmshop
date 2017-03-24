@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.index :slug, unique: true
       t.integer :line_items_count, default: 0
       t.text :description
-      t.decimal :price, precision: 14, scale: 2
+      t.decimal :price, precision: 14, scale: 2, default: 0
 
       t.timestamps
     end

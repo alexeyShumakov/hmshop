@@ -81,8 +81,16 @@ export default (props) => {
           </table>
           <div className='order__footer'>
             <h4 className='order__total-price'>
-              <span>Итого: </span>
-              <b>{order.get('total_price')}</b> <i className='fa fa-rub'></i>
+              <div>
+                <span>доставка:</span> <b>{order.get('delivery_price')}</b> <i className='fa fa-rub'></i>
+              </div>
+              <div>
+                <span>продукты:</span> <b>{order.get('products_price')}</b> <i className='fa fa-rub'></i>
+              </div>
+              <div>
+                <span>Итого: </span>
+                <b>{order.get('total_price')}</b> <i className='fa fa-rub'></i>
+              </div>
             </h4>
           </div>
         </div>

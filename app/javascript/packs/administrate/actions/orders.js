@@ -61,12 +61,15 @@ export function updateOrder(order) {
   formData.append('order[email]', order.get('email'))
   formData.append('order[phone]', order.get('phone'))
   formData.append('order[address]', order.get('address'))
+  formData.append('order[delivery_price]', order.get('delivery_price'))
 
   return dispatch => {
     dispatch(setOrdersLoading(true));
     return axios.put(`/administrate/api/orders/${id}`, formData).then((response)=>{
       dispatch(setOrdersLoading(false));
       dispatch(showNotification('Заказ успешно обновлен.'));
+      dispatch(setOrderErrors(Immutable.Map({})));
+      dispatch(fetchOrder(id))
     }, error => {
       const errors = Immutable.fromJS(error.response.data)
       dispatch(setOrderErrors(errors));

@@ -39,6 +39,13 @@ export default (props) => {
           object={order}
           field='address'
         />
+        <Input
+          title='Цена доставки'
+          update={update}
+          errors={errors}
+          object={order}
+          field='delivery_price'
+        />
         <hr/>
         <input className="button-primary" type="submit" value={title}/>
       </fieldset>

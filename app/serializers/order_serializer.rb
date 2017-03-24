@@ -11,6 +11,6 @@ class OrderSerializer < ActiveModel::Serializer
       object.order_total_price
     end
   end
-  attributes :id, :address, :email, :name, :phone, :total_price
+  attributes :id, :address, :email, :name, :phone, :total_price, :delivery_price, :products_price
   has_many :line_items
 end
