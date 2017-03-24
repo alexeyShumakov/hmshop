@@ -11,6 +11,9 @@
   </head>
 
   <body>
+  <%= javascript_pack_tag 'vendors' %>
+  <%= javascript_pack_tag 'utils' %>
+  <%= javascript_pack_tag 'editor' %>
   <%# shared variables from application helper %>
   <script type="text/javascript" charset="utf-8">
     var $sharedVariables = <%= @shared_variables.html_safe %>

@@ -2,8 +2,6 @@ import React from 'react';
 import Input from '../input';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
-import {convertFromHTML, convertToHTML} from 'draft-convert';
-import draftToHtml from 'draftjs-to-html';
 import _ from 'lodash';
 
 export default class PostForm extends React.Component {
@@ -34,10 +32,6 @@ export default class PostForm extends React.Component {
     const {post, setPost, action, errors, title } = this.props;
     const update = (value, field) => {
       const newPost = post.set(field, value);
-      setPost(newPost);
-    }
-    const contentChange = (contentState) => {
-      let newPost = post.set('body', draftToHtml(contentState));
       setPost(newPost);
     }
     let options = {
@@ -72,7 +66,6 @@ export default class PostForm extends React.Component {
           <Editor
             editorState={editorState}
             onEditorStateChange={this.updateEditorState}
-            onContentStateChange={contentChange}
             toolbar={options}
           />
           <hr/>
