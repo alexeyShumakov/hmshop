@@ -9,3 +9,4 @@ export * from './searchProducts';
 export * from './orders';
 export * from './lineItems';
 export * from './posts';
+export * from './shop';

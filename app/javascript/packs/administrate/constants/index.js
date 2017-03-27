@@ -8,5 +8,6 @@ import collections from './collections';
 import searchProducts from './searchProduct';
 import orders from './orders';
 import posts from './posts';
-export default Object.assign({}, posts, orders, searchProducts, collections,
+import shop from './shop';
+export default Object.assign({}, shop, posts, orders, searchProducts, collections,
   pictures, categories, modal, products, banners, notifications)

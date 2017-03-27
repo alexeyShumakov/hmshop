@@ -8,7 +8,13 @@ export default props => {
   let { store, actions } = props;
   return(
     <div className="row nav u-p12">
-      <a href='/'> <i className="nav__icon fa fa-rocket fa-lg"></i> </a>
+      <a href='/' className='brand'>
+        <div
+          style={{backgroundImage: `url(${store.getIn(['shop', 'small_left_logo'])})`}}
+          className='brand__logo'
+        />
+        <span className='brand__title'>{store.getIn(['shop', 'title'])}</span>
+      </a>
       <div className="nav__right">
         <Search
           keyword={store.getIn(['search', 'keyword'])}

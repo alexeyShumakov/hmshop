@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :collections
     resources :orders
     resources :posts
+    get 'shop', to: 'shop#show'
+    get 'shop/edit'
 
     namespace :api do
       resources :banners
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
       resources :products do
         get 'search', on: :collection
       end
+      get 'shop', to: 'shop#show'
+      put 'shop', to: 'shop#update'
     end
   end
 

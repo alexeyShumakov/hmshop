@@ -37,6 +37,9 @@ import PostShow from './administrate/containers/posts/show';
 import PostNew from './administrate/containers/posts/new';
 import PostEdit from './administrate/containers/posts/edit';
 
+import ShopShow from './administrate/containers/shop/show';
+import ShopEdit from './administrate/containers/shop/edit';
+
 const actions = bindActionCreators(appActions, store.dispatch);
 const fetchBanner    = (router) => {actions.fetchBanner(router.params.id)};
 const fetchProduct   = (router) => {actions.fetchProduct(router.params.id)};
@@ -44,6 +47,7 @@ const fetchCategory  = (router) => {actions.fetchCategory(router.params.id)};
 const fetchCollection= (router) => {actions.fetchCollection(router.params.id)};
 const fetchOrder     = (router) => {actions.fetchOrder(router.params.id)};
 const fetchPost      = (router) => {actions.fetchPost(router.params.id)};
+const fetchShop      = (router) => {actions.fetchShop()};
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -76,6 +80,9 @@ render(
         <Route path='/administrate/posts/new' component={PostNew} onLeave={actions.resetPostData}/>
         <Route path='/administrate/posts/:id' component={PostShow} onEnter={fetchPost} onLeave={actions.resetPostData}/>
         <Route path='/administrate/posts/:id/edit' component={PostEdit} onEnter={fetchPost} onLeave={actions.resetPostData}/>
+
+        <Route path='/administrate/shop' component={ShopShow} onEnter={fetchShop} onLeave={actions.resetShopData}/>
+        <Route path='/administrate/shop/edit' component={ShopEdit} onEnter={fetchShop} onLeave={actions.resetShopData}/>
       </Route>
     </Router>
   </Provider>,

@@ -12,8 +12,9 @@ import pictures from './picturesReducer';
 import collections from './collectionReducer';
 import orders from './ordersReducer';
 import posts from './postsReducer';
+import shop from './shopReducer';
 
-const reducers = Immutable.Map({ posts, orders, collections, pictures, categories, modal, products, banners, notifications });
+const reducers = Immutable.Map({ shop, posts, orders, collections, pictures, categories, modal, products, banners, notifications });
 
 export default (state = initialState, action) => {
   reducers.forEach((reducer, key) => {

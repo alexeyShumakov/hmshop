@@ -1,5 +1,6 @@
 module ApplicationHelper
   def set_shared_variables
+    @shop = Shop.first
     shop_json = ActiveModelSerializers::SerializableResource.new(@shop, {fields: [:title, :small_left_logo]}).as_json
     cart_json = ActiveModelSerializers::SerializableResource.new(@cart, {include: 'line_items.product' }).as_json
     collections = Collection.all.order('created_at DESC').limit(4)

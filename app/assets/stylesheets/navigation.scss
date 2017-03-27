@@ -21,6 +21,25 @@
   transition: background-color 1s;
 }
 
+.brand__logo {
+  float: left;
+  margin: 2px 0 0 3px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.brand__title {
+  display: inline-block;
+  color: $text-color;
+  font-size: large;
+  font-weight: bold;
+  &:hover {
+    color: $text-color;
+  }
+  margin: 0 0 2px 5px;
+}
+
 .nav__icon {
   margin: 0 auto;
   padding: 0 3px;
