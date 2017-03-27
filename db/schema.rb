@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170325152703) do
     t.integer  "category_id"
     t.string   "title",                                                     null: false
     t.string   "slug",                                                      null: false
+    t.boolean  "for_example",                               default: false
     t.integer  "line_items_count",                          default: 0
     t.text     "description"
     t.decimal  "price",            precision: 14, scale: 2, default: "0.0"

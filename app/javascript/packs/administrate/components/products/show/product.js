@@ -31,6 +31,8 @@ export default (props) => {
             <dd>{product.get('id')}</dd>
             <dt>Название</dt>
             <dd>{product.get('title')}</dd>
+            <dt>Для примера?</dt>
+            <dd>{product.get('for_example') ? 'Да' : 'Нет'}</dd>
             <dt>Категория</dt>
             <dd>{product.getIn(['category', 'title'])}</dd>
             <dt>Цена</dt>

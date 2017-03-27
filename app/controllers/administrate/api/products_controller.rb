@@ -47,6 +47,6 @@ class Administrate::Api::ProductsController < Administrate::BaseController
     @product = Product.includes(:pictures, :category).find params[:id]
   end
   def product_params
-    params.require(:product).permit(:title, :price, :description, :category_id)
+    params.require(:product).permit(:for_example, :title, :price, :description, :category_id)
   end
 end

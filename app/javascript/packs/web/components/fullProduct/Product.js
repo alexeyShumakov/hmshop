@@ -11,6 +11,7 @@ import BasketButton from '../BasketButton';
 import SimpleProductsList from '../simpleProduct/List';
 import CollectionCarousel from '../collections/carousel/List';
 import ProductModal from '../showcase/productModal/ProductModal';
+import ForExample from './forExample';
 
 export default (props, context) => {
   let { product, setCurrentPicture, createLineItem,
@@ -55,6 +56,7 @@ export default (props, context) => {
             <div className="column column-40">
               <h3>{product.get('title')}</h3>
               <h3>{product.get('price')} <i className='fa fa-rub'></i></h3>
+              { product.get('for_example') && <ForExample/> }
               <p>{product.get('description')}</p>
               <div className="full-product__buttons">
                 <BasketButton

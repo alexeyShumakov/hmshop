@@ -62,6 +62,12 @@ export default (props) => {
           object={product}
           field='description'
         />
+        <label>Продукт для примера?</label>
+        <input
+          type="checkbox"
+          onChange={(e)=> update(e.target.checked, 'for_example')}
+          checked={product.get('for_example')}
+           />
         <PicInput
           title='Изображение(1000x650)'
           upload={handlePictureUpload}

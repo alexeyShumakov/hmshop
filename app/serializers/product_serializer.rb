@@ -15,7 +15,7 @@ class ProductSerializer < ActiveModel::Serializer
     attributes :id, :title, :slug
   end
 
-  attributes :id, :title, :thumb_cover, :price, :description, :slug
+  attributes :id, :title, :thumb_cover, :price, :description, :slug, :for_example
   has_one :category
   has_many :pictures
   has_many :collections

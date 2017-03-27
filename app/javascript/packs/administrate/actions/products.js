@@ -60,6 +60,7 @@ export function updateProduct(product) {
   let formData = new FormData();
   formData.append('product[title]', product.get('title'))
   formData.append('product[price]', product.get('price'))
+  formData.append('product[for_example]', product.get('for_example'))
   formData.append('product[description]', product.get('description'))
   formData.append('product[category_id]', product.getIn(['category','id']));
   pictures && pictures.forEach((pic)=> {
@@ -86,6 +87,7 @@ export function createProduct(product) {
   let formData = new FormData();
   formData.append('product[title]', product.get('title'))
   formData.append('product[price]', product.get('price'))
+  formData.append('product[for_example]', product.get('for_example'))
   formData.append('product[description]', product.get('description'))
   formData.append('product[category_id]', product.getIn(['category','id']));
   pictures && pictures.forEach((pic)=> {

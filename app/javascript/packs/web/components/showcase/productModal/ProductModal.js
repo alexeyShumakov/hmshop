@@ -6,6 +6,7 @@ import {Link} from 'react-router';
 
 import Carousel from './Carousel';
 import BasketButton from '../../BasketButton';
+import ForExample from '../../fullProduct/forExample';
 
 export default props => {
   let { product, setCurrentPicture, createLineItem, fetchFullProduct,
@@ -42,6 +43,7 @@ export default props => {
             <div className="modal-product__right-side">
               <h4>{product.get('title')}</h4>
               <h3>{product.get('price')} <i className='fa fa-rub'></i></h3>
+              { product.get('for_example') && <ForExample/> }
               <p>{product.get('description')}</p>
               <div className="modal-product__buttons">
                 <BasketButton

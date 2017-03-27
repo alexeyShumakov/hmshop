@@ -7,12 +7,17 @@ export default (props) => {
       <div className="sidebar__title">
         <b>
           <a href="/administrate">
-            <i className="fa fa-circle-o"></i> HM-shop.ru
+            <i className="fa fa-circle-o"></i> Магазин
           </a>
         </b>
       </div>
 
       <ul className='u-no-list-style'>
+        <li>
+          <Link to="/administrate/shop">
+            <i className="fa fa-circle-o"></i> Данные о магазине
+          </Link>
+        </li>
         <li>
           <Link to="/administrate/products">
             <i className="fa fa-circle-o"></i> Продукты
