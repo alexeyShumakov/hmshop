@@ -19,7 +19,7 @@ let ProductContainer = (props) => {
   let modalProduct = props.store.get('modalProduct')
 
   return(
-    <DocumentTitle title={`${product.get('title')} - купить в интернет-магазине HM-shop.ru`}>
+    <DocumentTitle title={`${product.get('title')} - купить в интернет-магазине ${props.store.getIn(['shop', 'title'])}`}>
       <Product {...{fetchCategory, createLineItem, actions, modalProduct, history,
           product, setCurrentPicture, currentPicture, isLoading}}/>
     </DocumentTitle>

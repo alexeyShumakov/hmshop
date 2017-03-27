@@ -9,7 +9,7 @@ import * as appActions from '../actions';
 let Container = (props) => {
   let title = props.store.getIn(['collections', 'collection', 'title'])
   return(
-    <DocumentTitle title={`${title} - Купить набор в интернет-магазине HM-shop.ru`}>
+    <DocumentTitle title={`${title} - Купить набор в интернет-магазине ${props.store.getIn(['shop', 'title'])}`}>
       <Collection {...props}/>
     </DocumentTitle>
   )

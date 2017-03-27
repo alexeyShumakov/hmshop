@@ -8,7 +8,7 @@ import Home from '../components/home/Home';
 
 const HomeContainer = (props) => {
   return (
-    <DocumentTitle title="HM-shop.ru - интернет-магазин декупажа и декора">
+    <DocumentTitle title={`${props.store.getIn(['shop', 'title'])} - интернет-магазин декупажа и декора`}>
       <Home {...props} />
     </DocumentTitle>
   )

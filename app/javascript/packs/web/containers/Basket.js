@@ -8,7 +8,7 @@ import Basket from '../components/basket/Basket';
 
 const BasketContainer = (props) => {
   return (
-    <DocumentTitle title="HM-shop.ru - корзина и оформление покупки">
+    <DocumentTitle title={`${props.store.getIn(['shop', 'title'])} - корзина и оформление покупки`}>
       <Basket {...props} />
     </DocumentTitle>
   )

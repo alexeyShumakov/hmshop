@@ -1,3 +1,10 @@
+shop_data = {
+  card_number: 1234,
+  email: 'shop@mail.com',
+  title: 'My awesome shop!',
+  left_logo: File.open(Rails.root.join('spec', 'support', 'images', 'product_1.jpg'))
+}
+Shop.create!(shop_data)
 Admin.create(email: 'admin@shop.com', password: 'password')
 
 4.times do

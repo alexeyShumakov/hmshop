@@ -15,7 +15,7 @@ class CategoryContainer extends Component {
       page: store.getIn(['filters', 'pageFilter', 'page'])
     });
     return(
-    <DocumentTitle title={`Купить ${store.getIn(['category', 'category', 'title'])} в интернет-магазине HM-shop.ru`}>
+    <DocumentTitle title={`Купить ${store.getIn(['category', 'category', 'title'])} в интернет-магазине ${store.getIn(['shop', 'title'])}`}>
       <Category
         modalProduct={store.get('modalProduct')}
         products={store.get('products')}
