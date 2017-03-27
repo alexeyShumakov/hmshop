@@ -24,7 +24,9 @@ Rails.application.routes.draw do
       resources :categories
       resources :pictures
       resources :collections
-      resources :orders
+      resources :orders do
+        post :confirmation, on: :member
+      end
       resources :line_items
       resources :posts
       resources :products do

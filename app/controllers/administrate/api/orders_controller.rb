@@ -1,5 +1,5 @@
 class Administrate::Api::OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :update, :destroy]
+  before_action :set_order, only: [:show, :update, :destroy, :confirmation]
 
   def index
     @orders = Order.includes(line_items: :product).all.order('created_at DESC')
@@ -21,6 +21,10 @@ class Administrate::Api::OrdersController < ApplicationController
   def destroy
     @order.destroy
     render json: {status: :ok}, status: 204
+  end
+
+  def confirmation
+    ConfirmOrderEmailWorker.perform_async(@order.id)
   end
 
   private

@@ -1,0 +1,42 @@
+<h2>Здравствуйте <%= @order.name %>!</h2>
+<h4>Ваш заказ №<%= @order.id %></h4>
+<table>
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Кол-во</th>
+      <th>Цена</th>
+      <th>Сумма</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.line_items.each do |item| %>
+      <tr>
+        <td><%= item.product.title %></td>
+        <td><%= item.count %></td>
+        <td><%= item.price %></td>
+        <td><%= item.order_total_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+  <b>Цена доставки:</b>
+  <span><%= @order.delivery_price %></span>
+</div>
+
+<div>
+  <b>Цена заказа без учета доставки:</b>
+  <span><%= @order.products_price %></span>
+</div>
+
+<div>
+  <b>Общая сумма заказа:</b>
+  <span><%= @order.total_price %></span>
+</div>
+
+<div>
+  <b>Номер карты для перевода денег:</b>
+  <span><%= @shop.card_number %></span>
+</div>

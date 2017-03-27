@@ -116,3 +116,12 @@ export function fetchOrders() {
   }
 }
 
+
+export function sendOrderConfirmation(id) {
+  return dispatch => {
+    return axios.post(`/administrate/api/orders/${id}/confirmation`)
+      .then(()=>{
+        dispatch(showNotification('Подтверждение успешно отправлено'));
+    })
+  }
+}

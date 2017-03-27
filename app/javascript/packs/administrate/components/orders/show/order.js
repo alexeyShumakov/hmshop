@@ -14,6 +14,11 @@ export default (props) => {
       { !isLoading &&
         <div>
           <div className='control-buttons float-right'>
+            <div
+              onClick={()=> props.actions.sendOrderConfirmation(order.get('id'))}
+              className="button button-large">
+              Отправить подтверждение
+            </div>
             <Link
               to={`/administrate/orders/${order.get('id')}/edit`}
               className="button button-large">
