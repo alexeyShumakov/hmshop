@@ -11,12 +11,15 @@ class Category < ApplicationRecord
   validates_attachment_content_type :icon, content_type: /\Aimage\/.*\z/
 
   validates :title, :slug, presence: true
+
   def thumb_icon
     icon(:thumb)
   end
+
   def medium_icon
     icon(:medium)
   end
+
   def root_category_id
     root.id if root.present?
   end

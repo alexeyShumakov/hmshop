@@ -6,7 +6,4 @@ class Api::CategoriesController < ApplicationController
       .inject(&:merge)
       .to_json
   end
-
-  def index
-  end
 end

@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'factory_girl_rails'
   gem 'byebug', platform: :mri
+  gem 'rspec-sidekiq'
 end
 
 group :development do

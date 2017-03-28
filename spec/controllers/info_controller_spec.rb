@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe InfoController, type: :controller do
 
+  let!(:shop) { create :shop }
   describe "GET #about" do
     it "returns http success" do
       get :about

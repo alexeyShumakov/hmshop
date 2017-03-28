@@ -4,9 +4,10 @@ RSpec.describe Api::OrdersController, type: :controller do
 
   describe "GET #create" do
     let(:cart) { create :cart }
-    let!(:product) { create :product, price: 9.99 }
+    let(:picture) {create :picture}
+    let!(:product) { create :product, price: 9.99, pictures: [picture] }
     let!(:line_item_1) { create :line_item, count: 2, cart: cart, product: product }
-    let!(:line_item_2) { create :line_item, cart: cart }
+    let!(:line_item_2) { create :line_item, cart: cart, product: product }
     let(:valid_attrs) { attributes_for :order }
     let(:invalid_attrs) { attributes_for :invalid_order }
 
