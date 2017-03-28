@@ -36,6 +36,9 @@ group :development, :test do
   gem "pry-rails"
   gem 'dotenv-rails'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'factory_girl_rails'

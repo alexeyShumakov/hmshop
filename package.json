@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "babel-polyfill": "^6.23.0",
     "draft-js": "^0.10.0",
     "immutable": "^3.8.1",
     "lazysizes": "^3.0.0",
