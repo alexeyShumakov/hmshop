@@ -18,6 +18,20 @@ export function createPicture(picture) {
   }
 }
 
+export function uploadPicture(file) {
+  let formData = new FormData();
+  formData.append('picture[image]', file);
+  return dispatch => {
+    dispatch(setPicturesLoading(true));
+    return new Promise((resolve, reject)=>{
+      axios.post(`/administrate/api/pictures`, formData).then((response)=>{
+        dispatch(setPicturesLoading(false));
+        resolve({data: {link: response.data.picture.original_img}})
+      })
+    });
+  }
+}
+
 export function setPicturesLoading(isLoading) {
   return {
     type: actionTypes.SET_PICTURES_LOADING,

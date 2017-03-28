@@ -6,13 +6,13 @@ export default (props) => {
   const {store, actions} = props;
   const post = store.getIn(['posts', 'post']);
   const errors = store.getIn(['posts', 'errors']);
-  const {setPost, createPost} = actions;
+  const {setPost, createPost, uploadPicture} = actions;
   const action = (e)=> {e.preventDefault(); createPost(post)};
   const title = 'Создать';
   return(
     <div>
       <h3>Создать новость</h3>
-      <Form {...{post, setPost, action, errors, title}}/>
+      <Form {...{post, setPost, action, errors, title, uploadPicture}}/>
     </div>
   )
 }

@@ -16,4 +16,8 @@ class Picture < ApplicationRecord
   def medium_img
     self.image(:medium)
   end
+
+  def original_img
+    image
+  end
 end

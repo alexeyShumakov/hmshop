@@ -29,15 +29,16 @@ export default class PostForm extends React.Component {
 
   render() {
     let {editorState} = this.state;
-    const {post, setPost, action, errors, title } = this.props;
+    const {post, setPost, action, errors, title, uploadPicture } = this.props;
     const update = (value, field) => {
       const newPost = post.set(field, value);
       setPost(newPost);
     }
     let options = {
-        options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign',
-          'link', 'embedded', 'emoji', 'image', 'remove', 'history']
-      }
+      options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign',
+        'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
+      image: { uploadCallback: uploadPicture }
+    }
     return(
       <form onSubmit={action}>
         <fieldset>
