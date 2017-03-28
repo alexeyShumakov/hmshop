@@ -18,6 +18,8 @@ export default (props) => {
       <dl>
         <dt>Название</dt>
         <dd>{shop.get('title')}</dd>
+        <dt>Номер телефона</dt>
+        <dd>{shop.get('phone')}</dd>
         <dt>Номер банковской карты</dt>
         <dd>{shop.get('card_number')}</dd>
         <dt>Email</dt>

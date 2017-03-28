@@ -26,6 +26,13 @@ export default (props) => {
           field='card_number'
         />
         <Input
+          title='Номер телефона'
+          update={update}
+          errors={errors}
+          object={shop}
+          field='phone'
+        />
+        <Input
           title='Email'
           update={update}
           errors={errors}

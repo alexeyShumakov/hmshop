@@ -19,6 +19,6 @@ class Administrate::Api::ShopController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:title, :card_number, :email, :left_logo)
+    params.require(:shop).permit(:title, :card_number, :email, :left_logo, :phone)
   end
 end

@@ -1,5 +1,5 @@
 class Shop < ApplicationRecord
-  validates :title, :card_number, :email, presence: true
+  validates :title, :card_number, :email, :phone, presence: true
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
   has_attached_file :left_logo, styles: {

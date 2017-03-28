@@ -41,6 +41,7 @@ export function updateShop(shop, loading=true) {
   formData.append('shop[card_number]', shop.get('card_number'))
   formData.append('shop[title]', shop.get('title'))
   formData.append('shop[email]', shop.get('email'))
+  formData.append('shop[phone]', shop.get('phone'))
   if(!_.isEqual(shop.get('left_logo'), undefined))
     formData.append('shop[left_logo]', shop.get('left_logo'))
 

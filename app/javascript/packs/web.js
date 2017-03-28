@@ -13,9 +13,9 @@ import Collections from './web/containers/IndexCollections';
 import Collection from './web/containers/Collection';
 import Posts from './web/containers/IndexPosts';
 import Post from './web/containers/ShowPost';
+import Contacts from './web/containers/Contacts';
+import About from './web/containers/About';
 
-import About from './web/components/info/About';
-import Contacts from './web/components/info/Contacts';
 import Delivery from './web/components/info/Delivery';
 import HowTo from './web/components/info/HowToOrder';
 import Terms from './web/components/info/Terms';

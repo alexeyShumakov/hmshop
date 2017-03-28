@@ -3,6 +3,7 @@ class CreateShops < ActiveRecord::Migration[5.0]
     create_table :shops do |t|
       t.string :title
       t.string :card_number
+      t.string :phone
       t.string :email
       t.attachment :left_logo
       t.attachment :middle_logo

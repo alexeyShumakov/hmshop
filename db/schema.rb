@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20170325152703) do
   create_table "shops", force: :cascade do |t|
     t.string   "title"
     t.string   "card_number"
+    t.string   "phone"
     t.string   "email"
     t.string   "left_logo_file_name"
     t.string   "left_logo_content_type"
