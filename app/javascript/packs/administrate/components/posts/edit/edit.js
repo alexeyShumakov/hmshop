@@ -7,7 +7,7 @@ export default (props) => {
   const post = props.store.getIn(['posts', 'post']);
   const errors = props.store.getIn(['posts', 'errors']);
   const isLoading = props.store.getIn(['posts', 'isLoading']);
-  const { createPost, destroyPost, updatePost, setPost } = props.actions;
+  const {uploadPicture, createPost, destroyPost, updatePost, setPost } = props.actions;
   const title = 'Изменить';
   const destroy = () => {
     destroyPost(post.get('id')).then(()=> {
@@ -33,7 +33,7 @@ export default (props) => {
           </div>
           <h3>Редактировать Новость #{post.get('id')}</h3>
           <div className="clearfix"></div>
-          <Form {...{post, setPost, action, errors, title}}/>
+          <Form {...{uploadPicture, post, setPost, action, errors, title}}/>
         </div>
       }
     </div>
