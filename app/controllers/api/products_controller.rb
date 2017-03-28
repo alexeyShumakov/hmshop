@@ -4,8 +4,8 @@ class Api::ProductsController < ApplicationController
 
   def show
     params[:product_id] = params[:id]
-    data = GenerateProduct.call({params: params, cart: @cart})
-    @json = [data.product_hash, data.category_hash, data.history_hash].inject(:merge).to_json
+    @data = GenerateProduct.call({params: params, cart: @cart})
+    @json = [@data.product_hash, @data.category_hash, @data.history_hash].inject(:merge).to_json
     render json: @json
   end
 

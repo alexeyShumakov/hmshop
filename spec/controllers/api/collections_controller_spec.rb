@@ -10,12 +10,22 @@ RSpec.describe Api::CollectionsController, type: :controller do
       get :show, params: { id: collection.id }
       expect(response).to have_http_status(:success)
     end
+
+    it 'assigns collection' do
+      get :show, params: {id: collection.id}
+      expect(assigns(:collection)).to eq(collection)
+    end
   end
 
   describe "GET #index" do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
+    end
+
+    it 'assigns collections' do
+      get :index
+      expect(assigns(:collections)).to eq([collection])
     end
   end
 

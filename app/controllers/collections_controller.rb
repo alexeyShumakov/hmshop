@@ -12,10 +12,10 @@ class CollectionsController < ApplicationController
   end
 
   def index
-    collections = Collection.includes(products: :pictures).all.order('created_at DESC')
+    @collections = Collection.includes(products: :pictures).all.order('created_at DESC')
 
     @json = {
-        collections: ActiveModelSerializers::SerializableResource.new(collections)
+        collections: ActiveModelSerializers::SerializableResource.new(@collections)
       }.to_json
   end
 end

@@ -15,6 +15,12 @@ RSpec.describe CartController, type: :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
+
+    it "assigns cart" do
+      request.cookies['cart_id'] = cart.id
+      get :index
+      expect(assigns(:cart)).to eq(cart)
+    end
   end
 
 end
