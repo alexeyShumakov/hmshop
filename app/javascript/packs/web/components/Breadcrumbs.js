@@ -1,17 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-let Ancestor = (props) => {
-  return(
-    <span>
-      <Link
-        className='breadcrumbs__item'
-        onClick={props.fetch}
-        to={`/categories/${props.id}`}>{props.title}</Link>
-      <i className='breadcrumbs__item fa fa-angle-right'></i>
-    </span>
-  )
-}
+import Ancestor from './BreadcrumbsAncestor';
+
 export default (props) => {
   return(
     <div className='breadcrumbs'>
@@ -28,7 +19,6 @@ export default (props) => {
               title={a.get('title')} />
           )
         })
-
       }
       <span>{props.node.get('title')}</span>
     </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM, { findDOMNode } from 'react-dom';
 import _ from 'lodash';
 import { Link } from 'react-router';
 
@@ -11,9 +10,9 @@ export default class BasketButton extends React.Component {
   }
 
   outSideClick(e) {
-    if(!findDOMNode(this).contains(e.target)) {
-      this.setState({isAdded: false});
-    }
+    let isAdded = this.state.isAdded;
+    const el = this.container;
+    if(!el.contains(e.target) && isAdded) this.setState({isAdded: false});
   }
 
   componentWillMount(){
@@ -37,9 +36,7 @@ export default class BasketButton extends React.Component {
     let button =
       <button onClick={this.add} className={klassName} >
         Добавить в корзину
-        { isLoading &&
-            <i className="fa fa-circle-o-notch fa-spin fa-fw"></i>
-        }
+        { isLoading && <i className="fa fa-circle-o-notch fa-spin fa-fw"></i> }
       </button>
 
     if(isAdded){
@@ -52,7 +49,7 @@ export default class BasketButton extends React.Component {
         </Link>
     }
     return(
-      <div>{button}</div>
+      <div ref={ref => {this.container = ref}}>{button}</div>
     )
   }
 }

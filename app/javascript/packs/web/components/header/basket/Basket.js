@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM, { findDOMNode } from 'react-dom';
 import { Link } from 'react-router';
 import Tether from 'tether';
 import _ from 'lodash';
@@ -15,9 +14,9 @@ export default class Basket extends React.Component {
   }
 
   outSideClick(e) {
-    if(!findDOMNode(this).contains(e.target)) {
-      this.hide();
-    }
+    let isShow = this.state.isShow;
+    const el = this.container;
+    if(!el.contains(e.target) && isShow) this.hide();
   }
 
   componentWillMount(){
@@ -50,7 +49,7 @@ export default class Basket extends React.Component {
     let { cart, incrementPosition, decrementPosition, currentPosition, fetchCart } = this.props;
     let { isShow } = this.state;
     return(
-      <div className="basket">
+      <div ref={ref => {this.container = ref}} className="basket">
         <div className='basket__icon' >
           <i onClick={this.show} className="nav__icon fa fa-shopping-cart fa-lg" >
           </i>

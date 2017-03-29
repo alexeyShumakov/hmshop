@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM, {findDOMNode} from 'react-dom';
 import Immutable from 'immutable';
 import {Link} from 'react-router';
 
@@ -19,9 +18,9 @@ export default class Search extends React.Component {
   }
 
   outSideClick(e) {
-    if(!findDOMNode(this).contains(e.target)) {
-      this.hide();
-    }
+    let isShow = this.state.isShow;
+    const el = this.container;
+    if(!el.contains(e.target) && isShow) this.hide();
   }
   show() {
     this.setState({isShow: true});
@@ -52,7 +51,7 @@ export default class Search extends React.Component {
     let {isShow} = this.state;
     let width = isShow ? '175px' : '0';
     return(
-      <div className='search'>
+      <div ref={ref => {this.container = ref}} className='search'>
         <i className={`nav__icon fa fa-search fa-lg ${isShow ? 'nav__icon_active' : ''}`}
            onClick={this.show}
         ></i>
