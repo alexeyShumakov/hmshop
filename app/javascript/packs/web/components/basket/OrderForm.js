@@ -16,31 +16,35 @@ export default (props) => {
   return(
     <div className='order'>
       <h3>Оформить заказ</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id='order__form'>
         <fieldset>
-          <label>Имя</label>
+          <label htmlFor='order__name'>Имя</label>
           <input
+            id='order__name'
             className={errors.has('name') ? 'input_invalid' : ''}
             type="text"
             value={order.get('name')}
             onChange={(e)=> {handleChange(e.target.value, 'name')}}
           />
-          <label>Email</label>
+          <label htmlFor='order__email'>Email</label>
           <input
+            id='order__email'
             className={errors.has('email') ? 'input_invalid' : ''}
             type="text"
             value={order.get('email')}
             onChange={(e)=> {handleChange(e.target.value, 'email')}}
           />
-          <label>Номер телефона</label>
+          <label htmlFor='order__phone'>Номер телефона</label>
           <input
+            id='order__phone'
             className={errors.has('phone') ? 'input_invalid' : ''}
             type="text"
             value={order.get('phone')}
             onChange={(e)=> {handleChange(e.target.value, 'phone')}}
           />
-          <label>Адрес доставки</label>
+          <label htmlFor='order__address'>Адрес доставки</label>
           <input
+            id='order__address'
             className={errors.has('address') ? 'input_invalid' : ''}
             type="text"
             value={order.get('address')}
