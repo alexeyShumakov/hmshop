@@ -32,7 +32,7 @@ export default class Info extends React.Component {
   render() {
     return(
       <div className='info'>
-        <i className="nav__icon fa fa-bars fa-lg" onClick={this.show}></i>
+        <i className="header__icon fa fa-bars fa-lg" onClick={this.show}></i>
         <div className={this.state.isShow ? 'info__content_show' : 'info__content'} >
           <ul className='u-no-list-style info__list'>
             <li><Link to='/info/about' onClick={this.hide}>О нас</Link></li>

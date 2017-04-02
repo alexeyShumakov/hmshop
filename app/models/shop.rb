@@ -3,9 +3,9 @@ class Shop < ApplicationRecord
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
   has_attached_file :left_logo, styles: {
-    small: '25x25>',
+    small: '40x40>',
   }, convert_options: {
-    small:  "-quality 60 -strip",
+    small:  "-quality 85 -strip",
   }
   validates_attachment_content_type :left_logo, content_type: /\Aimage\/.*\z/
 

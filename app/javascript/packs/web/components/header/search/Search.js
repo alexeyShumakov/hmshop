@@ -52,7 +52,7 @@ export default class Search extends React.Component {
     let width = isShow ? '175px' : '0';
     return(
       <div ref={ref => {this.container = ref}} className='search'>
-        <i className={`nav__icon fa fa-search fa-lg ${isShow ? 'nav__icon_active' : ''}`}
+        <i className={`header__icon fa fa-search fa-lg ${isShow ? 'nav__icon_active' : ''}`}
            onClick={this.show}
         ></i>
         <div className={isShow ? 'search__form_show' : 'search__form'} style={{width}} >

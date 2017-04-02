@@ -51,7 +51,7 @@ export default class Basket extends React.Component {
     return(
       <div ref={ref => {this.container = ref}} className="basket">
         <div className='basket__icon' >
-          <i onClick={this.show} className="nav__icon fa fa-shopping-cart fa-lg" >
+          <i onClick={this.show} className="header__icon fa fa-shopping-cart fa-lg" >
           </i>
           { this.props.cart.get('total_count') > 0 &&
             <span className='basket__counter'>
