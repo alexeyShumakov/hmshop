@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   validates :price, numericality: true
 
   pg_search_scope :search_by_title, against: :title,
-                  using: { tsearch: { prefix: true } }
+                  using: { tsearch: { prefix: true, dictionary: 'russian' } }
 
   def thumb_cover
     cover = self.pictures.to_a.sort {|x,y| x.created_at <=> y.created_at }.first
